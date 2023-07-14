@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ChiTietSanPhamActivity">
+
+    <include layout="@layout/custom_toolbar_chi_tiet_san_pham" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvMaCTSP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mã mặt hàng" />
+
+        <TextView
+            android:id="@+id/tvTenCTSP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tên mặt hàng" />
+
+        <TextView
+            android:id="@+id/tvSoLuongCTSP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Số lượng" />
+
+        <TextView
+            android:id="@+id/tvGiaNhapCTSP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Giá nhập" />
+
+        <TextView
+            android:id="@+id/tvGiaBanCTSP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Giá Bán" />
+
+        <TextView
+            android:id="@+id/tvDanhMucCTSP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Danh mục" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnUpdateCTSP"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:text="Chỉnh sửa" />
+
+        <Button
+            android:id="@+id/btnXoaSanPhamCTSP"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:text="Xóa Sản phẩm" />
+    </LinearLayout>
+
+</LinearLayout>
