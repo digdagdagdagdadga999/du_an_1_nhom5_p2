@@ -102,6 +102,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
         btnChinhSua = findViewById(R.id.btnUpdateCTSP);
         btnXoa = findViewById(R.id.btnXoaSanPhamCTSP);
+        imgSP = findViewById(R.id.imgCTSP);
     }
 
     @Override
