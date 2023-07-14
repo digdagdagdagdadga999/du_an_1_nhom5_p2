@@ -85,12 +85,9 @@ public class ThemSanPhamActivity extends AppCompatActivity {
                         Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_FOLDER);
 
             }
-
-
         });
 
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

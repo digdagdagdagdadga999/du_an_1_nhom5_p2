@@ -64,6 +64,7 @@ public class ThemLoaiSanPham extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        finish();
         startActivity(new Intent(ThemLoaiSanPham.this, LoaiSanPhamActivity.class));
     }
 }

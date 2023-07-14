@@ -9,6 +9,17 @@
 
     <include layout="@layout/custom_toolbar_chi_tiet_san_pham" />
 
+    <ImageView
+        android:id="@+id/imgCTSP"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/groceries"
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
