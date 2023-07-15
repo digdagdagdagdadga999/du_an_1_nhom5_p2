@@ -119,6 +119,7 @@ public class SuaSanPhamActivity extends AppCompatActivity {
     }
 
     private void anhXaView() {
+
         imgSuaSanPham = findViewById(R.id.imgLuuSuaSanPham);
         imgThemAnh = findViewById(R.id.suaAnhSanPham);
         edMa = findViewById(R.id.edSuaMaMatHang);
@@ -127,6 +128,7 @@ public class SuaSanPhamActivity extends AppCompatActivity {
         edGiaBan = findViewById(R.id.edSuaGiaBan);
         edGiaNhap = findViewById(R.id.edSuaGiaNhap);
         spnDanhMuc = findViewById(R.id.spnSuaDanhMuc);
+        imgThemSuaDanhMuc = findViewById(R.id.themDanhMucSuaSanPham);
 
 
     }

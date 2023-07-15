@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.activity.KhachHangActivity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.activity.LoaiSanPhamActivity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.activity.SanPhamActivity;
 
@@ -59,9 +60,9 @@ public class FragmentThem extends Fragment {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.nav_thoat){
+                if (item.getItemId() == R.id.nav_thoat) {
                     Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-                    homeIntent.addCategory( Intent.CATEGORY_HOME );
+                    homeIntent.addCategory(Intent.CATEGORY_HOME);
                     homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(homeIntent);
                 }
@@ -87,7 +88,12 @@ public class FragmentThem extends Fragment {
             }
         });
 
-
+        tvNguoiDung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chuyenAct(KhachHangActivity.class);
+            }
+        });
 
 
         return view;
