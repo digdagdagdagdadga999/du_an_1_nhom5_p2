@@ -1,15 +1,25 @@
 package datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model;
 
-public class HoaDonChiTiet {
-    private String maHoaDon,maHDCT;
-    private GioHang gioHang;
+import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    public HoaDonChiTiet(String maHoaDon, GioHang gioHang) {
-        this.maHoaDon = maHoaDon;
-        this.gioHang = gioHang;
+public class HoaDonChiTiet  {
+    private int maHDCT;
+    private String maHoaDon; // Add this field
+    private String ngayMua; // Add this field
+    private double tongTien;
+    private int soLuong;
+    private double giaSanPham;
+    private byte[] hinhAnhSanPham;
+    private String tenSanPham;
+
+    public int getMaHDCT() {
+        return maHDCT;
     }
 
-    public HoaDonChiTiet() {
+    public void setMaHDCT(int maHDCT) {
+        this.maHDCT = maHDCT;
     }
 
     public String getMaHoaDon() {
@@ -20,19 +30,51 @@ public class HoaDonChiTiet {
         this.maHoaDon = maHoaDon;
     }
 
-    public String getMaHDCT() {
-        return maHDCT;
+    public String getNgayMua() {
+        return ngayMua;
     }
 
-    public void setMaHDCT(String maHDCT) {
-        this.maHDCT = maHDCT;
+    public void setNgayMua(String ngayMua) {
+        this.ngayMua = ngayMua;
     }
 
-    public GioHang getGioHang() {
-        return gioHang;
+    public double getTongTien() {
+        return tongTien;
     }
 
-    public void setGioHang(GioHang gioHang) {
-        this.gioHang = gioHang;
+    public void setTongTien(double tongTien) {
+        this.tongTien = tongTien;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public double getGiaSanPham() {
+        return giaSanPham;
+    }
+
+    public void setGiaSanPham(double giaSanPham) {
+        this.giaSanPham = giaSanPham;
+    }
+
+    public byte[] getHinhAnhSanPham() {
+        return hinhAnhSanPham;
+    }
+
+    public void setHinhAnhSanPham(byte[] hinhAnhSanPham) {
+        this.hinhAnhSanPham = hinhAnhSanPham;
+    }
+
+    public String getTenSanPham() {
+        return tenSanPham;
+    }
+
+    public void setTenSanPham(String tenSanPham) {
+        this.tenSanPham = tenSanPham;
     }
 }

@@ -10,10 +10,10 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.GioHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.ViewPageAdapter;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentBanHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentBaoCao;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentGioHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentHoaDon;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentThem;
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     public TabLayout tabLayout;
 
-    public static List<GioHang> gioHangList;
+//    public static List<GioHang> gioHangList;
 
 
     @Override
@@ -30,13 +30,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tabLayout = findViewById(R.id.TabLayout);
         viewPager = findViewById(R.id.viewPage);
-
-        if (gioHangList == null) {
-            gioHangList = new ArrayList<>();
-        }
+//
+//        if (gioHangList == null) {
+//            gioHangList = new ArrayList<>();
+//        }
 
         ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
         viewPageAdapter.addFragment(new FragmentBanHang(), "BÁN HÀNG");
+        viewPageAdapter.addFragment(new FragmentGioHang(), "Giỏ HÀNG");
         viewPageAdapter.addFragment(new FragmentHoaDon(), "HÓA ĐƠN");
         viewPageAdapter.addFragment(new FragmentBaoCao(), "SETTING");
         viewPageAdapter.addFragment(new FragmentThem(), "ADMIN");
