@@ -25,9 +25,6 @@
             android:name=".activity.KhachHangActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.DonHangActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.LoaiSanPhamActivity"
             android:exported="false" />
         <activity
