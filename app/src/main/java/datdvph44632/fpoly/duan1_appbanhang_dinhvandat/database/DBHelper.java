@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SanPhamDAO.SQL_SANPHAM);
-        db.execSQL(HoaDonDAO.SQL_HOADON);
+//        db.execSQL(HoaDonDAO.SQL_HOADON);
         db.execSQL(LoaiSanPhamDAO.SQL_LOAISANPHAM);
         db.execSQL(HoaDonChiTietDAO.SQL_HDCT);
         db.execSQL(KhachHangDAO.SQL_NGUOIDUNG);
@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("Drop table "+SanPhamDAO.TABLE_NAME);
         db.execSQL("Drop table "+LoaiSanPhamDAO.TABLE_NAME);
-        db.execSQL("Drop table "+HoaDonDAO.TABLE_NAME);
+//        db.execSQL("Drop table "+HoaDonDAO.TABLE_NAME);
         db.execSQL("Drop table "+HoaDonChiTietDAO.TABLE_NAME);
         db.execSQL("Drop table "+KhachHangDAO.TABLE_NAME);
 
