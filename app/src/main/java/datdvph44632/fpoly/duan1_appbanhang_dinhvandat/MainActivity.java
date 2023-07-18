@@ -13,7 +13,7 @@ import java.util.List;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.GioHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.ViewPageAdapter;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentBanHang;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentBaoCao;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentSetting;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentHoaDon;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentThem;
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
         viewPageAdapter.addFragment(new FragmentBanHang(), "BÁN HÀNG");
         viewPageAdapter.addFragment(new FragmentHoaDon(), "HÓA ĐƠN");
-        viewPageAdapter.addFragment(new FragmentBaoCao(), "SETTING");
+        viewPageAdapter.addFragment(new FragmentSetting(), "SETTING");
         viewPageAdapter.addFragment(new FragmentThem(), "ADMIN");
         viewPager.setAdapter(viewPageAdapter);
 
