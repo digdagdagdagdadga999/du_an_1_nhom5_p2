@@ -8,18 +8,21 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.GioHang;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.BitmapUtility;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.HoaDonChiTiet;
 
 public class HoaDonChiTietDAO {
     public static final String TABLE_NAME = "HoaDonChiTiet";
-    public static final String SQL_HDCT = "Create table if not exists HoaDonChiTiet (" +
-            "   maHDCT integer primary key autoincrement," +
-            "   maHoaDon text," +
-            "   tenSanPham text," +
-            "   maSanPham text," +
-            "   soLuong INTEGER," +
-            "   gia DOUBLE)";
+    public static final String SQL_HDCT = "CREATE TABLE IF NOT EXISTS " +
+            TABLE_NAME + " (" +
+            "maHDCT INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "maHoaDon TEXT," +
+            "ngayMua TEXT," +
+            "tongTien DOUBLE," +
+            "soLuong INTEGER," +
+            "giaSanPham DOUBLE," +
+            "hinhAnhSanPham BLOB" +
+            ")";
     private final SQLiteDatabase sqLiteDatabase;
 
     public HoaDonChiTietDAO(Context context) {
@@ -27,47 +30,75 @@ public class HoaDonChiTietDAO {
         sqLiteDatabase = mydatabase.getWritableDatabase();
     }
 
-    public long addHDCT(HoaDonChiTiet hoaDonChiTiet) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("maHoaDon", hoaDonChiTiet.getMaHoaDon());
-        contentValues.put("tenSanPham", hoaDonChiTiet.getGioHang().getTen());
-        contentValues.put("maSanPham", hoaDonChiTiet.getGioHang().getMa());
-        contentValues.put("soLuong", hoaDonChiTiet.getGioHang().getSoLuong());
-        contentValues.put("gia", hoaDonChiTiet.getGioHang().getGia());
-        return sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
+    public long addHDCT(List<HoaDonChiTiet> hoaDonChiTietList) {
+        long result = -1;
+        sqLiteDatabase.beginTransaction();
+        try {
+            for (HoaDonChiTiet hoaDonChiTiet : hoaDonChiTietList) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("maHoaDon", hoaDonChiTiet.getMaHoaDon());
+                contentValues.put("ngayMua", hoaDonChiTiet.getNgayMua());
+                contentValues.put("tongTien", hoaDonChiTiet.getTongTien());
+                contentValues.put("soLuong", hoaDonChiTiet.getSoLuong());
+                contentValues.put("giaSanPham", hoaDonChiTiet.getGiaSanPham());
+                contentValues.put("hinhAnhSanPham", hoaDonChiTiet.getHinhAnhSanPham());
+
+                result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
+                if (result == -1) {
+                    break;
+                }
+            }
+            sqLiteDatabase.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqLiteDatabase.endTransaction();
+        }
+        return result;
     }
 
-    public long updateHDCT(HoaDonChiTiet hoaDonChiTiet, String ma) {
+    public long updateHDCT(HoaDonChiTiet hoaDonChiTiet, String maHDCT) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("maHoaDon", hoaDonChiTiet.getMaHoaDon());
-        contentValues.put("tenSanPham", hoaDonChiTiet.getGioHang().getTen());
-        contentValues.put("maSanPham", hoaDonChiTiet.getGioHang().getMa());
-        contentValues.put("soLuong", hoaDonChiTiet.getGioHang().getSoLuong());
-        contentValues.put("gia", hoaDonChiTiet.getGioHang().getGia());
-        return sqLiteDatabase.update(TABLE_NAME, contentValues, "maHDCT = ?", new String[]{ma});
+        contentValues.put("ngayMua", hoaDonChiTiet.getNgayMua());
+        contentValues.put("tongTien", hoaDonChiTiet.getTongTien());
+        contentValues.put("soLuong", hoaDonChiTiet.getSoLuong());
+        contentValues.put("giaSanPham", hoaDonChiTiet.getGiaSanPham());
+        contentValues.put("hinhAnhSanPham", hoaDonChiTiet.getHinhAnhSanPham());
+
+        return sqLiteDatabase.update(TABLE_NAME, contentValues, "maHDCT = ?", new String[]{maHDCT});
     }
 
-    public long deleteHDCT(String ma) {
-        return sqLiteDatabase.delete(TABLE_NAME, "maHDCT = ?", new String[]{ma});
+    public long deleteHDCT(String maHDCT) {
+        return sqLiteDatabase.delete(TABLE_NAME, "maHDCT = ?", new String[]{maHDCT});
     }
 
     public List<HoaDonChiTiet> getAllHDCT(String maHD) {
         List<HoaDonChiTiet> list = new ArrayList<>();
-        // String query = "Select maHDCT, HoaDon.maHoaDon,SanPham.maSanPham FROM HoaDonChiTiet INNER JOIN HoaDon on HoaDonChiTiet.maHoaDon=HoaDon.maHoaDon INNER JOIN SanPham on SanPham.maSanPham = HoaDonChiTiet.maSanPham where HoaDonChiTiet.maHoaDon='" + maHD + "'";
-        String query = " Select * from " + TABLE_NAME + " where maHoaDon = '" + maHD +"'";
+        String query = " SELECT * FROM " + TABLE_NAME + " WHERE maHoaDon = '" + maHD + "'";
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-        if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                String maHd = cursor.getString(3);
-                String maSP = cursor.getString(3);
-                String ten = cursor.getString(2);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                int maHDCT = cursor.getInt(0);
+                String maHd = cursor.getString(1);
+                String ngayMua = cursor.getString(2);
+                double tongTien = cursor.getDouble(3);
                 int soLuong = cursor.getInt(4);
-                double gia = cursor.getDouble(5);
-                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet(maHd,new GioHang(ten,maSP,gia,soLuong));
+                double giaSanPham = cursor.getDouble(5);
+                byte[] hinhAnhSanPham = cursor.getBlob(6);
+
+                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                hoaDonChiTiet.setMaHDCT(maHDCT);
+                hoaDonChiTiet.setMaHoaDon(maHd);
+                hoaDonChiTiet.setNgayMua(ngayMua);
+                hoaDonChiTiet.setTongTien(tongTien);
+                hoaDonChiTiet.setSoLuong(soLuong);
+                hoaDonChiTiet.setGiaSanPham(giaSanPham);
+                hoaDonChiTiet.setHinhAnhSanPham(hinhAnhSanPham);
+
                 list.add(hoaDonChiTiet);
-                cursor.moveToNext();
-            }
+            } while (cursor.moveToNext());
+
             cursor.close();
         }
         return list;
