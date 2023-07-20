@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Serializable;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,7 +27,7 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.GioHangItem;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.HoaDonChiTiet;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.CartAdapter;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.HoaDonAdapter;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.GioHangDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.HoaDonChiTietDAO;
 
