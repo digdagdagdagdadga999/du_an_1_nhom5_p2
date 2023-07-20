@@ -9,11 +9,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.GioHangItem;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.SanPham;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.GioHangDAO;
 
 public class SanPhamAdapter extends BaseAdapter {
     final Context context;
@@ -50,10 +53,33 @@ public class SanPhamAdapter extends BaseAdapter {
             viewHolder.tvGia = convertView.findViewById(R.id.tvGiaBan_ItemSp);
             viewHolder.tvSoluong = convertView.findViewById(R.id.tvCon_ItemSp);
             viewHolder.imgSanPham = convertView.findViewById(R.id.imageView_ItemSp);
+            viewHolder.carta=convertView.findViewById(R.id.carta);
+            viewHolder.carta.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SanPham sanPham = list.get(position);
+                    String tenSanPham = sanPham.getTen();
+                    double giaSanPham = sanPham.getGiaBan();
+                    byte[] imageSanPham = sanPham.getImage();
+
+                    GioHangDAO gioHangDAO = new GioHangDAO(context);
+                    if (gioHangDAO.isProductInCart(tenSanPham)) {
+                        Toast.makeText(context, "Sản phẩm đã được thêm vào giỏ hàng trước đó", Toast.LENGTH_SHORT).show();
+                    } else {
+                        long insertedId = gioHangDAO.addProductToCart(tenSanPham, giaSanPham, imageSanPham);
+                        if (insertedId != -1) {
+                            Toast.makeText(context, "Sản phẩm đã được thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Thêm sản phẩm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            });
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
         SanPham sanPham = list.get(position);
         viewHolder.tvMa.setText("Mã : "+sanPham.getMaSanPham());
         viewHolder.tvSanPham.setText("Tên sản phẩm : "+sanPham.getTen());
@@ -68,8 +94,9 @@ public class SanPhamAdapter extends BaseAdapter {
         }
         return convertView;
     }
+
     private static class ViewHolder{
         TextView tvMa, tvSanPham,tvGia, tvSoluong;
-        ImageView imgSanPham;
+        ImageView imgSanPham,carta;
     }
 }

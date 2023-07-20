@@ -16,6 +16,9 @@
         android:theme="@style/Theme.DuAn1_AppBanHang_dinhVanDat"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ActivityGioHang"
+            android:exported="false" />
+        <activity
             android:name=".activity.ThemKhachHangActivity"
             android:exported="false" />
         <activity
@@ -51,6 +54,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".fragment.FragmentBanHang"
+            android:exported="false" />
     </application>
 
 </manifest>

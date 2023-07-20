@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -31,6 +33,7 @@ import java.util.List;
 
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.SanPham;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.SanPhamAdapter;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.SanPhamDAO;
 
@@ -51,10 +54,11 @@ public class FragmentBanHang extends Fragment {
     int soLuong;
     static int tong = 0;
     TextView tvSoLuongBanHang;
+    ImageView cart;
 
 
     public FragmentBanHang() {
-        // Required empty public constructor
+
     }
 
 
@@ -63,10 +67,28 @@ public class FragmentBanHang extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ban_hang, container, false);
+
         toolbar = view.findViewById(R.id.toolbar_ban_hang);
         imageView = view.findViewById(R.id.imgBanHang);
         navigationView = view.findViewById(R.id.NavigationViewBanHang);
         drawerLayout = view.findViewById(R.id.drawerLayoutBanHang);
+
+        cart = view.findViewById(R.id.cartshoppe);
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentGioHang fragmentGioHang = FragmentGioHang.newInstance();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, fragmentGioHang);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
+            }
+        });
+
+
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,9 +119,6 @@ public class FragmentBanHang extends Fragment {
         timKiem();
 
     }
-
-
-
 
 
     private void timKiem() {
@@ -136,6 +155,7 @@ public class FragmentBanHang extends Fragment {
         spnLocDanhSach = view.findViewById(R.id.spnLocTimKiem);
         tvNull = view.findViewById(R.id.tvNull);
         tvSoLuongBanHang = view.findViewById(R.id.tvSoLuongBanHang);
+        cart = view.findViewById(R.id.cartshoppe);
     }
 
     //    public void doDuLieu(){
