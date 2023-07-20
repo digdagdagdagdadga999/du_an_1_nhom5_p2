@@ -33,7 +33,7 @@ import java.util.List;
 
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.SanPham;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.activity.ActivityGioHang;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.SanPhamAdapter;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.SanPhamDAO;
 
@@ -72,6 +72,7 @@ public class FragmentBanHang extends Fragment {
         imageView = view.findViewById(R.id.imgBanHang);
         navigationView = view.findViewById(R.id.NavigationViewBanHang);
         drawerLayout = view.findViewById(R.id.drawerLayoutBanHang);
+
         cart = view.findViewById(R.id.cartshoppe);
 
         cart.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +87,9 @@ public class FragmentBanHang extends Fragment {
 
             }
         });
+
+
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

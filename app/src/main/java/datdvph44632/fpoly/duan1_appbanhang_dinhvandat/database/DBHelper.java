@@ -8,6 +8,7 @@
 
     import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.HoaDonChiTiet;
 
+
     public class DBHelper extends SQLiteOpenHelper {
         public DBHelper(@Nullable Context context) {
             super(context, "aa", null, 1);
@@ -22,6 +23,7 @@
             db.execSQL(HoaDonChiTietDAO.SQL_HDCT);
 
         }
+
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
