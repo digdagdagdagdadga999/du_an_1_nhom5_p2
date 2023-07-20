@@ -147,8 +147,6 @@ public class FragmentGioHang extends Fragment {
         }
         return resultHoaDonChiTietList;
     }
-
-
     private void updateTotalPriceTextView() {
         double totalPrice = calculateTotalPrice(gioHangItems);
         totalTextView.setText("Tổng số tiền: " + totalPrice + " VNĐ");
