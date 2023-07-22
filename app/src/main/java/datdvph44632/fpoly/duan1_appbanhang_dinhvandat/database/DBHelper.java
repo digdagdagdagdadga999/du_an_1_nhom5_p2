@@ -13,7 +13,6 @@
         public DBHelper(@Nullable Context context) {
             super(context, "aa", null, 1);
         }
-
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(SanPhamDAO.SQL_SANPHAM);
@@ -21,7 +20,6 @@
             db.execSQL(KhachHangDAO.SQL_NGUOIDUNG);
             db.execSQL(GioHangDAO.SQL_GIOHANG);
             db.execSQL(HoaDonChiTietDAO.SQL_HDCT);
-
         }
 
 

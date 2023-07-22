@@ -81,37 +81,39 @@
                     Toast.makeText(context, "Sản phẩm đã được xóa khỏi giỏ hàng", Toast.LENGTH_SHORT).show();
                 }
             });
-
-            holder.btngiam.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int currentQuantity = gioHangItem.getQuantity();
-                    if (currentQuantity > 1) {
-                        int newQuantity = currentQuantity - 1;
-                        gioHangItem.setQuantity(newQuantity);
-                        gioHangDAO.updateProductQuantity(gioHangItem.getId(), newQuantity);
-                        holder.productSo.setText(String.valueOf(newQuantity));
-                        if (quantityChangeListener != null) {
-                            quantityChangeListener.onQuantityDecrease(position, newQuantity);
-                        }
-                    }
-                }
-            });
-
             holder.btntang.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int currentQuantity = gioHangItem.getQuantity();
-                    int newQuantity = currentQuantity + 1;
-                    gioHangItem.setQuantity(newQuantity);
-                    gioHangDAO.updateProductQuantity(gioHangItem.getId(), newQuantity);
+                    int newQuantity = gioHangItem.getQuantity() + 1;
                     holder.productSo.setText(String.valueOf(newQuantity));
                     if (quantityChangeListener != null) {
                         quantityChangeListener.onQuantityIncrease(position, newQuantity);
                     }
                 }
             });
+            holder.btngiam.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int newQuantity = gioHangItem.getQuantity() - 1;
+                    if (newQuantity < 1) {
+                        return;
+                    }
+                    holder.productSo.setText(String.valueOf(newQuantity));
+                    if (quantityChangeListener != null) {
+                        quantityChangeListener.onQuantityDecrease(position, newQuantity);
+                    }
+                }
+            });
+
+
         }
+        public void removeAllItems() {
+            gioHangItems.clear();
+            notifyDataSetChanged();
+        }
+
+
+
 
         @Override
         public int getItemCount() {

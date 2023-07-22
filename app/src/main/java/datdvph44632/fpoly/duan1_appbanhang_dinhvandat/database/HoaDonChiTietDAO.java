@@ -30,31 +30,60 @@ public class HoaDonChiTietDAO {
         sqLiteDatabase = mydatabase.getWritableDatabase();
     }
 
-    public long addHDCT(List<HoaDonChiTiet> hoaDonChiTietList) {
-        long result = -1;
-        sqLiteDatabase.beginTransaction();
-        try {
-            for (HoaDonChiTiet hoaDonChiTiet : hoaDonChiTietList) {
-                ContentValues contentValues = new ContentValues();
-                contentValues.put("maHoaDon", hoaDonChiTiet.getMaHoaDon());
-                contentValues.put("ngayMua", hoaDonChiTiet.getNgayMua());
-                contentValues.put("tongTien", hoaDonChiTiet.getTongTien());
-                contentValues.put("soLuong", hoaDonChiTiet.getSoLuong());
-                contentValues.put("giaSanPham", hoaDonChiTiet.getGiaSanPham());
-                contentValues.put("hinhAnhSanPham", hoaDonChiTiet.getHinhAnhSanPham());
+    public List<HoaDonChiTiet> getAllHoaDonChiTiet() {
+        List<HoaDonChiTiet> list = new ArrayList<>();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                int maHDCT = cursor.getInt(0);
+                String maHd = cursor.getString(1);
+                String ngayMua = cursor.getString(2);
+                double tongTien = cursor.getDouble(3);
+                int soLuong = cursor.getInt(4);
+                double giaSanPham = cursor.getDouble(5);
+                byte[] hinhAnhSanPham = cursor.getBlob(6);
 
-                result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
-                if (result == -1) {
-                    break;
-                }
-            }
-            sqLiteDatabase.setTransactionSuccessful();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            sqLiteDatabase.endTransaction();
+                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                hoaDonChiTiet.setMaHDCT(maHDCT);
+                hoaDonChiTiet.setMaHoaDon(maHd);
+                hoaDonChiTiet.setNgayMua(ngayMua);
+                hoaDonChiTiet.setTongTien(tongTien);
+                hoaDonChiTiet.setSoLuong(soLuong);
+                hoaDonChiTiet.setGiaSanPham(giaSanPham);
+                hoaDonChiTiet.setHinhAnhSanPham(hinhAnhSanPham);
+
+                list.add(hoaDonChiTiet);
+            } while (cursor.moveToNext());
+
+            cursor.close();
         }
-        return result;
+        return list;
+    }
+
+    public int updateHoaDonChiTiet(HoaDonChiTiet hoaDonChiTiet) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("maHoaDon", hoaDonChiTiet.getMaHoaDon());
+        contentValues.put("ngayMua", hoaDonChiTiet.getNgayMua());
+        contentValues.put("tongTien", hoaDonChiTiet.getTongTien());
+        contentValues.put("soLuong", hoaDonChiTiet.getSoLuong());
+        contentValues.put("giaSanPham", hoaDonChiTiet.getGiaSanPham());
+        contentValues.put("hinhAnhSanPham", hoaDonChiTiet.getHinhAnhSanPham());
+
+        return sqLiteDatabase.update(TABLE_NAME, contentValues, "maHDCT = ?", new String[]{String.valueOf(hoaDonChiTiet.getMaHDCT())});
+    }
+
+
+
+    public long insertHoaDonChiTiet(HoaDonChiTiet hoaDonChiTiet) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("maHoaDon", hoaDonChiTiet.getMaHoaDon());
+        contentValues.put("ngayMua", hoaDonChiTiet.getNgayMua());
+        contentValues.put("tongTien", hoaDonChiTiet.getTongTien());
+        contentValues.put("soLuong", hoaDonChiTiet.getSoLuong());
+        contentValues.put("giaSanPham", hoaDonChiTiet.getGiaSanPham());
+        contentValues.put("hinhAnhSanPham", hoaDonChiTiet.getHinhAnhSanPham());
+        return sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
     }
 
     public long updateHDCT(HoaDonChiTiet hoaDonChiTiet, String maHDCT) {
