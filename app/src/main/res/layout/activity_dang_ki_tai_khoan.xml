@@ -5,22 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.DangKiTaiKhoanActivity">
-    <ImageView
-        android:id="@+id/imgSanPham1_frame3"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/ao_coolmate_2" />
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/imgSanPham1_frame3"
         app:cardCornerRadius="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFEFE0"
+            android:background="@drawable/background_signup"
             android:orientation="vertical"
+            android:gravity="center"
             android:padding="10dp">
 
             <TextView
@@ -28,7 +23,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="Sign up"
-                android:textSize="30sp" />
+                android:layout_marginLeft="90dp"
+                android:textStyle="italic"
+                android:textSize="35sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -111,7 +108,7 @@
                 android:backgroundTint="#E2BCB7"
                 android:layout_marginTop="15dp"
                 android:text="SIGN UP"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textColor="#4E352F"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
