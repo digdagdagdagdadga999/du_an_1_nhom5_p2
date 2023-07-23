@@ -70,49 +70,49 @@ public class FragmentBanHang extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ban_hang, container, false);
 
-        toolbar = view.findViewById(R.id.toolbar_ban_hang);
-        imageView = view.findViewById(R.id.imgBanHang);
+//        toolbar = view.findViewById(R.id.toolbar_ban_hang);
+//        imageView = view.findViewById(R.id.imgBanHang);
         navigationView = view.findViewById(R.id.NavigationViewBanHang);
         drawerLayout = view.findViewById(R.id.drawerLayoutBanHang);
 
-        cart = view.findViewById(R.id.cartshoppe);
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SanPham sanPham = FragmentHoaDon.getSelectedProduct();
-                if (sanPham == null) {
-                    return;
-                }
+//        cart = view.findViewById(R.id.cartshoppe);
+//        cart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                SanPham sanPham = FragmentHoaDon.getSelectedProduct();
+//                if (sanPham == null) {
+//                    return;
+//                }
+//
+//                SanPhamDAO sanPhamDAO = new SanPhamDAO(getActivity());
+//                int soLuong = sanPham.getSoLuong() - 1;
+//                if (soLuong < 0) {
+//                    soLuong = 0;
+//                }
+//                sanPhamDAO.updateSLSanPham(soLuong, sanPham.getMaSanPham());
+//
+//                doDuLieuTheoSpinner();
+//                FragmentGioHang fragmentGioHang = FragmentGioHang.newInstance();
+//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.container, fragmentGioHang);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+//            }
+//        });
 
-                SanPhamDAO sanPhamDAO = new SanPhamDAO(getActivity());
-                int soLuong = sanPham.getSoLuong() - 1;
-                if (soLuong < 0) {
-                    soLuong = 0;
-                }
-                sanPhamDAO.updateSLSanPham(soLuong, sanPham.getMaSanPham());
 
-                doDuLieuTheoSpinner();
-                FragmentGioHang fragmentGioHang = FragmentGioHang.newInstance();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, fragmentGioHang);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                drawerLayout.openDrawer(GravityCompat.START);
+//            }
+//        });
+//        imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//            }
+//        });
         return view;
     }
 
@@ -166,7 +166,7 @@ public class FragmentBanHang extends Fragment {
         spnLocDanhSach = view.findViewById(R.id.spnLocTimKiem);
         tvNull = view.findViewById(R.id.tvNull);
         tvSoLuongBanHang = view.findViewById(R.id.tvSoLuongBanHang);
-        cart = view.findViewById(R.id.cartshoppe);
+//        cart = view.findViewById(R.id.cartshoppe);
     }
 
     public void doDuLieuTheoSpinner() {
