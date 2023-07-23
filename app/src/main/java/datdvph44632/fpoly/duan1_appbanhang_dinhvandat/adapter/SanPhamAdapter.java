@@ -21,12 +21,16 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.GioHangDAO;
 public class SanPhamAdapter extends BaseAdapter {
     final Context context;
     List<SanPham> list;
-
-    public SanPhamAdapter(Context context, List<SanPham> list) {
-        this.context = context;
-        this.list = list;
+    GioHangDAO gioHangDAO;
+    public void updateProductList(List<SanPham> updatedList) {
+        this.list = updatedList;
+        notifyDataSetChanged();
     }
-
+    public SanPhamAdapter(Context context, List<SanPham> listSanPham) {
+        this.context = context;
+        this.list = listSanPham;
+        gioHangDAO = new GioHangDAO(context);
+    }
     @Override
     public int getCount() {
         return list.size();
@@ -84,7 +88,8 @@ public class SanPhamAdapter extends BaseAdapter {
         viewHolder.tvMa.setText("Mã : "+sanPham.getMaSanPham());
         viewHolder.tvSanPham.setText("Tên sản phẩm : "+sanPham.getTen());
         viewHolder.tvGia.setText("Giá bán : "+Math.round(sanPham.getGiaBan())+ " VNĐ");
-        viewHolder.tvSoluong.setText("Còn : "+sanPham.getSoLuong());
+        int soLuongConLai = sanPham.getSoLuong() - gioHangDAO.getSoLuongDaMua(sanPham.getTen());
+        viewHolder.tvSoluong.setText("Còn : "+soLuongConLai);
         byte[] image = sanPham.getImage();
         try {
             Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);

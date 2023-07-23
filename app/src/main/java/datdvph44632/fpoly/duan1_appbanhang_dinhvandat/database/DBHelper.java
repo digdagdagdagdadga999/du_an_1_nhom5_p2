@@ -13,7 +13,6 @@
         public DBHelper(@Nullable Context context) {
             super(context, "aa", null, 1);
         }
-
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(SanPhamDAO.SQL_SANPHAM);
@@ -21,6 +20,7 @@
             db.execSQL(KhachHangDAO.SQL_NGUOIDUNG);
             db.execSQL(GioHangDAO.SQL_GIOHANG);
             db.execSQL(HoaDonChiTietDAO.SQL_HDCT);
+
             String createNguoiDung = "create table NGUOIDUNG(" +
                     "nguoiDung_id integer primary key autoincrement," +
                     "hoTen text not null," +
@@ -38,6 +38,7 @@
                     "(5, 'Nguyen Van D', '0123456789', 'nguyenvand@gmail.com','abcd4','123456', 0)");
 
             db.execSQL(SanPhamDAO.DATA_SANPHAM);
+
         }
 
         @Override
