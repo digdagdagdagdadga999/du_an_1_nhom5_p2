@@ -4,13 +4,18 @@ import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class HoaDonChiTiet  {
+public class HoaDonChiTiet {
     private int maHDCT;
     private String maHoaDon;
     private String ngayMua;
     private double tongTien;
     private int soLuong;
     private double giaSanPham;
+
+    private byte[] hinhAnhSanPham;
+    private String tenSanPham;
+    private String address;
+
 
     public String getAddress() {
         return address;
@@ -20,9 +25,8 @@ public class HoaDonChiTiet  {
         this.address = address;
     }
 
-    private byte[] hinhAnhSanPham;
-    private String tenSanPham;
-    private String address;
+
+
     public int getMaHDCT() {
         return maHDCT;
     }

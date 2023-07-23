@@ -2,6 +2,7 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/toolbar_thong_tin"
     android:layout_width="match_parent"
+    android:background="#88009688"
     android:layout_height="60dp">
 
     <LinearLayout
@@ -17,7 +18,7 @@
             android:layout_gravity="left"
             android:layout_marginLeft="10dp"
             android:layout_weight="5"
-            android:text="Chi Tiết"
+            android:text="Chi Tiết Sản Phẩm"
             android:textSize="25sp"
             android:textStyle="bold" />
 

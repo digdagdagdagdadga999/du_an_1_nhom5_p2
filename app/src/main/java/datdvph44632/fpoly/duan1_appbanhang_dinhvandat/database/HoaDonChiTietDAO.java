@@ -16,13 +16,14 @@ public class HoaDonChiTietDAO {
     public static final String SQL_HDCT = "CREATE TABLE IF NOT EXISTS " +
             TABLE_NAME + " (" +
             "maHDCT INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "maHoaDon TEXT," +
+            "maHoaDon TEXT REFERENCES SanPham(maSanPham)," +
             "ngayMua TEXT," +
             "tongTien DOUBLE," +
             "soLuong INTEGER," +
             "giaSanPham DOUBLE," +
-            "hinhAnhSanPham BLOB" +
-            ")";
+            "hinhAnhSanPham BLOB," +
+            "tenSanPham TEXT REFERENCES SanPham(tenSanPham)," +
+            "diaChi TEXT REFERENCES KhachHang(diaChi))";
     private final SQLiteDatabase sqLiteDatabase;
 
     public HoaDonChiTietDAO(Context context) {
@@ -43,6 +44,8 @@ public class HoaDonChiTietDAO {
                 int soLuong = cursor.getInt(4);
                 double giaSanPham = cursor.getDouble(5);
                 byte[] hinhAnhSanPham = cursor.getBlob(6);
+                String tenSanPham = cursor.getString(7);
+                String diaChi = cursor.getString(8);
 
                 HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                 hoaDonChiTiet.setMaHDCT(maHDCT);
@@ -52,6 +55,8 @@ public class HoaDonChiTietDAO {
                 hoaDonChiTiet.setSoLuong(soLuong);
                 hoaDonChiTiet.setGiaSanPham(giaSanPham);
                 hoaDonChiTiet.setHinhAnhSanPham(hinhAnhSanPham);
+                hoaDonChiTiet.setTenSanPham(tenSanPham);
+                hoaDonChiTiet.setAddress(diaChi);
 
                 list.add(hoaDonChiTiet);
             } while (cursor.moveToNext());
@@ -74,7 +79,6 @@ public class HoaDonChiTietDAO {
     }
 
 
-
     public long insertHoaDonChiTiet(HoaDonChiTiet hoaDonChiTiet) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("maHoaDon", hoaDonChiTiet.getMaHoaDon());
@@ -83,6 +87,8 @@ public class HoaDonChiTietDAO {
         contentValues.put("soLuong", hoaDonChiTiet.getSoLuong());
         contentValues.put("giaSanPham", hoaDonChiTiet.getGiaSanPham());
         contentValues.put("hinhAnhSanPham", hoaDonChiTiet.getHinhAnhSanPham());
+        contentValues.put("tenSanPham", hoaDonChiTiet.getTenSanPham());
+        contentValues.put("diaChi", hoaDonChiTiet.getAddress());
         return sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
     }
 
@@ -94,6 +100,8 @@ public class HoaDonChiTietDAO {
         contentValues.put("soLuong", hoaDonChiTiet.getSoLuong());
         contentValues.put("giaSanPham", hoaDonChiTiet.getGiaSanPham());
         contentValues.put("hinhAnhSanPham", hoaDonChiTiet.getHinhAnhSanPham());
+        contentValues.put("tenSanPham", hoaDonChiTiet.getTenSanPham());
+        contentValues.put("diaChi", hoaDonChiTiet.getAddress());
 
         return sqLiteDatabase.update(TABLE_NAME, contentValues, "maHDCT = ?", new String[]{maHDCT});
     }
@@ -115,6 +123,8 @@ public class HoaDonChiTietDAO {
                 int soLuong = cursor.getInt(4);
                 double giaSanPham = cursor.getDouble(5);
                 byte[] hinhAnhSanPham = cursor.getBlob(6);
+                String tenSanPham = cursor.getString(7);
+                String diaChi = cursor.getString(8);
 
                 HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                 hoaDonChiTiet.setMaHDCT(maHDCT);
@@ -124,6 +134,8 @@ public class HoaDonChiTietDAO {
                 hoaDonChiTiet.setSoLuong(soLuong);
                 hoaDonChiTiet.setGiaSanPham(giaSanPham);
                 hoaDonChiTiet.setHinhAnhSanPham(hinhAnhSanPham);
+                hoaDonChiTiet.setTenSanPham(tenSanPham);
+                hoaDonChiTiet.setAddress(diaChi);
 
                 list.add(hoaDonChiTiet);
             } while (cursor.moveToNext());
