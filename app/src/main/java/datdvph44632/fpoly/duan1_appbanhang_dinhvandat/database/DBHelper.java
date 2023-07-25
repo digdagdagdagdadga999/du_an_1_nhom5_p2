@@ -11,7 +11,7 @@
 
     public class DBHelper extends SQLiteOpenHelper {
         public DBHelper(@Nullable Context context) {
-            super(context, "aa", null, 1);
+            super(context, "c", null, 1);
         }
         @Override
         public void onCreate(SQLiteDatabase db) {
@@ -38,7 +38,6 @@
                     "(5, 'Nguyen Van D', '0123456789', 'nguyenvand@gmail.com','abcd4','123456', 0)");
 
             db.execSQL(SanPhamDAO.DATA_SANPHAM);
-
         }
 
         @Override

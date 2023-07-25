@@ -5,20 +5,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".fragment.FragmentHoaDon"
+    tools:context=".fragment.FragmentDonHang"
     android:id="@+id/fragment_giohang"
     >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Thông tin đơn hàng "
+        android:text="Đơn Hàng "
         android:gravity="center"
         />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listViewHoaDon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        />
 
 
 </LinearLayout>

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.SanPham;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentHoaDon;
 
 public class SanPhamDAO {
     public static final String TABLE_NAME = "SanPham";

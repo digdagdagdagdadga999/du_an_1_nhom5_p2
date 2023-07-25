@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -25,10 +24,7 @@
             android:name=".activity.DangKiTaiKhoanActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.ActivityGioHang"
+            android:name=".activity.ManHinhChaoActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ThemKhachHangActivity"
@@ -58,7 +54,7 @@
             android:name=".activity.SanPhamActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ManHinhChaoActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
