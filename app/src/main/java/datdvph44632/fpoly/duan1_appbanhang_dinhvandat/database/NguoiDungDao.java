@@ -1,6 +1,8 @@
 package datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database;
 
+
 import android.annotation.SuppressLint;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,7 +10,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+
 import java.util.List;
+
 
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.NguoiDung;
 
@@ -18,6 +22,7 @@ public class NguoiDungDao {
     public NguoiDungDao(Context context){
         dbHelper = new DBHelper(context);
     }
+
 
     public int update(NguoiDung obj){
         SQLiteDatabase db = dbHelper.getWritableDatabase();

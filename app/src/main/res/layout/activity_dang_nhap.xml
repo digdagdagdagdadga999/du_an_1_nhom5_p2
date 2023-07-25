@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.DangNhapActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
     <ImageView
         android:id="@+id/imgSanPham1_frame2"
         android:layout_width="match_parent"
@@ -14,19 +20,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/imgSanPham1_frame2"
+
         app:cardCornerRadius="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
+            android:background="@drawable/background_signup"
+            android:orientation="vertical"
+            android:gravity="center"
+
             android:background="#FFEFE0"
             android:orientation="vertical"
+
             android:padding="30dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
+                android:text="Login"
+                android:layout_marginLeft="80dp"
+
                 android:text="Sign in"
+
                 android:textSize="30sp" />
 
             <RelativeLayout
@@ -107,9 +125,15 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#E2BCB7"
+
+                android:text="Login"
+                android:textColor="#4E352F"
+                android:textSize="20sp" />
+
                 android:text="NEXT"
                 android:textColor="#4E352F"
                 android:textSize="30sp" />
+
 
             <LinearLayout
                 android:layout_width="250dp"
