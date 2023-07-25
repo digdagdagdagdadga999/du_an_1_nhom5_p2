@@ -6,19 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".activity.DangKiTaiKhoanActivity">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
 
-    <ImageView
-        android:id="@+id/imgSanPham1_frame3"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/ao_coolmate_2" />
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/imgSanPham1_frame3"
 
         app:cardCornerRadius="30dp">
 
@@ -27,10 +20,7 @@
             android:layout_height="match_parent"
 
             android:background="@drawable/background_signup"
-            android:orientation="vertical"
             android:gravity="center"
-
-            android:background="#FFEFE0"
             android:orientation="vertical"
 
             android:padding="10dp">
@@ -38,14 +28,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Sign up"
-
                 android:layout_marginLeft="90dp"
-                android:textStyle="italic"
-                android:textSize="35sp" />
+                android:layout_marginBottom="10dp"
 
-                android:textSize="30sp" />
+                android:text="Sign up"
+                android:textSize="35sp"
+                android:textStyle="italic" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -67,8 +55,8 @@
                     android:id="@+id/edtPhoneNumber_frame3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="phone"
-                    android:hint="Phone number" />
+                    android:hint="Phone number"
+                    android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -79,8 +67,8 @@
                     android:id="@+id/edtEmail_frame3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:hint="Email" />
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -104,37 +92,40 @@
                     android:layout_height="wrap_content"
                     android:hint="Password" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Type account:"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
+
                 <Spinner
                     android:id="@+id/spnTypeAccount_frame3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"/>
+                    android:layout_weight="2" />
             </LinearLayout>
+
             <Button
                 android:id="@+id/btnSignUp_frame3"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:backgroundTint="#E2BCB7"
                 android:layout_marginTop="15dp"
+                android:backgroundTint="#E2BCB7"
                 android:text="SIGN UP"
 
-                android:textSize="25sp"
+                android:textColor="#4E352F"
 
-                android:textSize="30sp"
 
-                android:textColor="#4E352F"/>
+                android:textSize="25sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
