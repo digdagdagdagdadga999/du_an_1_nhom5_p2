@@ -13,7 +13,6 @@
         public DBHelper(@Nullable Context context) {
             super(context, "aa", null, 1);
         }
-
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(SanPhamDAO.SQL_SANPHAM);
@@ -37,8 +36,25 @@
                     "(4, 'Nguyen Van C', '0123456789', 'nguyenvanc@gmail.com','abcd3','123456', 0)," +
                     "(5, 'Nguyen Van D', '0123456789', 'nguyenvand@gmail.com','abcd4','123456', 0)");
 
-        }
+            String createNguoiDung = "create table NGUOIDUNG(" +
+                    "nguoiDung_id integer primary key autoincrement," +
+                    "hoTen text not null," +
+                    "soDienThoai text not null," +
+                    "email text not null," +
+                    "taiKhoan text not null," +
+                    "matKhau text not null," +
+                    "loaiTaiKhoan integer not null)";
+            db.execSQL(createNguoiDung);
+            db.execSQL("insert into NGUOIDUNG values" +
+                    "(1, 'Nguyen Chi Thanh', '0339463318', 'thanh21052002@mail.com','thanh21052002','123456', 1)," +
+                    "(2, 'Nguyen Van A', '0123456789', 'nguyenvana@gmail.com','abcd1','123456', 0)," +
+                    "(3, 'Nguyen Van B', '0123456789', 'nguyenvanb@gmail.com','abcd2','123456', 0)," +
+                    "(4, 'Nguyen Van C', '0123456789', 'nguyenvanc@gmail.com','abcd3','123456', 0)," +
+                    "(5, 'Nguyen Van D', '0123456789', 'nguyenvand@gmail.com','abcd4','123456', 0)");
 
+            db.execSQL(SanPhamDAO.DATA_SANPHAM);
+
+        }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

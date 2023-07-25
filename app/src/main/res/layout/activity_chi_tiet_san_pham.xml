@@ -16,8 +16,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/groceries"
         android:contentDescription="TODO"
+        app:srcCompat="@drawable/groceries"
         tools:ignore="ContentDescription" />
 
     <LinearLayout
@@ -30,37 +30,43 @@
             android:id="@+id/tvMaCTSP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mã mặt hàng" />
+            android:text="Mã mặt hàng"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvTenCTSP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tên mặt hàng" />
+            android:text="Tên mặt hàng"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvSoLuongCTSP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Số lượng" />
+            android:text="Số lượng"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvGiaNhapCTSP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Giá nhập" />
+            android:text="Giá nhập"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvGiaBanCTSP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Giá Bán" />
+            android:text="Giá Bán"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvDanhMucCTSP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Danh mục" />
+            android:text="Danh mục"
+            android:textStyle="bold" />
     </LinearLayout>
 
 
@@ -74,6 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_weight="1"
+            android:background="@drawable/border_button2"
             android:text="Chỉnh sửa" />
 
         <Button
@@ -82,6 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_weight="1"
+            android:background="@drawable/border_button"
             android:text="Xóa Sản phẩm" />
     </LinearLayout>
 
