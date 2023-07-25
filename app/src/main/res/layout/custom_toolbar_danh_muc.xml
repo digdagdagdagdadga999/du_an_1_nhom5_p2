@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#88009688"
     android:id="@+id/toolbar_danh_muc">
 
     <LinearLayout

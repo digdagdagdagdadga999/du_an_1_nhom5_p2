@@ -7,12 +7,9 @@ import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.ViewPageAdapter;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentBanHang;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentBaoCao;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentSetting;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentGioHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentHoaDon;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentThem;
@@ -36,17 +33,18 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
         ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
-        viewPageAdapter.addFragment(new FragmentBanHang(), "BÁN HÀNG");
-        viewPageAdapter.addFragment(new FragmentGioHang(), "Giỏ HÀNG");
-        viewPageAdapter.addFragment(new FragmentHoaDon(), "HÓA ĐƠN");
-        viewPageAdapter.addFragment(new FragmentBaoCao(), "SETTING");
-        viewPageAdapter.addFragment(new FragmentThem(), "ADMIN");
+        viewPageAdapter.addFragment(new FragmentBanHang(), "");
+        viewPageAdapter.addFragment(new FragmentGioHang(), "");
+        viewPageAdapter.addFragment(new FragmentHoaDon(), "");
+        viewPageAdapter.addFragment(new FragmentSetting(), "");
+        viewPageAdapter.addFragment(new FragmentThem(), "");
         viewPager.setAdapter(viewPageAdapter);
 
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.iconbanhangactivity);
         tabLayout.getTabAt(1).setIcon(R.drawable.iconhoadonactivity);
-        tabLayout.getTabAt(2).setIcon(R.drawable.baseline_settings);
+        tabLayout.getTabAt(2).setIcon(R.drawable.img);
         tabLayout.getTabAt(3).setIcon(R.drawable.iconthemactivity);
+        tabLayout.getTabAt(4).setIcon(R.drawable.user);
     }
 }

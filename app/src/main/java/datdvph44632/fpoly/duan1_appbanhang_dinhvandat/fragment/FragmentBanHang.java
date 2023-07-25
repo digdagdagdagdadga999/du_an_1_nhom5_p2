@@ -31,14 +31,17 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.GioHangItem;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.SanPham;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.SanPhamAdapter;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.GioHangDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.SanPhamDAO;
 
 
 public class FragmentBanHang extends Fragment {
+
     NavigationView navigationView;
     androidx.appcompat.widget.Toolbar toolbar;
     DrawerLayout drawerLayout;
@@ -63,46 +66,53 @@ public class FragmentBanHang extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ban_hang, container, false);
 
-        toolbar = view.findViewById(R.id.toolbar_ban_hang);
-        imageView = view.findViewById(R.id.imgBanHang);
+//        toolbar = view.findViewById(R.id.toolbar_ban_hang);
+//        imageView = view.findViewById(R.id.imgBanHang);
         navigationView = view.findViewById(R.id.NavigationViewBanHang);
         drawerLayout = view.findViewById(R.id.drawerLayoutBanHang);
 
-        cart = view.findViewById(R.id.cartshoppe);
+//        cart = view.findViewById(R.id.cartshoppe);
+//        cart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                SanPham sanPham = FragmentHoaDon.getSelectedProduct();
+//                if (sanPham == null) {
+//                    return;
+//                }
+//
+//                SanPhamDAO sanPhamDAO = new SanPhamDAO(getActivity());
+//                int soLuong = sanPham.getSoLuong() - 1;
+//                if (soLuong < 0) {
+//                    soLuong = 0;
+//                }
+//                sanPhamDAO.updateSLSanPham(soLuong, sanPham.getMaSanPham());
+//
+//                doDuLieuTheoSpinner();
+//                FragmentGioHang fragmentGioHang = FragmentGioHang.newInstance();
+//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.container, fragmentGioHang);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+//            }
+//        });
 
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentGioHang fragmentGioHang = FragmentGioHang.newInstance();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, fragmentGioHang);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
 
-            }
-        });
-
-
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(), DonHangActivity.class);
-//                startActivity(intent);
-            }
-        });
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                drawerLayout.openDrawer(GravityCompat.START);
+//            }
+//        });
+//        imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//            }
+//        });
         return view;
     }
 
@@ -112,12 +122,13 @@ public class FragmentBanHang extends Fragment {
         anhXaView(view);
         sanPhamDAO = new SanPhamDAO(getActivity());
         list = new ArrayList<>();
+        sanPhamAdapter = new SanPhamAdapter(getActivity(), list); // Initialize the adapter here
         setHasOptionsMenu(true);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, danhSachLC);
         spnLocDanhSach.setAdapter(adapter);
+        lvList.setAdapter(sanPhamAdapter); // Set the adapter to the ListView
         doDuLieuTheoSpinner();
         timKiem();
-
     }
 
 
@@ -155,27 +166,27 @@ public class FragmentBanHang extends Fragment {
         spnLocDanhSach = view.findViewById(R.id.spnLocTimKiem);
         tvNull = view.findViewById(R.id.tvNull);
         tvSoLuongBanHang = view.findViewById(R.id.tvSoLuongBanHang);
-        cart = view.findViewById(R.id.cartshoppe);
+//        cart = view.findViewById(R.id.cartshoppe);
     }
 
-    //    public void doDuLieu(){
-//        list = sanPhamDAO.getAllSanPham();
-//        sanPhamAdapter = new SanPhamAdapter(getContext(), list);
-//        lvList.setAdapter(sanPhamAdapter);
-//    }
     public void doDuLieuTheoSpinner() {
         spnLocDanhSach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                List<SanPham> updatedList;
                 if (adapterView.getItemAtPosition(i) == adapterView.getItemAtPosition(0)) {
-                    list = sanPhamDAO.getAllSanPhamTheoTen();
+                    updatedList = sanPhamDAO.getAllSanPham();
                 } else if (adapterView.getItemAtPosition(i) == adapterView.getItemAtPosition(1)) {
-                    list = sanPhamDAO.getAllSanPhamTheoGiaTangDan();
+                    updatedList = sanPhamDAO.getAllSanPhamTheoGiaTangDan();
                 } else {
-                    list = sanPhamDAO.getAllSanPhamTheoGiaGiamDan();
+                    updatedList = sanPhamDAO.getAllSanPhamTheoGiaGiamDan();
                 }
-                sanPhamAdapter = new SanPhamAdapter(getContext(), list);
+                sanPhamAdapter = new SanPhamAdapter(getActivity(), updatedList);
                 lvList.setAdapter(sanPhamAdapter);
+                tvNull.setVisibility(View.INVISIBLE);
+                if (updatedList.size() <= 0) {
+                    tvNull.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -184,4 +195,5 @@ public class FragmentBanHang extends Fragment {
             }
         });
     }
+
 }
