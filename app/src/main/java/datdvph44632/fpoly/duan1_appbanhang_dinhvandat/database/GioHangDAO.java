@@ -17,9 +17,7 @@ public class GioHangDAO {
     public static final String COLUMN_TEN_SANPHAM = "tenSanPham";
     public static final String COLUMN_GIA_SANPHAM = "giaSanPham";
     public static final String COLUMN_HINHANH_SANPHAM = "hinhAnhSanPham";
-
     public static final String COLUMN_QUANTITY = "quantity";
-
     public static final String SQL_GIOHANG = "CREATE TABLE IF NOT EXISTS " +
             TABLE_NAME + " (" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -35,8 +33,6 @@ public class GioHangDAO {
         database = dbHelper.getWritableDatabase();
     }
 
-
-
     public long addProductToCart(String tenSanPham, double giaSanPham, byte[] hinhAnhSanPham) {
         if (isProductInCart(tenSanPham)) {
             return -1;
@@ -47,7 +43,6 @@ public class GioHangDAO {
         values.put(COLUMN_HINHANH_SANPHAM, hinhAnhSanPham);
         return database.insert(TABLE_NAME, null, values);
     }
-
 
     @SuppressLint("Range")
     public void updateProductQuantity(int id, int quantity) {
@@ -82,6 +77,7 @@ public class GioHangDAO {
         cursor.close();
         return gioHangItem;
     }
+
     private double calculateTotalPrice(List<GioHangItem> gioHangItems) {
         double totalPrice = 0;
         for (GioHangItem gioHangItem : gioHangItems) {
@@ -89,6 +85,7 @@ public class GioHangDAO {
         }
         return totalPrice;
     }
+
     public void updateProductInCart(GioHangItem gioHangItem) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_TEN_SANPHAM, gioHangItem.getTenSanPham());
@@ -96,14 +93,12 @@ public class GioHangDAO {
         values.put(COLUMN_HINHANH_SANPHAM, gioHangItem.getImageSanPham());
         String selection = COLUMN_ID + " = ?";
         String[] selectionArgs = {String.valueOf(gioHangItem.getId())};
-        database.update(TABLE_NAME, values, selection, selectionArgs);
+        database.update(TABLE_NAME, values,selection, selectionArgs);
     }
-
 
     public void deleteProductFromCart(int id) {
         String selection = COLUMN_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id)};
-
         database.delete(TABLE_NAME, selection, selectionArgs);
     }
 
@@ -131,6 +126,7 @@ public class GioHangDAO {
         return gioHangItems;
 
     }
+
     public boolean isProductInCart(String tenSanPham) {
         String[] columns = {COLUMN_ID};
         String selection = COLUMN_TEN_SANPHAM + " = ?";
@@ -150,11 +146,16 @@ public class GioHangDAO {
         cursor.close();
         return isProductExists;
     }
+
     public int getSoLuongDaMua(String tenSanPham) {
         int soLuong = 0;
         String[] columns = {"SUM(" + COLUMN_QUANTITY + ")"};
         String selection = COLUMN_TEN_SANPHAM + " = ?";
         String[] selectionArgs = {tenSanPham};
+
+        if (tenSanPham == null) {
+            return soLuong;
+        }
 
         Cursor cursor = database.query(
                 TABLE_NAME,
@@ -166,14 +167,12 @@ public class GioHangDAO {
                 null
         );
 
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             soLuong = cursor.getInt(0);
+            cursor.close();
         }
-        cursor.close();
 
         return soLuong;
     }
 
-
 }
-

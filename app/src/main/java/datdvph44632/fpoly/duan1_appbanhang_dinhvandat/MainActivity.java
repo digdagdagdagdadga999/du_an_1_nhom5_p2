@@ -11,7 +11,7 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.ViewPageAdapter;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentBanHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentSetting;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentGioHang;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentHoaDon;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentDonHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment.FragmentThem;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
         viewPageAdapter.addFragment(new FragmentBanHang(), "");
         viewPageAdapter.addFragment(new FragmentGioHang(), "");
-        viewPageAdapter.addFragment(new FragmentHoaDon(), "");
+        viewPageAdapter.addFragment(new FragmentDonHang(), "");
         viewPageAdapter.addFragment(new FragmentSetting(), "");
         viewPageAdapter.addFragment(new FragmentThem(), "");
         viewPager.setAdapter(viewPageAdapter);

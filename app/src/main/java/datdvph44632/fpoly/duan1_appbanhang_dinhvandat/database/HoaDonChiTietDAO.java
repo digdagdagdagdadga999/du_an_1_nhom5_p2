@@ -34,37 +34,48 @@ public class HoaDonChiTietDAO {
     public List<HoaDonChiTiet> getAllHoaDonChiTiet() {
         List<HoaDonChiTiet> list = new ArrayList<>();
         String query = "SELECT * FROM " + TABLE_NAME;
-        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                int maHDCT = cursor.getInt(0);
-                String maHd = cursor.getString(1);
-                String ngayMua = cursor.getString(2);
-                double tongTien = cursor.getDouble(3);
-                int soLuong = cursor.getInt(4);
-                double giaSanPham = cursor.getDouble(5);
-                byte[] hinhAnhSanPham = cursor.getBlob(6);
-                String tenSanPham = cursor.getString(7);
-                String diaChi = cursor.getString(8);
+        Cursor cursor = null;
+        try {
+            cursor = sqLiteDatabase.rawQuery(query, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    int maHDCT = cursor.getInt(0);
+                    String maHd = cursor.getString(1);
+                    String ngayMua = cursor.getString(2);
+                    double tongTien = cursor.getDouble(3);
+                    int soLuong = cursor.getInt(4);
+                    double giaSanPham = cursor.getDouble(5);
+                    byte[] hinhAnhSanPham = cursor.getBlob(6);
+                    String tenSanPham = cursor.getString(7);
+                    String diaChi = cursor.getString(8);
 
-                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-                hoaDonChiTiet.setMaHDCT(maHDCT);
-                hoaDonChiTiet.setMaHoaDon(maHd);
-                hoaDonChiTiet.setNgayMua(ngayMua);
-                hoaDonChiTiet.setTongTien(tongTien);
-                hoaDonChiTiet.setSoLuong(soLuong);
-                hoaDonChiTiet.setGiaSanPham(giaSanPham);
-                hoaDonChiTiet.setHinhAnhSanPham(hinhAnhSanPham);
-                hoaDonChiTiet.setTenSanPham(tenSanPham);
-                hoaDonChiTiet.setAddress(diaChi);
+                    HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                    hoaDonChiTiet.setMaHDCT(maHDCT);
+                    hoaDonChiTiet.setMaHoaDon(maHd);
+                    hoaDonChiTiet.setNgayMua(ngayMua);
+                    hoaDonChiTiet.setTongTien(tongTien);
+                    hoaDonChiTiet.setSoLuong(soLuong);
+                    hoaDonChiTiet.setGiaSanPham(giaSanPham);
+                    hoaDonChiTiet.setHinhAnhSanPham(hinhAnhSanPham);
+                    hoaDonChiTiet.setTenSanPham(tenSanPham);
+                    hoaDonChiTiet.setAddress(diaChi);
 
-                list.add(hoaDonChiTiet);
-            } while (cursor.moveToNext());
+                    list.add(hoaDonChiTiet);
+                } while (cursor.moveToNext());
 
-            cursor.close();
+                cursor.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
         }
+
         return list;
     }
+
 
     public int updateHoaDonChiTiet(HoaDonChiTiet hoaDonChiTiet) {
         ContentValues contentValues = new ContentValues();

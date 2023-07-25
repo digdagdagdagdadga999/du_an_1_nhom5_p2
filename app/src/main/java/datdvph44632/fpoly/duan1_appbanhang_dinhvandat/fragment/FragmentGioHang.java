@@ -7,8 +7,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +23,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.GioHangItem;
@@ -32,7 +30,6 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.HoaDonChiTiet;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.SanPham;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.CartAdapter;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.HoaDonAdapter;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.GioHangDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.HoaDonChiTietDAO;
 
@@ -47,6 +44,15 @@ public class FragmentGioHang extends Fragment {
     private TextView totalTextView;
     private Button checkoder;
     private OnOrderPlacedListener orderPlacedListener;
+    private CheckBox checkBoxSelectAll;
+    private boolean isSelectAll = false;
+    private boolean orderPlacedSuccessfully = false;
+
+
+    public void orderPlacedSuccessfully() {
+        orderPlacedSuccessfully = true;
+        cartAdapter.updateCartItems(new ArrayList<>());
+    }
 
     public interface OnOrderPlacedListener {
         void onOrderPlaced();
@@ -64,9 +70,6 @@ public class FragmentGioHang extends Fragment {
     }
     public static FragmentGioHang newInstance(List<SanPham> danhSachSanPhamDaMua) {
         FragmentGioHang fragment = new FragmentGioHang();
-//        Bundle args = new Bundle();
-//        args.putParcelableArrayList("danhSachSanPhamDaMua", new ArrayList<>(Collections.<SanPham>unmodifiableList(danhSachSanPhamDaMua)));
-//        fragment.setArguments(args);
         return fragment;
     }
 
@@ -87,17 +90,41 @@ public class FragmentGioHang extends Fragment {
         gioHangItems = gioHangDAO.getAllProductsInCart();
         cartAdapter.updateCartItems(gioHangItems);
 
-        totalTextView = view.findViewById(R.id.totalTextView);
+
+        totalTextView = view.findViewById(R.id.txttongtien);
+        checkBoxSelectAll = view.findViewById(R.id.fragcheck);
+        updateTotalPriceTextView();
+        cartAdapter.setCheckBoxChangeListener(new CartAdapter.OnCheckBoxChangeListener() {
+            @Override
+            public void onCheckBoxChanged(int position, boolean isChecked) {
+                gioHangItems.get(position).setSelected(isChecked);
+                updateTotalPriceTextView();
+            }
+        });
+        checkBoxSelectAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isSelectAll = !isSelectAll;
+                selectAllItems(isSelectAll);
+                checkBoxSelectAll.setChecked(isSelectAll);
+
+            }
+        });
         updateTotalPriceTextView();
 
         checkoder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (gioHangItems.size() > 0) {
-                    GioHangItem gioHangItem = gioHangItems.get(0);
-                    showOrderDialog(gioHangItem.getTenSanPham(), gioHangItem.getGiaSanPham(), gioHangItem.getQuantity(), gioHangItem.getTotalPrice());
+                List<GioHangItem> selectedItems = new ArrayList<>();
+                for (GioHangItem gioHangItem : gioHangItems) {
+                    if (gioHangItem.isSelected()) {
+                        selectedItems.add(gioHangItem);
+                    }
+                }
+                if (selectedItems.size() > 0) {
+                    showOrderDialog(selectedItems.get(0).getTenSanPham(), selectedItems.get(0).getGiaSanPham(), selectedItems.get(0).getQuantity(), selectedItems.get(0).getTotalPrice());
                 } else {
-                    Toast.makeText(requireContext(), "No items in the cart.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Không có sản phẩm nào được chọn.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -117,7 +144,6 @@ public class FragmentGioHang extends Fragment {
                 cartAdapter.notifyDataSetChanged();
                 updateTotalPriceTextView();
             }
-
             @Override
             public void onQuantityDecrease(int position, int newQuantity) {
                 GioHangItem gioHangItem = gioHangItems.get(position);
@@ -129,19 +155,41 @@ public class FragmentGioHang extends Fragment {
                 updateTotalPriceTextView();
             }
         });
-
         return view;
     }
+    private void selectAllItems(boolean isSelected) {
+        for (GioHangItem gioHangItem : gioHangItems) {
+            gioHangItem.setSelected(isSelected);
+        }
+        cartAdapter.notifyDataSetChanged();
+        updateTotalPriceTextView();
 
+        if (isSelected) {
+            placeOrderForSelectedItems();
+        }
+    }
+    private void placeOrderForSelectedItems() {
+        List<GioHangItem> selectedItems = new ArrayList<>();
+        for (GioHangItem gioHangItem : gioHangItems) {
+            if (gioHangItem.isSelected()) {
+                selectedItems.add(gioHangItem);
+            }
+        }
+    }
     private void updateTotalPriceTextView() {
         double totalPrice = calculateTotalPrice(gioHangItems);
-        totalTextView.setText("Tổng số tiền: " + totalPrice + " VNĐ");
+        if (!orderPlacedSuccessfully) {
+            totalTextView.setText("tổng tiền: " + totalPrice + " VNĐ");
+        }
     }
 
     private double calculateTotalPrice(List<GioHangItem> gioHangItems) {
         double totalPrice = 0;
         for (GioHangItem gioHangItem : gioHangItems) {
-            totalPrice += gioHangItem.getGiaSanPham() * gioHangItem.getQuantity();
+            if (gioHangItem.isSelected()) {
+                totalPrice += gioHangItem.getGiaSanPham() * gioHangItem.getQuantity();
+
+            }
         }
         return totalPrice;
     }
@@ -178,37 +226,29 @@ public class FragmentGioHang extends Fragment {
                     addressTextInputLayout.setError(null);
                     Toast.makeText(requireContext(), "Order placed successfully!", Toast.LENGTH_SHORT).show();
 
-                    HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-                    hoaDonChiTiet.setTenSanPham(productName);
-                    hoaDonChiTiet.setGiaSanPham(price);
-                    hoaDonChiTiet.setSoLuong(quantity);
-                    hoaDonChiTiet.setTongTien(total);
-                    hoaDonChiTiet.setAddress(address);
-
+                    HoaDonChiTietDAO hoaDonChiTietDAO = new HoaDonChiTietDAO(requireContext());
                     GioHangDAO gioHangDAO = new GioHangDAO(requireContext());
 
-                    List<GioHangItem> gioHangItems = gioHangDAO.getAllProductsInCart();
+                    for (GioHangItem gioHangItem : gioHangItems) {
+                        if (gioHangItem.isSelected()) {
+                            HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                            hoaDonChiTiet.setTenSanPham(gioHangItem.getTenSanPham());
+                            hoaDonChiTiet.setGiaSanPham(gioHangItem.getGiaSanPham());
+                            hoaDonChiTiet.setSoLuong(gioHangItem.getQuantity());
+                            hoaDonChiTiet.setTongTien(gioHangItem.getTotalPrice());
+                            hoaDonChiTiet.setAddress(address);
+                            hoaDonChiTietDAO.insertHoaDonChiTiet(hoaDonChiTiet);
 
-                    HoaDonChiTietDAO hoaDonChiTietDAO = new HoaDonChiTietDAO(requireContext());
-                    hoaDonChiTietDAO.insertHoaDonChiTiet(hoaDonChiTiet);
-
-                    if (!gioHangItems.isEmpty()) {
-                        gioHangDAO.deleteProductFromCart(gioHangItems.get(0).getId());
+                            gioHangDAO.deleteProductFromCart(gioHangItem.getId());
+                        }
                     }
+                    gioHangItems.clear();
+                    cartAdapter.notifyDataSetChanged();
                     dialog.dismiss();
-                    cartAdapter.updateCartItems(new ArrayList<>());
-
                     if (orderPlacedListener != null) {
                         orderPlacedListener.onOrderPlaced();
                     }
-
                 }
-                if (orderPlacedListener != null) {
-                    orderPlacedListener.onOrderPlaced();
-                }
-
-                dialog.dismiss();
-                cartAdapter.updateCartItems(new ArrayList<>());
             }
         });
         dialog.show();

@@ -1,9 +1,12 @@
 package datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,9 +17,9 @@ import java.util.List;
 
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.HoaDonChiTiet;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
-public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder> {
+public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHolder> {
     private List<HoaDonChiTiet> hoaDonChiTietList;
-    public HoaDonAdapter(Context context, List<HoaDonChiTiet> hoaDonChiTietList) {
+    public DonHangAdapter(Context context, List<HoaDonChiTiet> hoaDonChiTietList) {
         this.hoaDonChiTietList = hoaDonChiTietList;
     }
     @NonNull
@@ -27,13 +30,20 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         HoaDonChiTiet hoaDonChiTiet = hoaDonChiTietList.get(position);
-        holder.txtTenSanPham.setText("Tên ao:" + hoaDonChiTiet.getTenSanPham());
+        holder.txtTenSanPham.setText("tên sản phẩm: " +hoaDonChiTiet.getTenSanPham());
         holder.txtSoLuong.setText("Số lượng: " + hoaDonChiTiet.getSoLuong());
-        holder.txtmasanpham.setText("Mã hóa đơn: " + hoaDonChiTiet.getMaHoaDon());
-        holder.txtngaymua.setText("Ngày mua: " + hoaDonChiTiet.getNgayMua());
-        holder.txtDiaChi.setText("Địa chỉ: " + hoaDonChiTiet.getAddress());
+        holder.diachi.setText("Địa chỉ: " + hoaDonChiTiet.getAddress());
         holder.txtTongTien.setText("Tổng tiền: " + hoaDonChiTiet.getTongTien() + " VNĐ");
+
+        byte[] image = hoaDonChiTiet.getHinhAnhSanPham();
+        try {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+            holder.imghd.setImageBitmap(bitmap);
+        } catch (Exception e) {
+            holder.imghd.setImageResource(R.drawable.ic_sanpham1);
+        }
     }
 
     @Override
@@ -52,15 +62,15 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView txtTenSanPham, txtSoLuong, txtmasanpham, txtngaymua, txtTongTien,txtDiaChi;
+        TextView txtTenSanPham, txtSoLuong, txtngaymua, txtTongTien,diachi;
+        ImageView imghd;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTenSanPham = itemView.findViewById(R.id.txtTenSanPham);
             txtSoLuong = itemView.findViewById(R.id.txtSoLuong);
-            txtmasanpham = itemView.findViewById(R.id.txtmasanpham);
-            txtngaymua = itemView.findViewById(R.id.txtngaymua);
             txtTongTien = itemView.findViewById(R.id.txtTongTien);
-            txtDiaChi=itemView.findViewById(R.id.item_addres);
+            diachi=itemView.findViewById(R.id.item_addres);
+            imghd=itemView.findViewById(R.id.imghd);
         }
     }
 }
