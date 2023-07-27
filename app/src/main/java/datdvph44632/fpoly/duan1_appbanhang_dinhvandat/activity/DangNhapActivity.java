@@ -76,6 +76,8 @@ public class DangNhapActivity extends AppCompatActivity {
             if (nguoiDungDAO.kiemTraDangNhap(taikhoan, matkhau) == true) {
                 saveTaiKhoan(taikhoan, matkhau);
                 Intent intent = new Intent(this, MainActivity.class);
+                intent.putExtra("user", taikhoan);
+
                 startActivity(intent);
                 Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
             } else {
