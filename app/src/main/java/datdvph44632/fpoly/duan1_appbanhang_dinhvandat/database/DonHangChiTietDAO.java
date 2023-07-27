@@ -8,10 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.BitmapUtility;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.HoaDonChiTiet;
 
-public class HoaDonChiTietDAO {
+public class DonHangChiTietDAO {
     public static final String TABLE_NAME = "HoaDonChiTiet";
     public static final String SQL_HDCT = "CREATE TABLE IF NOT EXISTS " +
             TABLE_NAME + " (" +
@@ -23,10 +22,12 @@ public class HoaDonChiTietDAO {
             "giaSanPham DOUBLE," +
             "hinhAnhSanPham BLOB," +
             "tenSanPham TEXT REFERENCES SanPham(tenSanPham)," +
-            "diaChi TEXT REFERENCES KhachHang(diaChi))";
+            "diaChi TEXT REFERENCES KhachHang(diaChi)," +
+            "orderDate TEXT," +
+            "orderTime TEXT)";
     private final SQLiteDatabase sqLiteDatabase;
 
-    public HoaDonChiTietDAO(Context context) {
+    public DonHangChiTietDAO(Context context) {
         DBHelper mydatabase = new DBHelper(context);
         sqLiteDatabase = mydatabase.getWritableDatabase();
     }
@@ -48,6 +49,8 @@ public class HoaDonChiTietDAO {
                     byte[] hinhAnhSanPham = cursor.getBlob(6);
                     String tenSanPham = cursor.getString(7);
                     String diaChi = cursor.getString(8);
+                    String orderDate = cursor.getString(9);
+                    String orderTime = cursor.getString(10);
 
                     HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                     hoaDonChiTiet.setMaHDCT(maHDCT);
@@ -59,6 +62,8 @@ public class HoaDonChiTietDAO {
                     hoaDonChiTiet.setHinhAnhSanPham(hinhAnhSanPham);
                     hoaDonChiTiet.setTenSanPham(tenSanPham);
                     hoaDonChiTiet.setAddress(diaChi);
+                    hoaDonChiTiet.setOrderDate(orderDate);
+                    hoaDonChiTiet.setOrderTime(orderTime);
 
                     list.add(hoaDonChiTiet);
                 } while (cursor.moveToNext());
@@ -100,6 +105,8 @@ public class HoaDonChiTietDAO {
         contentValues.put("hinhAnhSanPham", hoaDonChiTiet.getHinhAnhSanPham());
         contentValues.put("tenSanPham", hoaDonChiTiet.getTenSanPham());
         contentValues.put("diaChi", hoaDonChiTiet.getAddress());
+        contentValues.put("orderDate", hoaDonChiTiet.getOrderDate());
+        contentValues.put("orderTime", hoaDonChiTiet.getOrderTime());
         return sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
     }
 
@@ -113,6 +120,8 @@ public class HoaDonChiTietDAO {
         contentValues.put("hinhAnhSanPham", hoaDonChiTiet.getHinhAnhSanPham());
         contentValues.put("tenSanPham", hoaDonChiTiet.getTenSanPham());
         contentValues.put("diaChi", hoaDonChiTiet.getAddress());
+        contentValues.put("orderDate", hoaDonChiTiet.getOrderDate());
+        contentValues.put("orderTime", hoaDonChiTiet.getOrderTime());
 
         return sqLiteDatabase.update(TABLE_NAME, contentValues, "maHDCT = ?", new String[]{maHDCT});
     }

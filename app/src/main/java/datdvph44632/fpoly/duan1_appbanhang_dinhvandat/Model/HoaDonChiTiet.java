@@ -1,8 +1,5 @@
 package datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model;
 
-import android.graphics.Bitmap;
-import android.os.Parcel;
-import android.os.Parcelable;
 
 public class HoaDonChiTiet {
     private int maHDCT;
@@ -15,6 +12,26 @@ public class HoaDonChiTiet {
     private byte[] hinhAnhSanPham;
     private String tenSanPham;
     private String address;
+    private String  orderDate;
+    private String orderTime;
+
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public String getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime;
+    }
+
 
 
     public String getAddress() {
