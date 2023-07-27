@@ -23,7 +23,6 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textColor="@color/black"
-
             />
 
         <TextView
@@ -32,25 +31,41 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             />
-
-        <TextView
-            android:id="@+id/item_addres"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/item_addres"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            />-->
         <TextView
             android:id="@+id/txtTongTien"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             />
+<!--        <TextView-->
+<!--            android:id="@+id/orderDate"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            />-->
+<!--            <TextView-->
+<!--                android:id="@+id/orderTime"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textColor="@color/black"-->
+<!--                />-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dang xu ly" />
+
         <Button
+            android:id="@+id/bntsuly"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Chờ sử lý"
-            android:layout_marginLeft="140dp"
-            />
+            android:text="Chờ sử lý" />
     </LinearLayout>
 
 

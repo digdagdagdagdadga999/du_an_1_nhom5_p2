@@ -8,7 +8,7 @@ public class GioHangItem {
     private double giaSanPham;
     private byte[] imageSanPham;
     private int quantity;
-    private double price; // Giá sản phẩm
+    private double price;
     private double totalPrice;
     private boolean isSelected;
     private String adress;

@@ -6,8 +6,6 @@
 
     import androidx.annotation.Nullable;
 
-    import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.HoaDonChiTiet;
-
 
     public class DBHelper extends SQLiteOpenHelper {
         public DBHelper(@Nullable Context context) {
@@ -19,7 +17,8 @@
             db.execSQL(LoaiSanPhamDAO.SQL_LOAISANPHAM);
             db.execSQL(KhachHangDAO.SQL_NGUOIDUNG);
             db.execSQL(GioHangDAO.SQL_GIOHANG);
-            db.execSQL(HoaDonChiTietDAO.SQL_HDCT);
+            db.execSQL(DonHangChiTietDAO.SQL_HDCT);
+            db.execSQL(TTDHDAO.SQL_TTDH);
 
             String createNguoiDung = "create table NGUOIDUNG(" +
                     "nguoiDung_id integer primary key autoincrement," +
@@ -47,7 +46,8 @@
             db.execSQL("Drop table "+LoaiSanPhamDAO.TABLE_NAME);
             db.execSQL("Drop table "+KhachHangDAO.TABLE_NAME);
             db.execSQL("Drop table "+GioHangDAO.TABLE_NAME);
-            db.execSQL("Drop table "+ HoaDonChiTietDAO.TABLE_NAME);
+            db.execSQL("Drop table "+ DonHangChiTietDAO.TABLE_NAME);
+            db.execSQL("Drop table "+ TTDHDAO.TABLE_NAME);
             onCreate(db);
         }
     }

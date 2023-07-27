@@ -90,6 +90,8 @@ public class SanPhamAdapter extends BaseAdapter {
         viewHolder.tvGia.setText("Giá bán : "+Math.round(sanPham.getGiaBan())+ " VNĐ");
         int soLuongConLai = sanPham.getSoLuong() - gioHangDAO.getSoLuongDaMua(sanPham.getTen());
         viewHolder.tvSoluong.setText("Còn : "+soLuongConLai);
+
+
         byte[] image = sanPham.getImage();
         try {
             Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
