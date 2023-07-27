@@ -22,16 +22,19 @@
             android:name=".activity.TTDHActivity"
             android:exported="false" />
         <activity
+
+
             android:name=".activity.DoiMkActivity"
             android:exported="false" />
         <activity
+
             android:name=".activity.DangNhapActivity"
             android:exported="false" />
         <activity
             android:name=".activity.DangKiTaiKhoanActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ManHinhChaoActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ThemKhachHangActivity"
@@ -61,8 +64,9 @@
             android:name=".activity.SanPhamActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true" >
+
+            android:name=".activity.ManHinhChaoActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -3,6 +3,7 @@ package datdvph44632.fpoly.duan1_appbanhang_dinhvandat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -32,19 +33,47 @@ public class MainActivity extends AppCompatActivity {
 //            gioHangList = new ArrayList<>();
 //        }
 
-        ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
-        viewPageAdapter.addFragment(new FragmentBanHang(), "");
-        viewPageAdapter.addFragment(new FragmentGioHang(), "");
-        viewPageAdapter.addFragment(new FragmentDonHang(), "");
-        viewPageAdapter.addFragment(new FragmentSetting(), "");
-        viewPageAdapter.addFragment(new FragmentThem(), "");
-        viewPager.setAdapter(viewPageAdapter);
+        Intent i = getIntent();
+        String user = i.getStringExtra("user");
 
-        tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(0).setIcon(R.drawable.iconbanhangactivity);
-        tabLayout.getTabAt(1).setIcon(R.drawable.iconhoadonactivity);
-        tabLayout.getTabAt(2).setIcon(R.drawable.img);
-        tabLayout.getTabAt(3).setIcon(R.drawable.iconthemactivity);
-        tabLayout.getTabAt(4).setIcon(R.drawable.user);
+        ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
+
+        if (user.equalsIgnoreCase("admin")) {
+            viewPageAdapter.addFragment(new FragmentDonHang(), "");
+            viewPageAdapter.addFragment(new FragmentSetting(), "");
+            viewPageAdapter.addFragment(new FragmentThem(), "");
+
+            viewPager.setAdapter(viewPageAdapter);
+
+            tabLayout.setupWithViewPager(viewPager);
+
+            tabLayout.getTabAt(0).setIcon(R.drawable.iconhoadonactivity);
+            tabLayout.getTabAt(1).setIcon(R.drawable.img);
+            tabLayout.getTabAt(2).setIcon(R.drawable.user);
+        }else{
+
+            viewPageAdapter.addFragment(new FragmentBanHang(), "");
+            viewPageAdapter.addFragment(new FragmentGioHang(), "");
+            viewPageAdapter.addFragment(new FragmentDonHang(), "");
+            viewPageAdapter.addFragment(new FragmentSetting(), "");
+
+
+            viewPager.setAdapter(viewPageAdapter);
+
+            tabLayout.setupWithViewPager(viewPager);
+
+            tabLayout.getTabAt(0).setIcon(R.drawable.iconbanhangactivity);
+            tabLayout.getTabAt(1).setIcon(R.drawable.iconthemactivity);
+            tabLayout.getTabAt(2).setIcon(R.drawable.iconhoadonactivity);
+            tabLayout.getTabAt(3).setIcon(R.drawable.img);
+
+
+        }
+
+
+
+
+
+
     }
 }

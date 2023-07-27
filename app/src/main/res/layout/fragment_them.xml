@@ -31,7 +31,7 @@
                 android:text="Thiết lập bán hàng"
                 android:textColor="@android:color/holo_red_light"
                 android:textStyle="bold" />
-            android:textColor="#FFFFFF" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:background="@drawable/border_filter"
+                    android:background="@drawable/border_filter2"
                     android:orientation="horizontal">
 
 
@@ -66,7 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:background="@drawable/border_filter"
+                    android:background="@drawable/border_filter2"
                     android:orientation="horizontal">
 
 
@@ -85,7 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:background="@drawable/border_filter"
+                    android:background="@drawable/border_filter2"
                     android:orientation="horizontal">
 
 
