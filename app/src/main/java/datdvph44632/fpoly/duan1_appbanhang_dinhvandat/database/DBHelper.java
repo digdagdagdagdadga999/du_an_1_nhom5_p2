@@ -22,7 +22,7 @@
             db.execSQL(TTDHDAO.SQL_TTDH);
 
 
-            db.execSQL(HoaDonChiTietDAO.SQL_HDCT);
+//            db.execSQL(HoaDonChiTietDAO.SQL_HDCT);
 
             String createNguoiDung = "create table NGUOIDUNG(" +
                     "nguoiDung_id integer primary key autoincrement," +

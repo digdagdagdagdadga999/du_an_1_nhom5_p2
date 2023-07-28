@@ -33,7 +33,7 @@ public class TTDHActivity extends AppCompatActivity {
 
      private TextView nameProduct,quantity,totalPrice,adress,orderDate,orderTime;
      private ImageView imageProduct;
-     private Button huy;
+     private Button huy,back;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -48,10 +48,21 @@ public class TTDHActivity extends AppCompatActivity {
         orderTime = findViewById(R.id.idgio);
         imageProduct = findViewById(R.id.imgttdh);
         huy=findViewById(R.id.bnthuyttdh);
+        back=findViewById(R.id.back);
         huy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showCancelDialog();
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentGioHang fragmentGioHang = (FragmentGioHang) getSupportFragmentManager().findFragmentById(R.id.container);
+                if (fragmentGioHang != null) {
+                    fragmentGioHang.orderCancelled();
+                }
+
             }
         });
 
@@ -64,12 +75,12 @@ public class TTDHActivity extends AppCompatActivity {
             String orderDateValue = intent.getStringExtra(EXTRA_ORDER_DATE);
             String orderTimeValue = intent.getStringExtra(EXTRA_ORDER_TIME);
 
-            nameProduct.setText("Sanpham: " + productName);
+            nameProduct.setText("Sản phẩm: " + productName);
             quantity.setText("Số lượng: " + productQuantity);
             totalPrice.setText("Tổng tiền: " + productTotalPrice + " VNĐ");
             adress.setText("Địa chỉ: " + productAddress);
-            orderDate.setText("Order Date: " + orderDateValue);
-            orderTime.setText("Order Time: " + orderTimeValue);
+            orderDate.setText( orderDateValue);
+            orderTime.setText(orderTimeValue);
 
             byte[] imageByteArray = intent.getByteArrayExtra("imageProduct");
             if (imageByteArray != null && imageByteArray.length > 0) {

@@ -54,9 +54,12 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         HoaDonChiTiet hoaDonChiTiet = hoaDonChiTietList.get(position);
-        holder.txtTenSanPham.setText("sản phẩm: " +hoaDonChiTiet.getTenSanPham());
-        holder.txtSoLuong.setText("Số lượng: " + hoaDonChiTiet.getSoLuong());
-        holder.txtTongTien.setText("Tổng tiền: " + hoaDonChiTiet.getTongTien() + " VNĐ");
+        holder.txtTenSanPham.setText(hoaDonChiTiet.getTenSanPham());
+        holder.txtSoLuong.setText("X" + hoaDonChiTiet.getSoLuong());
+        holder.txtTongTien.setText(" đ"+hoaDonChiTiet.getTongTien() );
+        holder.txtSoLuong1.setText( hoaDonChiTiet.getSoLuong() + " Sản phâm ");
+        holder.txtTongTien1.setText(" đ"+hoaDonChiTiet.getTongTien() );
+
 //
 //        holder.orderDate.setText("Ngày đặt hàng: " + hoaDonChiTiet.getOrderDate());
 //        holder.orderTime.setText("Giờ đặt hàng: " + hoaDonChiTiet.getOrderTime());
@@ -102,7 +105,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtTenSanPham, txtSoLuong, txtTongTien,diachi,orderDate,orderTime;
+        TextView txtTenSanPham, txtSoLuong, txtTongTien,diachi,orderDate,orderTime,txtSoLuong1,txtTongTien1;
         ImageView imghd;
         Button bntsuly;
         public ViewHolder(@NonNull View itemView) {
@@ -113,6 +116,8 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
 //            diachi=itemView.findViewById(R.id.item_addres);
             imghd=itemView.findViewById(R.id.imghd);
             bntsuly=itemView.findViewById(R.id.bntsuly);
+            txtSoLuong1=itemView.findViewById(R.id.txtSoLuong1);
+            txtTongTien1=itemView.findViewById(R.id.txtTongTien1);
 //
 //            orderTime=itemView.findViewById(R.id.orderTime);
 //            orderDate=itemView.findViewById(R.id.orderDate);
