@@ -3,72 +3,84 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="5dp"
-    >
+    android:padding="5dp">
+
     <ImageView
+        android:id="@+id/imghd"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:paddingRight="5dp"
-        android:id="@+id/imghd"
-        />
+        android:paddingRight="5dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp"
-        >
+        android:padding="5dp">
+
         <TextView
             android:id="@+id/txtTenSanPham"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtSoLuong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            />
-<!--        <TextView-->
-<!--            android:id="@+id/item_addres"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textColor="@color/black"-->
-<!--            />-->
+            android:textColor="@color/black" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/item_addres"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            />-->
         <TextView
             android:id="@+id/txtTongTien"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            />
-<!--        <TextView-->
-<!--            android:id="@+id/orderDate"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textColor="@color/black"-->
-<!--            />-->
-<!--            <TextView-->
-<!--                android:id="@+id/orderTime"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:textColor="@color/black"-->
-<!--                />-->
+            android:textColor="@color/black" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/orderDate"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            />-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/orderTime"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                />-->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dang xu ly" />
 
-        <Button
-            android:id="@+id/bntsuly"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chờ sử lý" />
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <Button
+                android:id="@+id/bntsuly"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Chờ xử lý" />
+
+            <Button
+                android:id="@+id/bntxoaDonHangCT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Hủy đơn hàng" />
+
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
 
 
 </LinearLayout>

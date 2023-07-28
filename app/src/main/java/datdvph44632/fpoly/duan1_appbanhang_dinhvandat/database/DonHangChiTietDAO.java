@@ -97,7 +97,7 @@ public class DonHangChiTietDAO {
 
     public long insertHoaDonChiTiet(HoaDonChiTiet hoaDonChiTiet) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("maHoaDon", hoaDonChiTiet.getMaHoaDon());
+//        contentValues.put("maHoaDon", hoaDonChiTiet.getMaHoaDon());
         contentValues.put("ngayMua", hoaDonChiTiet.getNgayMua());
         contentValues.put("tongTien", hoaDonChiTiet.getTongTien());
         contentValues.put("soLuong", hoaDonChiTiet.getSoLuong());
@@ -128,6 +128,14 @@ public class DonHangChiTietDAO {
 
     public long deleteHDCT(String maHDCT) {
         return sqLiteDatabase.delete(TABLE_NAME, "maHDCT = ?", new String[]{maHDCT});
+    }
+
+    public boolean xoa(int id) {
+
+        long check = sqLiteDatabase.delete(TABLE_NAME, "maHDCT=?", new String[]{String.valueOf(id)});
+        if (check == -1)
+            return false;
+        return true;
     }
 
     public List<HoaDonChiTiet> getAllHDCT(String maHD) {
