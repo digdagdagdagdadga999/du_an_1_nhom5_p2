@@ -34,7 +34,7 @@
                     "loaiTaiKhoan integer not null)";
             db.execSQL(createNguoiDung);
             db.execSQL("insert into NGUOIDUNG values" +
-                    "(1, 'Nguyen Chi Thanh', '0339463318', 'thanh21052002@mail.com','thanh21052002','123456', 1)," +
+                    "(1, 'Nguyen Chi Thanh', '0339463318', 'thanh21052002@mail.com','admin','123456', 1)," +
                     "(2, 'Nguyen Van A', '0123456789', 'nguyenvana@gmail.com','abcd1','123456', 0)," +
                     "(3, 'Nguyen Van B', '0123456789', 'nguyenvanb@gmail.com','abcd2','123456', 0)," +
                     "(4, 'Nguyen Van C', '0123456789', 'nguyenvanc@gmail.com','abcd3','123456', 0)," +

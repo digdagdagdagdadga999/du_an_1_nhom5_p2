@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -31,9 +32,13 @@ public class TTDHActivity extends AppCompatActivity {
     public static final String EXTRA_ORDER_DATE = "orderDate";
     public static final String EXTRA_ORDER_TIME = "orderTime";
 
+
+
+
      private TextView nameProduct,quantity,totalPrice,adress,orderDate,orderTime;
      private ImageView imageProduct;
      private Button huy,back;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -47,8 +52,11 @@ public class TTDHActivity extends AppCompatActivity {
         orderDate = findViewById(R.id.idngay);
         orderTime = findViewById(R.id.idgio);
         imageProduct = findViewById(R.id.imgttdh);
+
+
         huy=findViewById(R.id.bnthuyttdh);
         back=findViewById(R.id.back);
+
         huy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +99,7 @@ public class TTDHActivity extends AppCompatActivity {
             }
         }
     }
+
     private void showCancelDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Xác nhận hủy đơn hàng");
@@ -113,7 +122,8 @@ public class TTDHActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-        builder.show();
+        Dialog dialog = builder.create();
+        dialog.show();
     }
 
 }

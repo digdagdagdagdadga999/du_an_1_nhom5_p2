@@ -2,112 +2,85 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="5dp">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="-  -  -  -  -  -  -  -  -  -  - -  -  -  -  -  -  -  -  -  -  - -  -  -  -  -  -  -  -  -  -  -  -  -  - "
-        />
+
+    <ImageView
+        android:id="@+id/imghd"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:paddingRight="5dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="5dp"
-        android:layout_marginTop="10dp"
-        >
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:paddingRight="5dp"
-            android:id="@+id/imghd"
-            />
+        android:orientation="vertical"
+        android:padding="5dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txtTenSanPham"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtSoLuong"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="180dp"
-                android:textColor="@color/black" />
-            <TextView
-                android:id="@+id/txtTongTien1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginLeft="130dp"
-                />
-        </LinearLayout>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:layout_marginTop="10dp"
-        >
         <TextView
-            android:id="@+id/txtSoLuong1"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtTenSanPham"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="sản phẩm"
-            />
+            android:textStyle="bold" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/txtSoLuong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:autoMirrored="true"
-            android:layout_marginLeft="70dp"
-            >
+            android:textColor="@color/black" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/item_addres"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            />-->
+        <TextView
+            android:id="@+id/txtTongTien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/orderDate"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            />-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/orderTime"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                />-->
 
-            <TextView
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dang xu ly" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <Button
+                android:id="@+id/bntsuly"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Chờ xử lý" />
+
+            <Button
+                android:id="@+id/bntxoaDonHangCT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tổng thanh toán: "
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                />
-            <TextView
-                android:id="@+id/txtTongTien"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/holo_red_dark"
-                />
+                android:layout_marginLeft="10dp"
+                android:text="Hủy đơn hàng" />
+
         </LinearLayout>
 
 
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_marginTop="10dp"
-        />
-    <Button
-        android:id="@+id/bntsuly"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Đang sử lý"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="10dp"/>
 
 
 </LinearLayout>
