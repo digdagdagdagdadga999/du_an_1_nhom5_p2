@@ -7,10 +7,16 @@
     tools:context=".activity.DangNhapActivity">
 
 
+
+    <ImageView
+        android:id="@+id/imgSanPham1_frame2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/ao_coolmate_1" />
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:layout_below="@id/imgSanPham1_frame2"
 
         app:cardCornerRadius="30dp">
 
@@ -19,9 +25,8 @@
             android:layout_height="match_parent"
 
             android:background="@drawable/background_signup"
-            android:gravity="center"
             android:orientation="vertical"
-
+            android:gravity="center"
 
             android:padding="30dp">
 
@@ -29,8 +34,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginLeft="80dp"
+
                 android:text="Login"
+                android:layout_marginLeft="80dp"
+
 
 
                 android:textSize="30sp" />
@@ -115,8 +122,11 @@
                 android:backgroundTint="#E2BCB7"
 
                 android:text="Login"
+
                 android:textColor="#4E352F"
                 android:textSize="20sp" />
+
+
 
 
             <LinearLayout

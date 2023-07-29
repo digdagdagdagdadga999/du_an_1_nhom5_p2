@@ -15,15 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DuAn1_AppBanHang_dinhVanDat"
         tools:targetApi="31" >
-        <activity
-            android:name=".mahinhchao"
-            android:exported="false" />
+ 
         <activity
             android:name=".activity.TTDHActivity"
             android:exported="false" />
         <activity
-
-
             android:name=".activity.DoiMkActivity"
             android:exported="false" />
         <activity

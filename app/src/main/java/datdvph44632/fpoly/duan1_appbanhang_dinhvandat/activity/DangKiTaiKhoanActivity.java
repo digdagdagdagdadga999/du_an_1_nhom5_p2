@@ -42,18 +42,18 @@ public class DangKiTaiKhoanActivity extends AppCompatActivity {
         });
     }
     public void themTaiKhoan() {
-        String name = edtName_frame3.getText().toString();
-        String phoneNumber = edtPhoneNumber_frame3.getText().toString();
-        String email = edtEmail_frame3.getText().toString();
-        String username = edtUsername_frame3.getText().toString();
-        String password = edtPassword_frame3.getText().toString();
+        String name = edtName_frame3.getText().toString().trim();
+        String phoneNumber = edtPhoneNumber_frame3.getText().toString().trim();
+        String email = edtEmail_frame3.getText().toString().trim();
+        String username = edtUsername_frame3.getText().toString().trim();
+        String password = edtPassword_frame3.getText().toString().trim();
         int typeAccount;
         if (spnTypeAccount_frame3.getSelectedItem().equals("Customer")){
             typeAccount = 0;
         }else {
             typeAccount = 1;
         }
-        if (validateForm(name, phoneNumber, email, username, password) == true) {
+        if (validateForm() == true) {
             NguoiDungDao nguoiDungDAO = new NguoiDungDao(this);
             if(nguoiDungDAO.themTaiKhoan(name, phoneNumber, email, username, password, typeAccount)){
                 Toast.makeText(this, "Thêm tài khoản thành công!", Toast.LENGTH_SHORT).show();
@@ -65,19 +65,35 @@ public class DangKiTaiKhoanActivity extends AppCompatActivity {
         }
     }
 
-    public boolean validateForm(String name, String phoneNumber, String email, String username, String password) {
-        if (name.isEmpty() || phoneNumber.isEmpty() || email.isEmpty() || username.isEmpty() || password.isEmpty()) {
+    public boolean validateForm() {
+        String name = edtName_frame3.getText().toString().trim();
+        String username = edtUsername_frame3.getText().toString().trim();
+        String password = edtPassword_frame3.getText().toString().trim();
+        String email = edtEmail_frame3.getText().toString().trim();
+        String phoneNumber = edtPhoneNumber_frame3.getText().toString().trim();
+
+        if (name.isEmpty() || username.isEmpty() || password.isEmpty() || email.isEmpty() || phoneNumber.isEmpty()) {
             Toast.makeText(this, "Không được bỏ trống!", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.endsWith("@gmail.com")) {
+        } else if (!isValidEmail(email)) {
             Toast.makeText(this, "Email không hợp lệ!", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (!Patterns.PHONE.matcher(phoneNumber).matches()) {
+        } else if (!isValidPhoneNumber(phoneNumber)) {
             Toast.makeText(this, "Số điện thoại không hợp lệ!", Toast.LENGTH_SHORT).show();
             return false;
         }
+
         return true;
     }
+
+    public boolean isValidEmail(String email) {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public boolean isValidPhoneNumber(String phoneNumber) {
+        return phoneNumber.matches("(84|0[3|5|7|8|9])+([0-9]{8})");
+    }
+
 
     public void setDataSpnTypeAccount_frame3(Spinner spinner) {
         String[] data = {"Customer", "Admin"};

@@ -18,11 +18,6 @@
             db.execSQL(KhachHangDAO.SQL_NGUOIDUNG);
             db.execSQL(GioHangDAO.SQL_GIOHANG);
 
-            db.execSQL(DonHangChiTietDAO.SQL_HDCT);
-            db.execSQL(TTDHDAO.SQL_TTDH);
-
-
-//            db.execSQL(HoaDonChiTietDAO.SQL_HDCT);
 
             String createNguoiDung = "create table NGUOIDUNG(" +
                     "nguoiDung_id integer primary key autoincrement," +
