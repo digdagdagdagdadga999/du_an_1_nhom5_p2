@@ -1,21 +1,15 @@
 package datdvph44632.fpoly.duan1_appbanhang_dinhvandat.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -31,12 +25,10 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.GioHangItem;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Model.SanPham;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.adapter.SanPhamAdapter;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.GioHangDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.SanPhamDAO;
 
 
@@ -75,44 +67,6 @@ public class FragmentBanHang extends Fragment {
         navigationView = view.findViewById(R.id.NavigationViewBanHang);
         drawerLayout = view.findViewById(R.id.drawerLayoutBanHang);
 
-//        cart = view.findViewById(R.id.cartshoppe);
-//        cart.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                SanPham sanPham = FragmentHoaDon.getSelectedProduct();
-//                if (sanPham == null) {
-//                    return;
-//                }
-//
-//                SanPhamDAO sanPhamDAO = new SanPhamDAO(getActivity());
-//                int soLuong = sanPham.getSoLuong() - 1;
-//                if (soLuong < 0) {
-//                    soLuong = 0;
-//                }
-//                sanPhamDAO.updateSLSanPham(soLuong, sanPham.getMaSanPham());
-//
-//                doDuLieuTheoSpinner();
-//                FragmentGioHang fragmentGioHang = FragmentGioHang.newInstance();
-//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.container, fragmentGioHang);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-//            }
-//        });
-
-
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                drawerLayout.openDrawer(GravityCompat.START);
-//            }
-//        });
-//        imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//            }
-//        });
         return view;
     }
 
@@ -122,7 +76,7 @@ public class FragmentBanHang extends Fragment {
         anhXaView(view);
         sanPhamDAO = new SanPhamDAO(getActivity());
         list = new ArrayList<>();
-        sanPhamAdapter = new SanPhamAdapter(getActivity(), list); // Initialize the adapter here
+        sanPhamAdapter = new SanPhamAdapter(getActivity(), list);
         setHasOptionsMenu(true);
         ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, danhSachLC);
         spnLocDanhSach.setAdapter(adapter);
@@ -136,9 +90,7 @@ public class FragmentBanHang extends Fragment {
         edTimKiem.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 List<SanPham> list = sanPhamDAO.getAllSanPhamTheoMa(edTimKiem.getText().toString());
@@ -152,7 +104,6 @@ public class FragmentBanHang extends Fragment {
                     tvNull.setVisibility(View.VISIBLE);
                 }
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
 
@@ -166,7 +117,6 @@ public class FragmentBanHang extends Fragment {
         spnLocDanhSach = view.findViewById(R.id.spnLocTimKiem);
         tvNull = view.findViewById(R.id.tvNull);
         tvSoLuongBanHang = view.findViewById(R.id.tvSoLuongBanHang);
-//        cart = view.findViewById(R.id.cartshoppe);
     }
 
     public void doDuLieuTheoSpinner() {

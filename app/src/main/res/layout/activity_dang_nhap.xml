@@ -7,9 +7,6 @@
     tools:context=".activity.DangNhapActivity">
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
 
     <ImageView
         android:id="@+id/imgSanPham1_frame2"
@@ -31,19 +28,17 @@
             android:orientation="vertical"
             android:gravity="center"
 
-            android:background="#FFEFE0"
-            android:orientation="vertical"
-
             android:padding="30dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
+
                 android:text="Login"
                 android:layout_marginLeft="80dp"
 
-                android:text="Sign in"
+
 
                 android:textSize="30sp" />
 
@@ -61,7 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#E2BCB7"
-                        android:hint="Username"/>
+                        android:hint="Username" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
@@ -85,8 +80,8 @@
                         android:id="@+id/edtPassword_frame2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:hint="Password"/>
+                        android:hint="Password"
+                        android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
@@ -100,9 +95,9 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:gravity="right"
                 android:orientation="horizontal"
                 android:paddingRight="20dp">
@@ -127,12 +122,11 @@
                 android:backgroundTint="#E2BCB7"
 
                 android:text="Login"
+
                 android:textColor="#4E352F"
                 android:textSize="20sp" />
 
-                android:text="NEXT"
-                android:textColor="#4E352F"
-                android:textSize="30sp" />
+
 
 
             <LinearLayout

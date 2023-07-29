@@ -68,7 +68,7 @@ public class SanPhamAdapter extends BaseAdapter {
 
                     GioHangDAO gioHangDAO = new GioHangDAO(context);
                     if (gioHangDAO.isProductInCart(tenSanPham)) {
-                        Toast.makeText(context, "Sản phẩm đã được thêm vào giỏ hàng trước đó", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Sản phẩm này đã có trong giỏ hàng", Toast.LENGTH_SHORT).show();
                     } else {
                         long insertedId = gioHangDAO.addProductToCart(tenSanPham, giaSanPham, imageSanPham);
                         if (insertedId != -1) {
@@ -90,6 +90,8 @@ public class SanPhamAdapter extends BaseAdapter {
         viewHolder.tvGia.setText("Giá bán : "+Math.round(sanPham.getGiaBan())+ " VNĐ");
         int soLuongConLai = sanPham.getSoLuong() - gioHangDAO.getSoLuongDaMua(sanPham.getTen());
         viewHolder.tvSoluong.setText("Còn : "+soLuongConLai);
+
+
         byte[] image = sanPham.getImage();
         try {
             Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);

@@ -58,7 +58,7 @@ public class FragmentThem extends Fragment {
             }
         });
 
-        //chuyển sang loại sản phẩm activity
+
 
         tvPhanLoai.setOnClickListener(new View.OnClickListener() {
             @Override

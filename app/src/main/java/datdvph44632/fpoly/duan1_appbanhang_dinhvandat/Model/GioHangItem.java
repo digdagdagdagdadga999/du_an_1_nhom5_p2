@@ -8,9 +8,26 @@ public class GioHangItem {
     private double giaSanPham;
     private byte[] imageSanPham;
     private int quantity;
-    private double price; // Giá sản phẩm
+    private double price;
     private double totalPrice;
+    private boolean isSelected;
+    private String adress;
 
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
     public GioHangItem() {
     }
 
@@ -108,4 +125,6 @@ public class GioHangItem {
     private void calculateTotalPrice() {
         totalPrice = price * quantity;
     }
+
+
 }
