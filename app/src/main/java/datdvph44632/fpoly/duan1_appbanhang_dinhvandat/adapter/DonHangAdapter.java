@@ -176,7 +176,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
 
             imghd = itemView.findViewById(R.id.imghd);
             bntsuly = itemView.findViewById(R.id.bntsuly);
-            btnHuy = itemView.findViewById(R.id.bntxoaDonHangCT);
+            btnHuy = itemView.findViewById(R.id.btnXoaDHCT);
 
 //             imghd=itemView.findViewById(R.id.imghd);
 //             bntsuly=itemView.findViewById(R.id.bntsuly);

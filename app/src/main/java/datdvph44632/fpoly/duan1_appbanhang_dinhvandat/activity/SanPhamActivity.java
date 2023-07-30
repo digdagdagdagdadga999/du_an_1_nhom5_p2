@@ -81,6 +81,8 @@ public class SanPhamActivity extends AppCompatActivity {
         edTimKiem = findViewById(R.id.edTimKiemSanPham1);
         tvKhongTimThay = findViewById(R.id.tvKhongTimThay);
     }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

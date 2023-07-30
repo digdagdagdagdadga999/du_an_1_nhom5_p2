@@ -20,7 +20,7 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.database.NguoiDungDao;
 
 public class DangNhapActivity extends AppCompatActivity {
-    private EditText edtUsername_frame2, edtPassword_frame2;
+    public EditText edtUsername_frame2, edtPassword_frame2;
     private ImageView imgShowPassword_frame2;
     private CheckBox chkRememberPassword_frame2;
     private Button btnNext_frame2;

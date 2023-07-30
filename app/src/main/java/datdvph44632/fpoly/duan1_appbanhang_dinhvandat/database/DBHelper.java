@@ -42,7 +42,7 @@
 
 
 
-            db.execSQL(SanPhamDAO.DATA_SANPHAM);
+//            db.execSQL(SanPhamDAO.DATA_SANPHAM);
         }
 
         @Override

@@ -22,8 +22,6 @@
             android:name=".activity.TTDHActivity"
             android:exported="false" />
         <activity
-
-
             android:name=".activity.DoiMkActivity"
             android:exported="false" />
         <activity
