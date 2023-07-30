@@ -165,15 +165,16 @@ public class ThemSanPhamActivity extends AppCompatActivity {
                 hinhAnh = stream.toByteArray();
             }
         } catch (Exception ignored) {
-
         }
+        //////
         SanPham sanPham = new SanPham(ma, theLoai, ten, Double.parseDouble(giaNhap), Double.parseDouble(giaBan), hinhAnh, Integer.parseInt(soLuong));
         long chk = sanPhamDAO.addSanPham(sanPham);
         if (chk > 0) {
+            startActivity(new Intent(this,SanPhamActivity.class));
             Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
             finish();
-            Intent intent = new Intent(this, SanPhamActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(this, SanPhamActivity.class);
+//            startActivity(intent);
         } else {
             Toast.makeText(getApplicationContext(), "Thêm thất bại , mã sản phẩm đã tồn tại", Toast.LENGTH_SHORT).show();
         }

@@ -21,10 +21,7 @@ public class SanPhamDAO {
             "giaBan DOUBLE," +
             "hinhAnh BLOB)";
 
-    public static final String DATA_SANPHAM = "INSERT INTO SanPham VALUES " +
-            "(01, 'áo polo', 'áo polo nam DIZI', 20, 150000, 300000, 'R.drawable.san_pham_1')," +
-            "(02, 'áo thun', 'áo thun nam cao cấp', 40, 200000, 500000, 'R.drawable.san_pham_2')," +
-            "(03, 'quần thun', 'quần thun nam jogger', 50, 200000, 400000, 'R.drawable.san_pham_3')";
+
 
     private final SQLiteDatabase sqLiteDatabase;
 
