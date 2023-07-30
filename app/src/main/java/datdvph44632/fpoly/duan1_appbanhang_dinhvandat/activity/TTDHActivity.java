@@ -91,10 +91,6 @@ public class TTDHActivity extends AppCompatActivity {
 //                    tvXacNhanDonHang.setVisibility(View.INVISIBLE);
 //                }
 
-                Intent intent = new Intent(TTDHActivity.this, MainActivity.class);
-                intent.putExtra("user", dangNhapActivity.edtUsername_frame2.getText().toString());
-                intent.putExtra("isAdmin", true);
-                startActivity(intent);
 
                 if(checkXuLy.isChecked() == true){
                     Toast.makeText(TTDHActivity.this, "Xác nhận đơn hàng thành công", Toast.LENGTH_SHORT).show();
