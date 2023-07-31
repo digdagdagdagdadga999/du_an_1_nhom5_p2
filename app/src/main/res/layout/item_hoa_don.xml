@@ -49,6 +49,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="130dp"
                 android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtTrangThai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đang xử lý"
+                android:layout_marginLeft="130dp"
+                android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
 
@@ -110,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
             android:layout_marginTop="10dp"
-            android:text="Xem" />
+            android:text="Xác nhận" />
 
         <Button
             android:id="@+id/btnXoaDHCT"

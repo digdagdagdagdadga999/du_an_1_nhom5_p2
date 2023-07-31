@@ -328,18 +328,18 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/checkXuLy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+<!--            <CheckBox-->
+<!--                android:id="@+id/checkXuLy"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content" />-->
 
-            <TextView
-                android:id="@+id/tvXacNhanDH"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="XÁC NHẬN ĐƠN HÀNG"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvXacNhanDH"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="XÁC NHẬN ĐƠN HÀNG"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="20dp" />-->
 
 
             <!--            <ImageView-->
@@ -378,7 +378,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="OK"
+                android:text="Xác nhận"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
         </LinearLayout>

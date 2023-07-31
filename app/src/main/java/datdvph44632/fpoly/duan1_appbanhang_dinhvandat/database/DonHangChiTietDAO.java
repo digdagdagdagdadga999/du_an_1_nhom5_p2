@@ -24,7 +24,8 @@ public class DonHangChiTietDAO {
             "tenSanPham TEXT REFERENCES SanPham(tenSanPham)," +
             "diaChi TEXT REFERENCES KhachHang(diaChi)," +
             "orderDate TEXT," +
-            "orderTime TEXT)";
+            "orderTime TEXT," +
+            "trangThai TEXT)";
     private final SQLiteDatabase sqLiteDatabase;
 
     public DonHangChiTietDAO(Context context) {
@@ -51,6 +52,7 @@ public class DonHangChiTietDAO {
                     String diaChi = cursor.getString(8);
                     String orderDate = cursor.getString(9);
                     String orderTime = cursor.getString(10);
+                    int trangThai = cursor.getInt(11);
 
                     HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                     hoaDonChiTiet.setMaHDCT(maHDCT);
@@ -64,6 +66,7 @@ public class DonHangChiTietDAO {
                     hoaDonChiTiet.setAddress(diaChi);
                     hoaDonChiTiet.setOrderDate(orderDate);
                     hoaDonChiTiet.setOrderTime(orderTime);
+                    hoaDonChiTiet.setTrangThai(trangThai);
 
                     list.add(hoaDonChiTiet);
                 } while (cursor.moveToNext());
@@ -90,6 +93,7 @@ public class DonHangChiTietDAO {
         contentValues.put("soLuong", hoaDonChiTiet.getSoLuong());
         contentValues.put("giaSanPham", hoaDonChiTiet.getGiaSanPham());
         contentValues.put("hinhAnhSanPham", hoaDonChiTiet.getHinhAnhSanPham());
+        contentValues.put("trangThai", hoaDonChiTiet.getTrangThai());
 
         return sqLiteDatabase.update(TABLE_NAME, contentValues, "maHDCT = ?", new String[]{String.valueOf(hoaDonChiTiet.getMaHDCT())});
     }
@@ -97,7 +101,7 @@ public class DonHangChiTietDAO {
 
     public long insertHoaDonChiTiet(HoaDonChiTiet hoaDonChiTiet) {
         ContentValues contentValues = new ContentValues();
-//        contentValues.put("maHoaDon", hoaDonChiTiet.getMaHoaDon());
+        contentValues.put("maHoaDon", hoaDonChiTiet.getMaHoaDon());
         contentValues.put("ngayMua", hoaDonChiTiet.getNgayMua());
         contentValues.put("tongTien", hoaDonChiTiet.getTongTien());
         contentValues.put("soLuong", hoaDonChiTiet.getSoLuong());
@@ -107,6 +111,7 @@ public class DonHangChiTietDAO {
         contentValues.put("diaChi", hoaDonChiTiet.getAddress());
         contentValues.put("orderDate", hoaDonChiTiet.getOrderDate());
         contentValues.put("orderTime", hoaDonChiTiet.getOrderTime());
+        contentValues.put("trangThai", hoaDonChiTiet.getTrangThai());
         return sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
     }
 
@@ -122,6 +127,7 @@ public class DonHangChiTietDAO {
         contentValues.put("diaChi", hoaDonChiTiet.getAddress());
         contentValues.put("orderDate", hoaDonChiTiet.getOrderDate());
         contentValues.put("orderTime", hoaDonChiTiet.getOrderTime());
+        contentValues.put("trangThai", hoaDonChiTiet.getTrangThai());
 
         return sqLiteDatabase.update(TABLE_NAME, contentValues, "maHDCT = ?", new String[]{maHDCT});
     }

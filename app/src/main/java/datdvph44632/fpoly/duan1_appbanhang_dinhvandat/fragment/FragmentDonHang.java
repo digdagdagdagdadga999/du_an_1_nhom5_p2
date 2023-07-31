@@ -51,27 +51,27 @@ public class FragmentDonHang extends Fragment {
         donHangChiTietDAO = new DonHangChiTietDAO(getContext());
         hoaDonChiTietList = donHangChiTietDAO.getAllHoaDonChiTiet();
         hoaDonAdapter = new DonHangAdapter(context, hoaDonChiTietList);
-        hoaDonAdapter.setOnSulyClickListener(new DonHangAdapter.OnSulyClickListener() {
-            @Override
-            public void onSulyClick(HoaDonChiTiet hoaDonChiTiet) {
-                Intent intent = new Intent(getActivity(), TTDHActivity.class);
-                intent.putExtra("nameProduct", hoaDonChiTiet.getTenSanPham());
-                intent.putExtra("quantity", hoaDonChiTiet.getSoLuong());
-                intent.putExtra("totalPrice", hoaDonChiTiet.getTongTien());
-                intent.putExtra("address", hoaDonChiTiet.getAddress());
-                intent.putExtra("orderDate", hoaDonChiTiet.getOrderDate());
-                intent.putExtra("orderTime", hoaDonChiTiet.getOrderTime());
-                intent.putExtra("imageProduct", hoaDonChiTiet.getHinhAnhSanPham());
-
-
-
-                intent.putExtra("orderDate", currentDate);
-                intent.putExtra("orderTime", currentTime);
-
-
-                startActivity(intent);
-            }
-        });
+//        hoaDonAdapter.setOnSulyClickListener(new DonHangAdapter.OnSulyClickListener() {
+//            @Override
+//            public void onSulyClick(HoaDonChiTiet hoaDonChiTiet) {
+//                Intent intent = new Intent(getActivity(), TTDHActivity.class);
+//                intent.putExtra("nameProduct", hoaDonChiTiet.getTenSanPham());
+//                intent.putExtra("quantity", hoaDonChiTiet.getSoLuong());
+//                intent.putExtra("totalPrice", hoaDonChiTiet.getTongTien());
+//                intent.putExtra("address", hoaDonChiTiet.getAddress());
+//                intent.putExtra("orderDate", hoaDonChiTiet.getOrderDate());
+//                intent.putExtra("orderTime", hoaDonChiTiet.getOrderTime());
+//                intent.putExtra("imageProduct", hoaDonChiTiet.getHinhAnhSanPham());
+//
+//
+//
+//                intent.putExtra("orderDate", currentDate);
+//                intent.putExtra("orderTime", currentTime);
+//
+//
+//                startActivity(intent);
+//            }
+//        });
 
 
         recyclerView.setAdapter(hoaDonAdapter);
