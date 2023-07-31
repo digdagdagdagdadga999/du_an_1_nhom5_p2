@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,7 +105,21 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
             public void onClick(View v) {
                 if (sulyClickListener != null) {
                     sulyClickListener.onSulyClick(hoaDonChiTiet);
+
+
+
                 }
+                HoaDonChiTiet item = new HoaDonChiTiet();
+                if (item.getTrangThai() == 0){
+                    dao.updateHDCT(item, String.valueOf(item.getMaHDCT()));
+                    holder.tvTrangThai.setTextColor(Color.GREEN);
+                    holder.tvTrangThai.setText("đã xử lý");
+                }else {
+                    dao.updateHDCT(item, String.valueOf(item.getMaHDCT()));
+                    holder.tvTrangThai.setTextColor(Color.RED);
+                    holder.tvTrangThai.setText("Chưa xử lý");
+                }
+
             }
         });
 
@@ -160,7 +175,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtTenSanPham, txtSoLuong, txtTongTien, diachi, orderDate, orderTime;
+        TextView txtTenSanPham, txtSoLuong, txtTongTien, diachi, orderDate, orderTime, tvTrangThai;
 
 //         TextView txtTenSanPham, txtSoLuong, txtTongTien,diachi,orderDate,orderTime,txtSoLuong1,txtTongTien1;
 
@@ -177,6 +192,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
             imghd = itemView.findViewById(R.id.imghd);
             bntsuly = itemView.findViewById(R.id.bntsuly);
             btnHuy = itemView.findViewById(R.id.btnXoaDHCT);
+            tvTrangThai = itemView.findViewById(R.id.txtTrangThai);
 
 //             imghd=itemView.findViewById(R.id.imghd);
 //             bntsuly=itemView.findViewById(R.id.bntsuly);

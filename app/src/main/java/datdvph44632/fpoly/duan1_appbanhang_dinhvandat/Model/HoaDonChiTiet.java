@@ -12,9 +12,21 @@ public class HoaDonChiTiet {
     private byte[] hinhAnhSanPham;
     private String tenSanPham;
     private String address;
-    private String  orderDate;
+    private String orderDate;
     private String orderTime;
+    private int trangThai;
 
+    public int getTrangThai() {
+        return trangThai;
+    }
+
+
+    public HoaDonChiTiet() {
+    }
+
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
+    }
 
     public String getOrderDate() {
         return orderDate;
@@ -33,7 +45,6 @@ public class HoaDonChiTiet {
     }
 
 
-
     public String getAddress() {
         return address;
     }
@@ -41,7 +52,6 @@ public class HoaDonChiTiet {
     public void setAddress(String address) {
         this.address = address;
     }
-
 
 
     public int getMaHDCT() {

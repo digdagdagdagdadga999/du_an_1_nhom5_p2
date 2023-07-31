@@ -40,10 +40,10 @@ public class TTDHActivity extends AppCompatActivity {
     public static final String EXTRA_ORDER_TIME = "orderTime";
 
 
-    public TextView nameProduct, quantity, totalPrice, adress, orderDate, orderTime, tvXacNhanDonHang;
+    public TextView nameProduct, quantity, totalPrice, adress, orderDate, orderTime;
     private ImageView imageProduct;
     public Button huy, back;
-    public CheckBox checkXuLy;
+//    public CheckBox checkXuLy;
     DangNhapActivity dangNhapActivity;
 
 
@@ -59,8 +59,8 @@ public class TTDHActivity extends AppCompatActivity {
         orderDate = findViewById(R.id.idngay);
         orderTime = findViewById(R.id.idgio);
         imageProduct = findViewById(R.id.imgttdh);
-        checkXuLy = findViewById(R.id.checkXuLy);
-        tvXacNhanDonHang = findViewById(R.id.tvXacNhanDH);
+//        checkXuLy = findViewById(R.id.checkXuLy);
+//        tvXacNhanDonHang = findViewById(R.id.tvXacNhanDH);
 
 
 //        huy=findViewById(R.id.bnthuyttdh);
@@ -92,12 +92,10 @@ public class TTDHActivity extends AppCompatActivity {
 //                }
 
 
-                if(checkXuLy.isChecked() == true){
+
                     Toast.makeText(TTDHActivity.this, "Xác nhận đơn hàng thành công", Toast.LENGTH_SHORT).show();
 
-                }else {
-                    Toast.makeText(TTDHActivity.this, "Chưa xác nhận đơn hàng", Toast.LENGTH_SHORT).show();
-                }
+
 
                 finish();
 
