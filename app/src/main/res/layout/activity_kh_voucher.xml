@@ -14,10 +14,10 @@
         android:layout_height="1sp"
         android:background="@color/black" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="270dp"
-        android:src="@drawable/voucher_backg" />
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="270dp"-->
+<!--        android:src="@drawable/voucher_backg" />-->
 
     <View
         android:layout_width="match_parent"

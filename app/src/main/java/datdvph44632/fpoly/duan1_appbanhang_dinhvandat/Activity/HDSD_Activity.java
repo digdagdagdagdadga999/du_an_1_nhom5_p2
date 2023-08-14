@@ -22,12 +22,12 @@ public class HDSD_Activity extends AppCompatActivity {
     Context context = this;
     String role;
     int index = 0;
-    int[] imageKH =
-            new int[]{R.drawable.hdkh1, R.drawable.hdkh2, R.drawable.hdkh3, R.drawable.hdkh4, R.drawable.hdkh5,
-                    R.drawable.hdkh6, R.drawable.hdkh7, R.drawable.hdkh8, R.drawable.hdkh9, R.drawable.hdkh10};
-    int[] imageNV =
-            new int[]{R.drawable.hdnv1, R.drawable.hdnv2, R.drawable.hdnv3, R.drawable.hdnv4, R.drawable.hdnv5,
-                    R.drawable.hdnv6, R.drawable.hdnv7, R.drawable.hdnv8, R.drawable.hdnv9, R.drawable.hdnv10};
+//    int[] imageKH =
+//            new int[]{R.drawable.hdkh1, R.drawable.hdkh2, R.drawable.hdkh3, R.drawable.hdkh4, R.drawable.hdkh5,
+//                    R.drawable.hdkh6, R.drawable.hdkh7, R.drawable.hdkh8, R.drawable.hdkh9, R.drawable.hdkh10};
+//    int[] imageNV =
+//            new int[]{R.drawable.hdnv1, R.drawable.hdnv2, R.drawable.hdnv3, R.drawable.hdnv4, R.drawable.hdnv5,
+//                    R.drawable.hdnv6, R.drawable.hdnv7, R.drawable.hdnv8, R.drawable.hdnv9, R.drawable.hdnv10};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,18 +39,18 @@ public class HDSD_Activity extends AppCompatActivity {
         next = findViewById(R.id.button_Next);
 
         getUser();
-        if (role.equals("kh")) {
-            textView.setText("1/10");
-            imageView.setImageResource(imageKH[index]);
-            prevImage(imageKH);
-            nextImage(imageKH);
-        }
-        if (role.equals("nv")) {
-            textView.setText("1/10");
-            imageView.setImageResource(imageNV[index]);
-            prevImage(imageNV);
-            nextImage(imageNV);
-        }
+//        if (role.equals("kh")) {
+//            textView.setText("1/10");
+//            imageView.setImageResource(imageKH[index]);
+//            prevImage(imageKH);
+//            nextImage(imageKH);
+//        }
+//        if (role.equals("nv")) {
+//            textView.setText("1/10");
+//            imageView.setImageResource(imageNV[index]);
+//            prevImage(imageNV);
+//            nextImage(imageNV);
+//        }
         useToolbar();
     }
 
