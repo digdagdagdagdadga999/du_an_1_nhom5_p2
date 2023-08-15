@@ -96,15 +96,15 @@ public class QL_Voucher_Loader extends AsyncTask<String, Void, ArrayList<Voucher
 
     private void addDemoVoucher() {
         GetData getData = new GetData(context);
-        Voucher vou1 = new Voucher("", "NOVEM1611", "20%", "2022-11-11", "2022-11-20");
+        Voucher vou1 = new Voucher("", "NOVEM1611", "20%", "2023-07-11", "2023-09-20");
         voucherDAO.insertVoucher(vou1);
         getData.addDataUseVoucher();
 
-        Voucher vou2 = new Voucher("", "DECEM1212", "12%", "2022-12-12", "2022-12-12");
+        Voucher vou2 = new Voucher("", "DECEM1212", "12%", "2023-07-12", "2023-09-12");
         voucherDAO.insertVoucher(vou2);
         getData.addDataUseVoucher();
 
-        Voucher vou3 = new Voucher("", "NOEL2512", "25%", "2022-12-25", "2022-12-25");
+        Voucher vou3 = new Voucher("", "NOEL2512", "25%", "2023-07-25", "2023-09-25");
         voucherDAO.insertVoucher(vou3);
         getData.addDataUseVoucher();
     }

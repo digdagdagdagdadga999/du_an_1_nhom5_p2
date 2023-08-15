@@ -13,12 +13,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.KhachHangDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.NhanVienDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.KhachHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class SignUp_Acitivity extends AppCompatActivity {
 
@@ -55,7 +56,7 @@ public class SignUp_Acitivity extends AppCompatActivity {
                 String confirm = changeType.deleteSpaceText(tilConfirmPass.getEditText().getText().toString());
                 if (checkInput(email, password, confirm) == 1) {
                     KhachHang newKH = new KhachHang("", "No Data", "No Data", "No Data",
-                            email, password, "No Data", "No Data", "false",
+                            email, password, "No Data", "No Data",
                             changeType.checkByteInput(changeType.bitmapToByte(BitmapFactory.decodeResource(getResources(), R.drawable.image_avatar))));
                     int insert = khachHangDAO.insertKhachHang(newKH);
                     if (insert == -1) {

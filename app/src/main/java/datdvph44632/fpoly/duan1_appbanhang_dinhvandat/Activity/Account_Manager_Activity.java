@@ -83,7 +83,7 @@ public class Account_Manager_Activity extends AppCompatActivity {
                         String gioiTinh = genderSpinner.getSelectedItem().toString();
 
                         KhachHang newKH = new KhachHang(khachHang.getMaKH(), ho, ten, gioiTinh, email,
-                                khachHang.getMatKhau(), queQuan, sdt, khachHang.getHaveVi(), khachHang.getAvatar());
+                                khachHang.getMatKhau(), queQuan, sdt, khachHang.getAvatar());
                         KhachHangDAO khachHangDAO = new KhachHangDAO(context);
                         khachHangDAO.updateKhachHang(newKH);
                         Date currentTime = Calendar.getInstance().getTime();

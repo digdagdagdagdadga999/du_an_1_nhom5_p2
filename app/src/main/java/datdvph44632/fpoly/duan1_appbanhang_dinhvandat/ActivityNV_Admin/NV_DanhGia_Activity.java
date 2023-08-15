@@ -20,6 +20,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.ArrayList;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.Info_QuanAo_Activity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.KhachHangDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.QuanAoDAO;
@@ -30,8 +32,6 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.QuanAo;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.QuanAoRate;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
-
-import java.util.ArrayList;
 
 public class NV_DanhGia_Activity extends AppCompatActivity {
 
@@ -163,7 +163,7 @@ public class NV_DanhGia_Activity extends AppCompatActivity {
         }
 
         KhachHang khachHang = new KhachHang("No Data", "No Data", "No Data", "No Data",
-                "0", "No Data", "No Data", "No Data", "No Data", new byte[]{});
+                "0", "No Data", "No Data", "No Data", new byte[]{});
         Log.d(TAG, "setRow: KhachHang: " + khachHang.toString());
         KhachHangDAO khachHangDAO = new KhachHangDAO(context);
         ArrayList<KhachHang> listKH = khachHangDAO.selectKhachHang(null, null, null, null);

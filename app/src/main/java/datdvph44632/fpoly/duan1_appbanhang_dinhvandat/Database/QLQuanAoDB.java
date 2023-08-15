@@ -28,7 +28,7 @@ public class QLQuanAoDB extends SQLiteOpenHelper {
         // Bảng KhachHang
         String tableKhachHang = "CREATE TABLE KhachHang( maKH INTEGER PRIMARY KEY AUTOINCREMENT, avatar BLOB," +
                 " hoKH TEXT not null, tenKH TEXT not null, gioiTinh TEXT not null, email VARCHAR(50) UNIQUE not null, matKhau TEXT not null," +
-                " queQuan TEXT, phone TEXT, haveVi TEXT)";
+                " queQuan TEXT, phone TEXT)";
 
         // Bảng LoaiQuanAo
         String tableLoaiQuanAo = "CREATE TABLE LoaiQuanAo( maLoaiQuanAo VARCHAR(15) PRIMARY KEY not null" +

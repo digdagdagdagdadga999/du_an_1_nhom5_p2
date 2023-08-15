@@ -21,6 +21,11 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.PickRole_Activity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.NhanVienDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.NhanVien;
@@ -32,10 +37,6 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentQuanLy.QL_QuanAo_F
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentQuanLy.QL_ThongKe_Fragment;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
 
 public class Main_NV_Navi_Activity extends AppCompatActivity {
 
@@ -207,15 +208,15 @@ public class Main_NV_Navi_Activity extends AppCompatActivity {
                     useToolbar("QLý Khách Hàng", 1);
                     bottomNavigationView.setVisibility(View.GONE);
                 }
-//                if (id == R.id.item_navi_drawer_nv_Voucher) {
-//                    item.setCheckable(true);
-//                    Log.d(TAG, "onNavigationItemSelected: 5 - voucher");
-//                    QL_Voucher_Fragment ql_voucher_fragment = new QL_Voucher_Fragment();
-//                    manager.beginTransaction().replace(R.id.frLayout, ql_voucher_fragment).commit();
-//                    itemNaviDr = 6;
-//                    useToolbar("QLý Voucher", 1);
-//                    bottomNavigationView.setVisibility(View.GONE);
-//                }
+                if (id == R.id.item_navi_drawer_nv_Voucher) {
+                    item.setCheckable(true);
+                    Log.d(TAG, "onNavigationItemSelected: 5 - voucher");
+                    QL_Voucher_Fragment ql_voucher_fragment = new QL_Voucher_Fragment();
+                    manager.beginTransaction().replace(R.id.frLayout, ql_voucher_fragment).commit();
+                    itemNaviDr = 6;
+                    useToolbar("QLý Voucher", 1);
+                    bottomNavigationView.setVisibility(View.GONE);
+                }
                 if (id == R.id.item_navi_drawer_nv_ThongKe) {
                     item.setCheckable(true);
                     Log.d(TAG, "onNavigationItemSelected: 6 - thống kê");

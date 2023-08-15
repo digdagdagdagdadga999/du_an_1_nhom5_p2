@@ -6,10 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Database.QLQuanAoDB;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.KhachHang;
-
-import java.util.ArrayList;
 
 public class KhachHangDAO {
     QLQuanAoDB qlQuanAoDB;
@@ -44,8 +44,8 @@ public class KhachHangDAO {
                 String matKhau = c.getString(6);
                 String queQuan = c.getString(7);
                 String phone = c.getString(8);
-                String haveVi = c.getString(9);
-                KhachHang newKH = new KhachHang(maKH, hoKH, tenKH, gioiTinh, email, matKhau, queQuan, phone, haveVi, avatar);
+//                String haveVi = c.getString(9);
+                KhachHang newKH = new KhachHang(maKH, hoKH, tenKH, gioiTinh, email, matKhau, queQuan, phone, avatar);
                 Log.d(TAG, "selectKhachHang: new KhachHang: " + newKH.toString());
 
                 listKH.add(newKH);
@@ -72,7 +72,6 @@ public class KhachHangDAO {
         values.put("matKhau", khachHang.getMatKhau());
         values.put("queQuan", khachHang.getQueQuan());
         values.put("phone", khachHang.getPhone());
-        values.put("haveVi", khachHang.getHaveVi());
         Log.d(TAG, "insertKhachHang: KhachHang: " + khachHang.toString());
         Log.d(TAG, "insertKhachHang: Values: " + values);
 
@@ -100,7 +99,7 @@ public class KhachHangDAO {
         values.put("matKhau", khachHang.getMatKhau());
         values.put("queQuan", khachHang.getQueQuan());
         values.put("phone", khachHang.getPhone());
-        values.put("haveVi", khachHang.getHaveVi());
+
         Log.d(TAG, "updateKhachHang: KhachHang: " + khachHang.toString());
         Log.d(TAG, "updateKhachHang: Values: " + values);
 
