@@ -11,11 +11,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.KhachHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.KH_Adapter.LienHe_Adapter;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
-
-import java.util.ArrayList;
 
 public class LienHe_Activity extends AppCompatActivity {
 
@@ -28,10 +28,10 @@ public class LienHe_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lien_he);
         recyclerView = findViewById(R.id.recyclerView_LienHe);
-        listAdmin.add(new KhachHang("", "codedoan.com", "Quyết", "", "codedoan.com@gmail.com", "", "", "0337574502", "", null));
-        listAdmin.add(new KhachHang("", "codedoan.com", "Quyết", "", "codedoan.com@gmail.com", "", "", "033343223", "", null));
-        listAdmin.add(new KhachHang("", "codedoan.com", "Quyết", "", "codedoan.com@gmail.com", "", "", "06767685", "", null));
-        listAdmin.add(new KhachHang("", "codedoan.com", "Quyết", "", "codedoan.com@gmail.com", "", "", "03456578", "", null));
+        listAdmin.add(new KhachHang("", "codedoan.com", "Quyết", "", "codedoan.com@gmail.com", "", "", "0337574502", null));
+        listAdmin.add(new KhachHang("", "codedoan.com", "Quyết", "", "codedoan.com@gmail.com", "", "", "033343223", null));
+        listAdmin.add(new KhachHang("", "codedoan.com", "Quyết", "", "codedoan.com@gmail.com", "", "", "06767685", null));
+        listAdmin.add(new KhachHang("", "codedoan.com", "Quyết", "", "codedoan.com@gmail.com", "", "", "03456578", null));
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         LienHe_Adapter lienHe_adapter = new LienHe_Adapter(context, listAdmin);

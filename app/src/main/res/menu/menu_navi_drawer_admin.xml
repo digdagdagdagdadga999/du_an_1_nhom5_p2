@@ -31,9 +31,9 @@
         android:id="@+id/item_navi_drawer_admin_KhachHang"
         android:title="Khách hàng" />
 
-<!--    <item-->
-<!--        android:id="@+id/item_navi_drawer_admin_Voucher"-->
-<!--        android:title="Voucher" />-->
+    <item
+        android:id="@+id/item_navi_drawer_admin_Voucher"
+        android:title="Voucher" />
 
     <item
         android:id="@+id/item_navi_drawer_admin_NhanVien"

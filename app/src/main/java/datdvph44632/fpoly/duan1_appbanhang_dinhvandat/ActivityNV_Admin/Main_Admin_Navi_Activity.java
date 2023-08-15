@@ -20,6 +20,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.PickRole_Activity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentNV_Admin.Add_Staff_Fragment;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentNV_Admin.Admin_ThongBao_Fragment;
@@ -29,8 +32,6 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentQuanLy.QL_NhanVien
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentQuanLy.QL_QuanAo_Fragment;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentQuanLy.QL_ThongKe_Fragment;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
 public class Main_Admin_Navi_Activity extends AppCompatActivity {
 
@@ -174,6 +175,15 @@ public class Main_Admin_Navi_Activity extends AppCompatActivity {
                     manager.beginTransaction().replace(R.id.frLayout, ql_khachHang_fragment).commit();
                     itemNaviDr = 5;
                     useToolbar("QLý Khách Hàng", 1);
+                    bottomNavigationView.setVisibility(View.GONE);
+                }
+                if (id == R.id.item_navi_drawer_admin_Voucher) {
+                    item.setCheckable(true);
+                    Log.d(TAG, "onNavigationItemSelected: 5 - voucher");
+                    QL_Voucher_Fragment ql_voucher_fragment = new QL_Voucher_Fragment();
+                    manager.beginTransaction().replace(R.id.frLayout, ql_voucher_fragment).commit();
+                    itemNaviDr = 6;
+                    useToolbar("QLý Voucher", 0);
                     bottomNavigationView.setVisibility(View.GONE);
                 }
                 if (id == R.id.item_navi_drawer_kh_DH_Damua) {

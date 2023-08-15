@@ -108,21 +108,21 @@ public class QL_KhachHang_Loader extends AsyncTask<String, Void, ArrayList<Khach
         ViTienDAO viTienDAO = new ViTienDAO(context);
 
         KhachHang kh0 = new KhachHang("1", "Nguyễn", "Chí Thanh", "Nam", "thanh@gmail.com",
-                "123", "Thanh Hóa", "003071962", "true",
+                "123", "Thanh Hóa", "003071962",
                 changeType.checkByteInput(changeType.bitmapToByte(BitmapFactory.decodeResource(context.getResources(), R.drawable.tom_cruise))));
         khachHangDAO.insertKhachHang(kh0);
         ViTien vi1 = new ViTien("1", "1", changeType.stringToStringMoney("62000000"), "MBBank");
         viTienDAO.insertViTien(vi1);
 
         KhachHang kh3 = new KhachHang("2", "Nguyễn", "Văn Tuấn", "Nam", "tuan@gmail.com",
-                "123", "Việt Nam", "05071994", "true",
+                "123", "Việt Nam", "05071994",
                 changeType.checkByteInput(changeType.bitmapToByte(BitmapFactory.decodeResource(context.getResources(), R.drawable.son_tung))));
         khachHangDAO.insertKhachHang(kh3);
         ViTien vi4 = new ViTien("2", "2", changeType.stringToStringMoney("94000000"), "MBBank");
         viTienDAO.insertViTien(vi4);
 
         KhachHang kh4 = new KhachHang("3", "Nguyễn", "Đức Hậu", "Nam", "hau@gmail.com",
-                "123", "Việt Nam", "021081976", "false",
+                "123", "Việt Nam", "021081976",
                 changeType.checkByteInput(changeType.bitmapToByte(BitmapFactory.decodeResource(context.getResources(), R.drawable.xuan_bac))));
         khachHangDAO.insertKhachHang(kh4);
     }

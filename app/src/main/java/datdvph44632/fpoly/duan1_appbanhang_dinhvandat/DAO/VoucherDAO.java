@@ -7,14 +7,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Database.QLQuanAoDB;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.Voucher;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
 
-import java.util.ArrayList;
-
 public class VoucherDAO {
-    QLQuanAoDB qlQuanAoDB;
+    QLQuanAoDB qlLaptopDB;
     SQLiteDatabase db;
     Context context;
     String TAG = "VoucherDAO_____";
@@ -22,14 +22,14 @@ public class VoucherDAO {
 
     public VoucherDAO(Context context) {
         this.context = context;
-        qlQuanAoDB = new QLQuanAoDB(context);
-        db = qlQuanAoDB.getWritableDatabase();
+        qlLaptopDB = new QLQuanAoDB(context);
+        db = qlLaptopDB.getWritableDatabase();
     }
 
     public ArrayList selectVoucher(String[] columns, String selection, String[] selectionArgs, String orderBy) {
         ArrayList<Voucher> listVou = new ArrayList<>();
-        qlQuanAoDB = new QLQuanAoDB(context);
-        db = qlQuanAoDB.getWritableDatabase();
+        qlLaptopDB = new QLQuanAoDB(context);
+        db = qlLaptopDB.getWritableDatabase();
         Cursor c = db.query("Voucher", columns, selection, selectionArgs, null, null, orderBy);
         Log.d(TAG, "selectVoucher: Cursor: " + c.toString());
 
@@ -59,8 +59,8 @@ public class VoucherDAO {
     }
 
     public int insertVoucher(Voucher voucher) {
-        qlQuanAoDB = new QLQuanAoDB(context);
-        db = qlQuanAoDB.getWritableDatabase();
+        qlLaptopDB = new QLQuanAoDB(context);
+        db = qlLaptopDB.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("tenVoucher", voucher.getTenVoucher());
         values.put("giamGia", voucher.getGiamGia());
@@ -81,8 +81,8 @@ public class VoucherDAO {
     }
 
     public void updateVoucher(Voucher voucher) {
-        qlQuanAoDB = new QLQuanAoDB(context);
-        db = qlQuanAoDB.getWritableDatabase();
+        qlLaptopDB = new QLQuanAoDB(context);
+        db = qlLaptopDB.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("maVoucher", voucher.getMaVoucher());
         values.put("tenVoucher", voucher.getTenVoucher());
@@ -102,8 +102,8 @@ public class VoucherDAO {
     }
 
     public void deleteVoucher(Voucher voucher){
-        qlQuanAoDB = new QLQuanAoDB(context);
-        db = qlQuanAoDB.getWritableDatabase();
+        qlLaptopDB = new QLQuanAoDB(context);
+        db = qlLaptopDB.getWritableDatabase();
         Log.d(TAG, "deleteVoucher: Voucher: " + voucher.toString());
 
         long ketqua = db.delete("Voucher", "maVoucher=?", new String[]{String.valueOf(voucher.getMaVoucher())});

@@ -219,7 +219,7 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
         DonHang donHang = listDon.get(pos);
         QuanAo quanAo = new QuanAo("No Data", "No Data", "No Data", "0", 0, 0, new byte[]{});
         KhachHang khachHang = new KhachHang("No Data", "No Data", "No Data", "No Data", "No Data", "No Data", "No Data",
-                "No Data", "No Data", new byte[]{});
+                "No Data", new byte[]{});
         Log.d(TAG, "setRow: DonHang: " + donHang.toString());
 
         for (int i = 0; i < listquanAo.size(); i++) {

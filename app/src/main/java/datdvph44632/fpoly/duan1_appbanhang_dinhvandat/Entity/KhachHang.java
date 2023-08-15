@@ -11,10 +11,10 @@ public class KhachHang extends Binder {
     private String matKhau;
     private String queQuan;
     private String phone;
-    private String haveVi;
+
     private byte[] avatar;
 
-    public KhachHang(String maKH, String hoKH, String tenKH, String gioiTinh, String email, String matKhau, String queQuan, String phone, String haveVi, byte[] avatar) {
+    public KhachHang(String maKH, String hoKH, String tenKH, String gioiTinh, String email, String matKhau, String queQuan, String phone, byte[] avatar) {
         this.maKH = maKH;
         this.hoKH = hoKH;
         this.tenKH = tenKH;
@@ -23,7 +23,7 @@ public class KhachHang extends Binder {
         this.matKhau = matKhau;
         this.queQuan = queQuan;
         this.phone = phone;
-        this.haveVi = haveVi;
+
         this.avatar = avatar;
     }
 
@@ -91,13 +91,7 @@ public class KhachHang extends Binder {
         this.phone = phone;
     }
 
-    public String getHaveVi() {
-        return haveVi;
-    }
 
-    public void setHaveVi(String haveVi) {
-        this.haveVi = haveVi;
-    }
 
     public byte[] getAvatar() {
         return avatar;
@@ -118,7 +112,6 @@ public class KhachHang extends Binder {
                 ", matKhau = '" + matKhau + '\'' +
                 ", queQuan = '" + queQuan + '\'' +
                 ", phone = '" + phone + '\'' +
-                ", haveVi = '" + haveVi + '\'' +
                 ", avatar = " +  avatar +
                 '}';
     }

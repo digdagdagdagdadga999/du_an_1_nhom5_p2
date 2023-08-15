@@ -30,16 +30,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.Account_Manager_Activity;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.PickRole_Activity;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityKH.KH_Delete_Activity;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityKH.KH_DonHang_Activity;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.KhachHangDAO;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.ThongBaoDAO;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.KhachHang;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.ThongBao;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -51,6 +41,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.Account_Manager_Activity;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.PickRole_Activity;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityKH.KH_Delete_Activity;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityKH.KH_DonHang_Activity;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.KhachHangDAO;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.ThongBaoDAO;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.KhachHang;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.ThongBao;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
 
 public class KH_Account_Fragment extends Fragment {
 
@@ -230,7 +231,7 @@ public class KH_Account_Fragment extends Fragment {
                     KhachHangDAO khachHangDAO = new KhachHangDAO(getContext());
                     int check = khachHangDAO.updateKhachHang(new KhachHang(khachHang.getMaKH(), khachHang.getHoKH(),
                             khachHang.getTenKH(), khachHang.getGioiTinh(), khachHang.getEmail(), newPass,
-                            khachHang.getQueQuan(), khachHang.getPhone(), khachHang.getHaveVi(), khachHang.getAvatar()));
+                            khachHang.getQueQuan(), khachHang.getPhone(), khachHang.getAvatar()));
                     if (check == 1) {
                         clearDialogChangePass(view, dialog);
                         Toast.makeText(getContext(), "Thay đổi mật khẩu thành công!", Toast.LENGTH_SHORT).show();
@@ -380,7 +381,7 @@ public class KH_Account_Fragment extends Fragment {
                     KhachHangDAO khachHangDAO = new KhachHangDAO(getContext());
                     khachHangDAO.updateKhachHang(new KhachHang(khachHang.getMaKH(), khachHang.getHoKH(),
                             khachHang.getTenKH(), khachHang.getGioiTinh(), khachHang.getEmail(), khachHang.getMatKhau(),
-                            khachHang.getQueQuan(), khachHang.getPhone(), khachHang.getHaveVi(),
+                            khachHang.getQueQuan(), khachHang.getPhone(),
                             changeType.checkByteInput(changeType.bitmapToByte(bitmap))));
 
                     Date currentTime = Calendar.getInstance().getTime();

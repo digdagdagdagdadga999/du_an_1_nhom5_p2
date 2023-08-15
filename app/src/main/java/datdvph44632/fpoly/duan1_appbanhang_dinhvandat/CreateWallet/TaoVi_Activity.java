@@ -13,6 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityKH.KH_ViTien_Activity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.KhachHangDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.ThongBaoDAO;
@@ -23,11 +28,6 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.ViTien;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.PagerAdapter.TaoVi_PagerAdapter;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class TaoVi_Activity extends AppCompatActivity {
 
@@ -102,8 +102,7 @@ public class TaoVi_Activity extends AppCompatActivity {
                     if (khachHang != null){
                         khachHangDAO.updateKhachHang(new KhachHang(khachHang.getMaKH(), khachHang.getHoKH(),
                                 khachHang.getTenKH(), khachHang.getGioiTinh(), khachHang.getEmail(),
-                                khachHang.getMatKhau(), khachHang.getQueQuan(), khachHang.getPhone(),
-                                "true", khachHang.getAvatar()));
+                                khachHang.getMatKhau(), khachHang.getQueQuan(), khachHang.getPhone(), khachHang.getAvatar()));
                         viTienDAO.insertViTien(new ViTien(khachHang.getMaKH(), khachHang.getMaKH(),
                                 changeType.stringToStringMoney("0"), "null"));
 

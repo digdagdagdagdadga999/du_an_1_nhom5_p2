@@ -27,15 +27,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.ArrayList;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.KhachHangDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.KhachHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.NAV_Adapter.QL_KhachHang_Adapter;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.NVA_Loader.QL_KhachHang_Loader;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.ArrayList;
 
 public class QL_KhachHang_Fragment extends Fragment {
 
@@ -187,7 +188,7 @@ public class QL_KhachHang_Fragment extends Fragment {
                 byte[] avatar = changeType.checkByteInput(changeType.bitmapToByte(bitmap));
                 if (getTextInput() == 1) {
                     KhachHang khachHang = new KhachHang("KH", lastName, firstName, gioiTinh,
-                            email, password, "No Data", sdt, "false", avatar);
+                            email, password, "No Data", sdt, avatar);
                     khachHangDAO.insertKhachHang(khachHang);
                     dialog.cancel();
                     QL_KhachHang_Loader qlKhachHangLoader = new QL_KhachHang_Loader(getContext(), recyclerView, countKH, linearLayout, linearKhachHangEmpty, relativeLayout);
