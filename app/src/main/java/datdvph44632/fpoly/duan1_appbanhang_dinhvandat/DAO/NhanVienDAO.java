@@ -6,10 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Database.QLQuanAoDB;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.NhanVien;
-
-import java.util.ArrayList;
 
 public class NhanVienDAO {
     QLQuanAoDB qlQuanAoDB;
@@ -23,13 +23,20 @@ public class NhanVienDAO {
         db = qlQuanAoDB.getWritableDatabase();
     }
 
+    //columns: Một mảng chuỗi (String[]) đại diện cho các cột mà bạn muốn truy vấn trong bảng "NhanVien".
+    //selection: Một chuỗi (String) đại diện cho điều kiện truy vấn.
+    //selectionArgs: Một mảng chuỗi (String[]) chứa các đối số cho câu lệnh truy vấn.
+    //orderBy: Một chuỗi (String) đại diện cho cách sắp xếp kết quả truy vấn.
     public ArrayList selectNhanVien(String[] columns, String selection, String[] selectionArgs, String orderBy) {
         ArrayList<NhanVien> listNV = new ArrayList<>();
         qlQuanAoDB = new QLQuanAoDB(context);
         db = qlQuanAoDB.getWritableDatabase();
+        //Thực hiện truy vấn SELECT trên bảng "NhanVien" với các tham số
+        // truyền vào như columns, selection, selectionArgs và orderBy. Kết quả truy vấn được trả về dưới dạng một đối tượng Cursor.
         Cursor c = db.query("NhanVien", columns, selection, selectionArgs, null, null, orderBy);
         Log.d(TAG, "selectNhanVien: Cursor: " + c.toString());
 
+        //Kiểm tra xem đối tượng Cursor có dữ liệu không.
         if (c.getCount() > 0) {
             Log.d(TAG, "selectNhanVien: Cursor not null");
             c.moveToFirst();
@@ -63,10 +70,12 @@ public class NhanVienDAO {
                 listNV.add(newNV);
                 c.moveToNext();
             }
+            //Đóng đối tượng Cursor sau khi hoàn thành việc sử dụng.
             c.close();
         } else {
             Log.d(TAG, "selectNhanVien: Cursor null");
         }
+        //Đóng đối tượng cơ sở dữ liệu sau khi hoàn thành việc sử dụng.
         db.close();
 
         return listNV;

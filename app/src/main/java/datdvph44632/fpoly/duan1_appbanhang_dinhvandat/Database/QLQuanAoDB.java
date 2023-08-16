@@ -20,7 +20,7 @@ public class QLQuanAoDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d(TAG, "onCreate: DB: " + DB_Name);
-        // Bảng NhanVien
+        // Bảng NhanVien (BLOB lưu trữ dữ liệu hình ảnh của nhân viên, UNIQUE phải là duy nhất trong bảng)
         String tableNhanVien = "CREATE TABLE NhanVien( maNV INTEGER PRIMARY KEY AUTOINCREMENT, avatar BLOB," +
                 " hoNV TEXT not null, tenNV TEXT not null, gioiTinh TEXT not null, email VARCHAR(50) UNIQUE not null, matKhau TEXT not null," +
                 " queQuan TEXT, phone TEXT, doanhSo INT, soSP INT, roleNV TEXT)";
@@ -38,7 +38,7 @@ public class QLQuanAoDB extends SQLiteOpenHelper {
         String tableVoucher = "CREATE TABLE Voucher( maVoucher INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " tenVoucher TEXT not null, giamGia TEXT not null, ngayBD DATE, ngayKT DATE)";
 
-        // Bảng Voucher
+        // Bảng UseVoucher(isUsed là lưu trữ trạng thái voucher đã được sử dụng hay chưa)
         String tableUseVoucher = "CREATE TABLE UseVoucher( maUse INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " maVoucher INTEGER not null, maKH INTEGER not null, isUsed TEXT," +
                 " FOREIGN KEY(maKH) REFERENCES KhachHang (maKH), FOREIGN KEY(maVoucher) REFERENCES Voucher (maVoucher))";

@@ -65,7 +65,7 @@ public class QL_QuanAo_Adapter extends RecyclerView.Adapter<QL_QuanAo_Adapter.Au
         quanAoDAO = new QuanAoDAO(context);
         getData = new GetData(context);
         posPage = 0;
-        list8QuanAo = getData.get8Laptop(listquanAo, posPage);
+        list8QuanAo = getData.getQuanAo(listquanAo, posPage);
     }
 
     @NonNull
@@ -117,7 +117,7 @@ public class QL_QuanAo_Adapter extends RecyclerView.Adapter<QL_QuanAo_Adapter.Au
                 if (quanAo != null) {
                     final Bundle bundle = new Bundle();
                     bundle.putBinder("laptop", quanAo);
-                    Log.d(TAG, "onBindViewHolder: Laptop: " + quanAo.toString());
+                    Log.d(TAG, "onBindViewHolder: Quanao: " + quanAo.toString());
                     intent.putExtras(bundle);
                     intent.putExtra("openFrom", "other");
                     context.startActivity(intent);
@@ -180,7 +180,7 @@ public class QL_QuanAo_Adapter extends RecyclerView.Adapter<QL_QuanAo_Adapter.Au
         Log.d(TAG, "setRow: " + pos);
         QuanAo quanAo = list8QuanAo.get(pos);
         HangQuanAo hangQuanAo = new HangQuanAo("No Data", "No Data", new byte[]{});
-        Log.d(TAG, "setRow: Laptop: " + quanAo.toString());
+        Log.d(TAG, "setRow: quanao: " + quanAo.toString());
 
 
         for (int i = 0; i < listHang.size(); i++) {
@@ -236,7 +236,7 @@ public class QL_QuanAo_Adapter extends RecyclerView.Adapter<QL_QuanAo_Adapter.Au
                     if (posPage > 0) {
                         posPage--;
                         Log.d(TAG, "onClick: posPage = " + posPage);
-                        list8QuanAo = getData.get8Laptop(listquanAo, posPage);
+                        list8QuanAo = getData.getQuanAo(listquanAo, posPage);
                         tvPrev.setVisibility(View.VISIBLE);
                         tvNext.setVisibility(View.VISIBLE);
                         notifyDataSetChanged();
@@ -251,7 +251,7 @@ public class QL_QuanAo_Adapter extends RecyclerView.Adapter<QL_QuanAo_Adapter.Au
                     if (posPage < maxPage) {
                         posPage++;
                         Log.d(TAG, "onClick: posPage = " + posPage);
-                        list8QuanAo = getData.get8Laptop(listquanAo, posPage);
+                        list8QuanAo = getData.getQuanAo(listquanAo, posPage);
                         tvPrev.setVisibility(View.VISIBLE);
                         tvNext.setVisibility(View.VISIBLE);
                         notifyDataSetChanged();
@@ -352,36 +352,7 @@ public class QL_QuanAo_Adapter extends RecyclerView.Adapter<QL_QuanAo_Adapter.Au
         textInput_GiaTien.getEditText().setText(quanAo.getGiaTien());
         textInput_SoLuong.getEditText().setText(String.valueOf(quanAo.getSoLuong()));
 
-//        if (quanAo.getMaHangQuanAo().equals("LDell")) {
-//            hangLapSpinner.setSelection(0);
-//        }
-//        if (quanAo.getMaHangQuanAo().equals("LHP")) {
-//            hangLapSpinner.setSelection(1);
-//        }
-//        if (quanAo.getMaHangQuanAo().equals("LAsus")) {
-//            hangLapSpinner.setSelection(2);
-//        }
-//        if (quanAo.getMaHangQuanAo().equals("LAcer")) {
-//            hangLapSpinner.setSelection(3);
-//        }
-//        if (quanAo.getMaHangQuanAo().equals("LMSi")) {
-//            hangLapSpinner.setSelection(4);
-//        }
-//        if (quanAo.getMaHangQuanAo().equals("LMacBook")) {
-//            hangLapSpinner.setSelection(5);
-//        }
-//        if (quanAo.getThongSoKT().equals("RAM 4GB")) {
-//            ramSpinner.setSelection(0);
-//        }
-//        if (quanAo.getThongSoKT().equals("RAM 8GB")) {
-//            ramSpinner.setSelection(1);
-//        }
-//        if (quanAo.getThongSoKT().equals("RAM 16GB")) {
-//            ramSpinner.setSelection(2);
-//        }
-//        if (quanAo.getThongSoKT().equals("RAM 32GB")) {
-//            ramSpinner.setSelection(3);
-//        }
+
     }
 
     public int getPosLap() {

@@ -57,6 +57,7 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
 
     Context context;
     TextInputLayout tilDate, tilNV, tilKH, tilDC, tilLap, tilSL, tilVou, tilTT;
+
     Spinner hangLapSpinner;
     AppCompatButton addDHButton;
     int posDH;
@@ -76,7 +77,7 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
     GetData getData;
     TextView countDH;
     ChangeType changeType = new ChangeType();
-    String TAG = "QL_DonHang_Adapter_____", hangLap;
+    String TAG = "QL_DonHang_Adapter_____", LoaiQuanAo;
 
     public QL_DonHang_Adapter(ArrayList<QuanAo> listquanAo, ArrayList<DonHang> listDon, ArrayList<KhachHang> listKH, Context context, TextView countDH) {
         this.listquanAo = listquanAo;
@@ -160,15 +161,27 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
     }
 
     public class AuthorViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
-        TextView tenKH, tenLaptop, phone, money, date;
+        TextView tenKH, tenquanao, phone, money, date;
+//        ImageView imgquanao, imgTrangThai;
+//        TextView name, gia, soLuong, trangThai, tienDo, hint;
+
+
 
         public AuthorViewHolder(@NonNull View itemView) {
             super(itemView);
             tenKH = itemView.findViewById(R.id.textView_TenKH);
-            tenLaptop = itemView.findViewById(R.id.textView_TenQuanAo);
+            tenquanao = itemView.findViewById(R.id.textView_TenQuanAo);
             phone = itemView.findViewById(R.id.textView_SDT);
             money = itemView.findViewById(R.id.textView_Soluong);
             date = itemView.findViewById(R.id.textView_Date);
+//            imgquanao = itemView.findViewById(R.id.imageView_QuanAo);
+//            imgTrangThai = itemView.findViewById(R.id.imageView_TrangThai);
+//            name = itemView.findViewById(R.id.textView_TenQuanAo);
+//            gia = itemView.findViewById(R.id.textView_GiaTien);
+//            soLuong = itemView.findViewById(R.id.textView_Soluong);
+//            trangThai = itemView.findViewById(R.id.textView_TrangThai);
+//            tienDo = itemView.findViewById(R.id.textView_TienDo);
+//            hint = itemView.findViewById(R.id.textView_Hint);
         }
 
         @Override
@@ -235,15 +248,16 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
                 khachHang = getKH;
             }
         }
-
+//        setDonHangDanhGia(author, donHang);
         countDH.setText(String.valueOf(listDon.size()));
         author.tenKH.setText(changeType.fullNameKhachHang(khachHang));
-        author.tenLaptop.setText(quanAo.getTenQuanAo());
+        author.tenquanao.setText(quanAo.getTenQuanAo());
         author.phone.setText(khachHang.getPhone());
         author.money.setText(donHang.getThanhTien());
         author.date.setText(donHang.getNgayMua());
         return donHang;
     }
+
 
     private void openDialogUpdate(DonHang donHang) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -334,33 +348,33 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
             tilKH.getEditText().setText(changeType.fullNameKhachHang(kh));
         }
 
-        ArrayList<QuanAo> listLap = quanAoDAO.selectQuanAo(null, "maLaptop=?", new String[]{donHang.getMaQuanAo()}, null);
+        ArrayList<QuanAo> listLap = quanAoDAO.selectQuanAo(null, "maQuanAo=?", new String[]{donHang.getMaQuanAo()}, null);
         if (listLap.size() > 0) {
             QuanAo lap = listLap.get(0);
             tilLap.getEditText().setText(lap.getTenQuanAo());
-            if (lap.getMaHangQuanAo().equals("LDell")) {
+            if (lap.getMaHangQuanAo().equals("LAoKaki")) {
                 hangLapSpinner.setSelection(0);
-                hangLap = "Dell";
+                LoaiQuanAo = "AoKaki";
             }
-            if (lap.getMaHangQuanAo().equals("LHP")) {
+            if (lap.getMaHangQuanAo().equals("LAoThun")) {
                 hangLapSpinner.setSelection(1);
-                hangLap = "HP";
+                LoaiQuanAo = "AoThun";
             }
-            if (lap.getMaHangQuanAo().equals("LAsus")) {
+            if (lap.getMaHangQuanAo().equals("LAoHoodie")) {
                 hangLapSpinner.setSelection(2);
-                hangLap = "Asus";
+                LoaiQuanAo = "AoHoodie";
             }
-            if (lap.getMaHangQuanAo().equals("LAcer")) {
+            if (lap.getMaHangQuanAo().equals("LAoGio")) {
                 hangLapSpinner.setSelection(3);
-                hangLap = "Acer";
+                LoaiQuanAo = "AoGio";
             }
-            if (lap.getMaHangQuanAo().equals("LMSi")) {
+            if (lap.getMaHangQuanAo().equals("LQuanBo")) {
                 hangLapSpinner.setSelection(4);
-                hangLap = "MSi";
+                LoaiQuanAo = "QuanBo";
             }
-            if (lap.getMaHangQuanAo().equals("LMacBook")) {
+            if (lap.getMaHangQuanAo().equals("LQuanVai")) {
                 hangLapSpinner.setSelection(5);
-                hangLap = "MacBook";
+                LoaiQuanAo = "QuanVai";
             }
         }
 
@@ -466,7 +480,7 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
         hangLapSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                hangLap = hangLapSpinner.getSelectedItem().toString();
+                LoaiQuanAo = hangLapSpinner.getSelectedItem().toString();
 
             }
 
@@ -479,10 +493,10 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
         tilLap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (hangLap != null) {
-                    title.setText("Danh sách Laptop " + hangLap);
+                if (LoaiQuanAo != null) {
+                    title.setText("Danh sách quan ao " + LoaiQuanAo);
                     dialog.show();
-                    ArrayList<QuanAo> list = quanAoDAO.selectQuanAo(null, "maHangLap=?", new String[]{"L" + hangLap}, null);
+                    ArrayList<QuanAo> list = quanAoDAO.selectQuanAo(null, "maHangLap=?", new String[]{"L" + LoaiQuanAo}, null);
                     DH_Manager_Adapter adapter2 = new DH_Manager_Adapter(list, null, null, null);
                     listView.setAdapter(adapter2);
 
@@ -502,10 +516,10 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
         tilLap.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (hangLap != null) {
-                    title.setText("Danh sách Laptop " + hangLap);
+                if (LoaiQuanAo != null) {
+                    title.setText("Danh sách quan ao " + LoaiQuanAo);
                     dialog.show();
-                    ArrayList<QuanAo> list = quanAoDAO.selectQuanAo(null, "maHangLap=?", new String[]{"L" + hangLap}, null);
+                    ArrayList<QuanAo> list = quanAoDAO.selectQuanAo(null, "maHangLap=?", new String[]{"L" + LoaiQuanAo}, null);
                     DH_Manager_Adapter adapter2 = new DH_Manager_Adapter(list, null, null, null);
                     listView.setAdapter(adapter2);
 
@@ -584,10 +598,10 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
 
         String dc = tilDC.getEditText().getText().toString();
         String tt = tilTT.getEditText().getText().toString();
-        String lap = "", kh = "", nv = "", vou = "";
+        String quaao = "", kh = "", nv = "", vou = "";
         int sl;
         if (quanAo != null) {
-            lap = quanAo.getTenQuanAo();
+            quaao = quanAo.getTenQuanAo();
         }
         if (khachHang != null) {
             kh = changeType.fullNameKhachHang(khachHang);
@@ -624,9 +638,9 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
             tilDC.setError("");
         }
 
-        if (lap.equals("")) {
+        if (quaao.equals("")) {
             tilLap.setErrorEnabled(true);
-            tilLap.setError("Laptop không được bỏ trống!");
+            tilLap.setError("quan ao không được bỏ trống!");
             return null;
         } else {
             tilLap.setErrorEnabled(false);
@@ -646,7 +660,7 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
 
         if (sl == 0) {
             tilSL.setErrorEnabled(true);
-            tilSL.setError("Số lượng laptop phải lớn hơn 0");
+            tilSL.setError("Số lượng quan ao phải lớn hơn 0");
             return null;
         } else {
             tilSL.setErrorEnabled(false);
@@ -656,7 +670,7 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
         if (quanAo != null) {
             if (sl > quanAo.getSoLuong()) {
                 tilSL.setErrorEnabled(true);
-                tilSL.setError("Số lượng laptop còn lại: " + quanAo.getSoLuong());
+                tilSL.setError("Số lượng quan ao còn lại: " + quanAo.getSoLuong());
                 return null;
             } else {
                 tilSL.setErrorEnabled(false);
@@ -705,12 +719,12 @@ public class QL_DonHang_Adapter extends RecyclerView.Adapter<QL_DonHang_Adapter.
         if (quanAo != null) {
             ThongBao thongBaoKH = new ThongBao("TB", donHang.getMaKH(), "Đơn hàng đã được xác nhận",
                     " Đơn hàng " + quanAo.getTenQuanAo() + " đã bị Admin xóa\n Chúng tôi rất tiếc về trường hợp này." +
-                            " Bạn hãy đặt lại Laptop hoặc đổi sang Laptop khác nhé", getData.getNowDateSQL());
+                            " Bạn hãy đặt lại Laptop hoặc đổi sang quần áo khác nhé", getData.getNowDateSQL());
             thongBaoDAO.insertThongBao(thongBaoKH, "kh");
         } else {
             ThongBao thongBaoKH = new ThongBao("TB", donHang.getMaKH(), "Đơn hàng đã được xác nhận",
                     " Đơn hàng No data" + " đã bị Admin xóa\n Chúng tôi rất tiếc về trường hợp này." +
-                            " Bạn hãy đặt lại Laptop hoặc đổi sang Laptop khác nhé", getData.getNowDateSQL());
+                            " Bạn hãy đặt lại quần áo hoặc đổi sang quần áo khác nhé", getData.getNowDateSQL());
             thongBaoDAO.insertThongBao(thongBaoKH, "kh");
         }
     }

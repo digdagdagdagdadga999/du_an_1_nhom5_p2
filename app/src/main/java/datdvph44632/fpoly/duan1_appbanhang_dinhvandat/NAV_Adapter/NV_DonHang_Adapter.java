@@ -23,12 +23,16 @@ import java.util.ArrayList;
 
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.ChiTiet_DonHang_Activity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityNV_Admin.NV_DanhGia_Activity;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.DonHangDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.QuanAoRateDAO;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.ThongBaoDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.DonHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.QuanAo;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.QuanAoRate;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.ThongBao;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.GetData;
 
 public class NV_DonHang_Adapter extends RecyclerView.Adapter<NV_DonHang_Adapter.AuthorViewHolder> {
 
@@ -38,12 +42,15 @@ public class NV_DonHang_Adapter extends RecyclerView.Adapter<NV_DonHang_Adapter.
     QuanAoRateDAO quanAoRateDAO;
     ChangeType changeType = new ChangeType();
     String TAG = "NV_DonHang_Adapter_____";
+    QuanAo getQuanAo;
+    DonHangDAO donHangDAO;
 
     public NV_DonHang_Adapter(ArrayList<QuanAo> listquanAo, ArrayList<DonHang> listDon, Context context) {
         this.listquanAo = listquanAo;
         this.listDon = listDon;
         this.context = context;
         quanAoRateDAO = new QuanAoRateDAO(context);
+        donHangDAO = new DonHangDAO(context);
     }
 
     @NonNull
@@ -57,21 +64,7 @@ public class NV_DonHang_Adapter extends RecyclerView.Adapter<NV_DonHang_Adapter.
     public void onBindViewHolder(@NonNull AuthorViewHolder author, @SuppressLint("RecyclerView") final int pos) {
         DonHang donHang = setRow(pos, author);
 
-        author.danhGia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (donHang != null) {
-                    Intent intent = new Intent(context, NV_DanhGia_Activity.class);
-                    final Bundle bundle = new Bundle();
-                    bundle.putBinder("donhang", donHang);
-                    Log.d(TAG, "onBindViewHolder: DonHang: " + donHang.toString());
-                    intent.putExtras(bundle);
-                    context.startActivity(intent);
-                } else {
-                    Toast.makeText(context, "Load thông tin sản phẩm lỗi!\nXin vui lòng thử lại sau!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//
 
         author.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,9 +116,9 @@ public class NV_DonHang_Adapter extends RecyclerView.Adapter<NV_DonHang_Adapter.
         Log.d(TAG, "setRow: DonHang: " + donHang.toString());
 
         for (int i = 0; i < listquanAo.size(); i++) {
-            QuanAo getLap = listquanAo.get(i);
-            if (donHang.getMaQuanAo().equals(getLap.getMaQuanAo())) {
-                quanAo = getLap;
+            QuanAo getQuanAo = listquanAo.get(i);
+            if (donHang.getMaQuanAo().equals(getQuanAo.getMaQuanAo())) {
+                quanAo = getQuanAo;
             }
         }
 
@@ -142,18 +135,61 @@ public class NV_DonHang_Adapter extends RecyclerView.Adapter<NV_DonHang_Adapter.
     }
 
     private void setDonHangDanhGia(@NonNull AuthorViewHolder author, DonHang donHang) {
+        ThongBaoDAO thongBaoDAO = new ThongBaoDAO(context);
+        GetData getData = new GetData(context);
         if (donHang.getTrangThai().equals("Hoàn thành")) {
             author.tienDo.setText("Hoàn thành");
             author.imgTrangThai.setImageResource(R.drawable.check_icon);
             author.imgTrangThai.setColorFilter(Color.parseColor("#4CAF50"));
             author.trangThai.setText("Đơn hàng giao thành công");
             author.trangThai.setTextColor(Color.parseColor("#C93852B0"));
+            author.danhGia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (donHang != null) {
+                        Intent intent = new Intent(context, NV_DanhGia_Activity.class);
+                        final Bundle bundle = new Bundle();
+                        bundle.putBinder("donhang", donHang);
+                        Log.d(TAG, "onBindViewHolder: DonHang: " + donHang.toString());
+                        intent.putExtras(bundle);
+                        context.startActivity(intent);
+                    } else {
+                        Toast.makeText(context, "Load thông tin sản phẩm lỗi!\nXin vui lòng thử lại sau!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         } else {
             author.tienDo.setText("Đang giao hàng");
             author.imgTrangThai.setImageResource(R.drawable.icon_delivery_dining);
             author.imgTrangThai.setColorFilter(Color.parseColor("#FF9800"));
             author.trangThai.setText("Đơn hàng đang được giao");
             author.trangThai.setTextColor(Color.parseColor("#FF9800"));
+            author.danhGia.setText("Xác nhận đơn hàng");
+            author.danhGia.setEnabled(true);
+            author.danhGia.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    donHang.setTrangThai("Hoàn thành");
+                    int check = donHangDAO.updateDonHang(donHang);
+                    if (check == 1) {
+                        Toast.makeText(context, "Xác nhận nhận hàng thành công", Toast.LENGTH_SHORT).show();
+                        if (getQuanAo != null) {
+                            ThongBao thongBaoKH = new ThongBao("TB", donHang.getMaKH(), "Quản lý đơn hàng",
+                                    " Đơn hàng " + getQuanAo.getTenQuanAo() + "đã được bạn xác nhận nhận hàng\n " +
+                                            "Hãy đánh giá sớm để chúng tôi biết suy nghĩ của bạn vể sản phẩm của chúng tôi nhé", getData.getNowDateSQL());
+                            thongBaoDAO.insertThongBao(thongBaoKH, "kh");
+                        } else {
+                            ThongBao thongBaoKH = new ThongBao("TB", donHang.getMaKH(), "Quản lý đơn hàng",
+                                    " Đơn hàng Nota" + "đã được bạn xác nhận nhận hàng\n " +
+                                            "Hãy đánh giá sớm để chúng tôi biết suy nghĩ của bạn vể sản phẩm của chúng tôi nhé", getData.getNowDateSQL());
+                            thongBaoDAO.insertThongBao(thongBaoKH, "kh");
+                        }
+                    } else {
+                        Toast.makeText(context, "Xác nhận nhận hàng thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                    notifyDataSetChanged();
+                }
+            });
         }
 
         if (donHang.getIsDanhGia().equals("false")) {
@@ -165,7 +201,7 @@ public class NV_DonHang_Adapter extends RecyclerView.Adapter<NV_DonHang_Adapter.
             if (list.size() > 0) {
                 Log.d(TAG, "setLayout: yo");
                 quanAoRate = list.get(0);
-                Log.d(TAG, "setLayout: Laptop rate: " + quanAoRate.toString());
+                Log.d(TAG, "setLayout: quan ao rate: " + quanAoRate.toString());
             }
             if (quanAoRate != null) {
                 author.ratingBar.setRating(changeType.getRatingFloat(quanAoRate.getRating()));

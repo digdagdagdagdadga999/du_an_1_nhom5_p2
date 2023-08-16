@@ -321,23 +321,23 @@ public class KH_Account_Fragment extends Fragment {
         dialog.setContentView(dialogV);
         dialog.show();
 
-        Button camera = dialogV.findViewById(R.id.openCamera);
+//        Button camera = dialogV.findViewById(R.id.openCamera);
         Button gallery = dialogV.findViewById(R.id.openGallery);
 
-        camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getContext().checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                    Log.d(TAG, "cameraOnClick: Đã cấp quyền chụp ảnh");
-                    openCamera();
-                    dialog.cancel();
-                } else {
-                    Log.d(TAG, "cameraOnClick: Chưa cấp quyền chụp ảnh");
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, REQUEST_CODE);
-                    Toast.makeText(getContext(), "Cần cấp quyền để thực hiện", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+//        camera.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (getContext().checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+//                    Log.d(TAG, "cameraOnClick: Đã cấp quyền chụp ảnh");
+//                    openCamera();
+//                    dialog.cancel();
+//                } else {
+//                    Log.d(TAG, "cameraOnClick: Chưa cấp quyền chụp ảnh");
+//                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, REQUEST_CODE);
+//                    Toast.makeText(getContext(), "Cần cấp quyền để thực hiện", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
 
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -55,11 +55,13 @@ public class Add_Staff_Fragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // xóa khoảng trắng không cần thiết bằng hàm changeType.deleteSpaceText.
                 String lastName = changeType.deleteSpaceText(textInput_LastName.getEditText().getText().toString());
                 String firstName = changeType.deleteSpaceText(textInput_FirstName.getEditText().getText().toString());
                 String email = changeType.deleteSpaceText(textInput_Email.getEditText().getText().toString());
                 String sdt = changeType.deleteSpaceText(textInput_SDT.getEditText().getText().toString());
                 String password = changeType.deleteSpaceText(textInput_Password.getEditText().getText().toString());
+                // gán vào biến roleNV
                 String roleNV = spinnerRole.getSelectedItem().toString();
                 Bitmap bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.image_avatar);
                 byte[] avatar = changeType.checkByteInput(changeType.bitmapToByte(bitmap));

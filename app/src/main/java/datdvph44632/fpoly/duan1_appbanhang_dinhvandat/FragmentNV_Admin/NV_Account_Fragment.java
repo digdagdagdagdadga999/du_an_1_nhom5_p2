@@ -30,15 +30,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.Account_Manager_Activity;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.PickRole_Activity;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityNV_Admin.NV_DonHang_Activity;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.NhanVienDAO;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.ThongBaoDAO;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.NhanVien;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.ThongBao;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -50,6 +41,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.Account_Manager_Activity;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.PickRole_Activity;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityNV_Admin.NV_DonHang_Activity;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.NhanVienDAO;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.ThongBaoDAO;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.NhanVien;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.ThongBao;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
+import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
 
 public class NV_Account_Fragment extends Fragment {
 
@@ -303,23 +304,23 @@ public class NV_Account_Fragment extends Fragment {
         dialog.setContentView(dialogV);
         dialog.show();
 
-        Button camera = dialogV.findViewById(R.id.openCamera);
+//        Button camera = dialogV.findViewById(R.id.openCamera);
         Button gallery = dialogV.findViewById(R.id.openGallery);
 
-        camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getContext().checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                    Log.d(TAG, "cameraOnClick: Đã cấp quyền chụp ảnh");
-                    openCamera();
-                    dialog.cancel();
-                } else {
-                    Log.d(TAG, "cameraOnClick: Chưa cấp quyền chụp ảnh");
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, REQUEST_CODE);
-                    Toast.makeText(getContext(), "Cần cấp quyền để thực hiện", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+//        camera.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (getContext().checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+//                    Log.d(TAG, "cameraOnClick: Đã cấp quyền chụp ảnh");
+//                    openCamera();
+//                    dialog.cancel();
+//                } else {
+//                    Log.d(TAG, "cameraOnClick: Chưa cấp quyền chụp ảnh");
+//                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, REQUEST_CODE);
+//                    Toast.makeText(getContext(), "Cần cấp quyền để thực hiện", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
 
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override

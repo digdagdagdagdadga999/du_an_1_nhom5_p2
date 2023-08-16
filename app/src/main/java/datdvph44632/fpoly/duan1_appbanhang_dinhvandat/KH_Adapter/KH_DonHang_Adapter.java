@@ -127,14 +127,14 @@ public class KH_DonHang_Adapter extends RecyclerView.Adapter<KH_DonHang_Adapter.
     }
 
     public static class AuthorViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgLaptop, imgTrangThai;
+        ImageView imgquanao, imgTrangThai;
         TextView name, gia, soLuong, trangThai, tienDo, hint;
         RatingBar ratingBar;
         Button danhGia,huy;
 
         public AuthorViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgLaptop = itemView.findViewById(R.id.imageView_QuanAo);
+            imgquanao = itemView.findViewById(R.id.imageView_QuanAo);
             imgTrangThai = itemView.findViewById(R.id.imageView_TrangThai);
             name = itemView.findViewById(R.id.textView_TenQuanAo);
             gia = itemView.findViewById(R.id.textView_GiaTien);
@@ -165,7 +165,7 @@ public class KH_DonHang_Adapter extends RecyclerView.Adapter<KH_DonHang_Adapter.
         Bitmap anhLap = changeType.byteToBitmap(quanAo.getAnhquanAo());
 
         setDonHangDanhGia(author, donHang);
-        author.imgLaptop.setImageBitmap(anhLap);
+        author.imgquanao.setImageBitmap(anhLap);
         author.name.setText(quanAo.getTenQuanAo());
         author.gia.setText(donHang.getThanhTien());
         author.soLuong.setText(String.valueOf(donHang.getSoLuong()));
@@ -212,7 +212,7 @@ public class KH_DonHang_Adapter extends RecyclerView.Adapter<KH_DonHang_Adapter.
             if (list.size() > 0) {
                 Log.d(TAG, "setLayout: yo");
                 quanAoRate = list.get(0);
-                Log.d(TAG, "setLayout: Laptop rate: " + quanAoRate.toString());
+                Log.d(TAG, "setLayout: QuanAo rate: " + quanAoRate.toString());
             }
             if (quanAoRate != null) {
                 author.hint.setVisibility(View.GONE);
@@ -256,6 +256,7 @@ public class KH_DonHang_Adapter extends RecyclerView.Adapter<KH_DonHang_Adapter.
                 }
             });
         }
+        // thanh toasn qua vi
         if (donHang.getTrangThai().equals("Chưa thanh toán")) {
             author.danhGia.setText("Thanh toán ngay");
             author.danhGia.setEnabled(true);

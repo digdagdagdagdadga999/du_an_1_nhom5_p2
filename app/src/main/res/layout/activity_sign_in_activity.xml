@@ -117,16 +117,16 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView_Forgot_Pass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/forgot_password"
-                    android:textColor="#4E352F"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView_Forgot_Pass"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="35dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:text="@string/forgot_password"-->
+<!--                    android:textColor="#4E352F"-->
+<!--                    android:textSize="17sp"-->
+<!--                    android:textStyle="bold" />-->
 
             </LinearLayout>
 

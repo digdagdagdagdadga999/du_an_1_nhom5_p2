@@ -14,6 +14,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.ArrayList;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityKH.Main_KH_Navi_Activity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityNV_Admin.Main_Admin_Navi_Activity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityNV_Admin.Main_NV_Navi_Activity;
@@ -23,9 +27,6 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.KhachHang;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.NhanVien;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.ArrayList;
 
 public class SignIn_Activity extends AppCompatActivity {
 
@@ -47,18 +48,18 @@ public class SignIn_Activity extends AppCompatActivity {
         tilEmail = findViewById(R.id.textInput_Email);
         tilPass = findViewById(R.id.textInput_Password);
         checkBox = findViewById(R.id.checkBox_Remember_Me);
-        textView_Forgot_Pass = findViewById(R.id.textView_Forgot_Pass);
+//        textView_Forgot_Pass = findViewById(R.id.textView_Forgot_Pass);
 
         getDataIntent();
         getRememberMe();
         loginTime();
         goToSignUp();
-        goToForgotPass();
+//        goToForgotPass();
 
         if (roleUser.equals("admin")){
             LinearLayout linearLayout = findViewById(R.id.layout_Sign_Up);
             linearLayout.setVisibility(View.GONE);
-            textView_Forgot_Pass.setVisibility(View.GONE);
+//            textView_Forgot_Pass.setVisibility(View.GONE);
         }
         if (roleUser.equals("nhanVien")){
             LinearLayout linearLayout = findViewById(R.id.layout_Sign_Up);
@@ -276,32 +277,32 @@ public class SignIn_Activity extends AppCompatActivity {
         });
     }
 
-    private void goToForgotPass(){
-        textView_Forgot_Pass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (roleUser.equals("khachHang")){
-                    SharedPreferences pref = getSharedPreferences("Who_Login", MODE_PRIVATE);
-                    if (pref != null) {
-                        SharedPreferences.Editor editor = pref.edit();
-                        editor.putString("who", "khachHang");
-                        editor.apply();
-                    }
-                }
-                if (roleUser.equals("nhanVien")){
-                    SharedPreferences pref = getSharedPreferences("Who_Login", MODE_PRIVATE);
-                    if (pref != null) {
-                        SharedPreferences.Editor editor = pref.edit();
-                        editor.putString("who", "nhanVien");
-                        editor.apply();
-                    }
-                }
-                Intent intent = new Intent(context, ForgotPass_Activity.class);
-                Log.d(TAG, "goToSignUp: roleUser: " + roleUser);
-                intent.putExtra("role", roleUser);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
+//    private void goToForgotPass(){
+//        textView_Forgot_Pass.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (roleUser.equals("khachHang")){
+//                    SharedPreferences pref = getSharedPreferences("Who_Login", MODE_PRIVATE);
+//                    if (pref != null) {
+//                        SharedPreferences.Editor editor = pref.edit();
+//                        editor.putString("who", "khachHang");
+//                        editor.apply();
+//                    }
+//                }
+//                if (roleUser.equals("nhanVien")){
+//                    SharedPreferences pref = getSharedPreferences("Who_Login", MODE_PRIVATE);
+//                    if (pref != null) {
+//                        SharedPreferences.Editor editor = pref.edit();
+//                        editor.putString("who", "nhanVien");
+//                        editor.apply();
+//                    }
+//                }
+//                Intent intent = new Intent(context, ForgotPass_Activity.class);
+//                Log.d(TAG, "goToSignUp: roleUser: " + roleUser);
+//                intent.putExtra("role", roleUser);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//    }
 }
