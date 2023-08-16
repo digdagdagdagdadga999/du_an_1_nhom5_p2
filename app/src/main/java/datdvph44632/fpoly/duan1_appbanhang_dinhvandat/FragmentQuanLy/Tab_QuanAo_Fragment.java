@@ -58,7 +58,7 @@ public class Tab_QuanAo_Fragment extends Fragment {
 
         useToolbar(view);
         getHangLaptop(view);
-        setLaptop();
+        setQuanAo();
 
         themquanAo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +72,7 @@ public class Tab_QuanAo_Fragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        setLaptop();
+        setQuanAo();
     }
 
     private void useToolbar(View view) {
@@ -122,7 +122,7 @@ public class Tab_QuanAo_Fragment extends Fragment {
                                     reView.setAdapter(ql_quanAo_adapter);
                                 } else {
                                     getHangLaptop(view);
-                                    setLaptop();
+                                    setQuanAo();
                                 }
                             }
                         });
@@ -152,7 +152,7 @@ public class Tab_QuanAo_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 hangL = "all";
-                setLaptop();
+                setQuanAo();
             }
         });
 
@@ -160,7 +160,7 @@ public class Tab_QuanAo_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 hangL = "LAoGio";
-                setLaptop();
+                setQuanAo();
             }
         });
 
@@ -168,7 +168,7 @@ public class Tab_QuanAo_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 hangL = "LAoHoodie";
-                setLaptop();
+                setQuanAo();
             }
         });
 
@@ -176,7 +176,7 @@ public class Tab_QuanAo_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 hangL = "LAoKaki";
-                setLaptop();
+                setQuanAo();
             }
         });
 
@@ -184,7 +184,7 @@ public class Tab_QuanAo_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 hangL = "LAoThun";
-                setLaptop();
+                setQuanAo();
             }
         });
 
@@ -192,7 +192,7 @@ public class Tab_QuanAo_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 hangL = "LQuanBo";
-                setLaptop();
+                setQuanAo();
             }
         });
 
@@ -200,12 +200,12 @@ public class Tab_QuanAo_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 hangL = "LQuanVai";
-                setLaptop();
+                setQuanAo();
             }
         });
     }
 
-    private void setLaptop() {
+    private void setQuanAo() {
         if ("all".equals(hangL)) {
             QL_quanAo_loader = new QL_QuanAo_Loader(getContext(), reView, loadingView, linearLayoutEmpty, relativeLayout, layoutquanAo, Tab_QuanAo_Fragment.this);
             QL_quanAo_loader.execute("all");

@@ -24,7 +24,7 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.GetData;
 public class QL_QuanAo_Loader extends AsyncTask<String, Void, ArrayList<QuanAo>> {
     @SuppressLint("StaticFieldLeak")
     Context context;
-    String TAG = "LaptopLoader_____";
+    String TAG = "QuanAoLoader_____";
     QuanAoDAO quanAoDAO;
     ArrayList<HangQuanAo> listHang = new ArrayList<>();
     LoaiQuanAoDAO loaiQuanAoDAO;

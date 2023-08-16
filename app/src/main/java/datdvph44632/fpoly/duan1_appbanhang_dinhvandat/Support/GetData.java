@@ -117,7 +117,7 @@ public class GetData {
         return khoanChi;
     }
 
-    public ArrayList get8Laptop(ArrayList<QuanAo> listLap, int pos) {
+    public ArrayList getQuanAo(ArrayList<QuanAo> listLap, int pos) {
         ArrayList<QuanAo> list8 = new ArrayList<>();
         int size = listLap.size();
         if (size > 0) {

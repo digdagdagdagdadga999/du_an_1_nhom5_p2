@@ -10,7 +10,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +26,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.FileProvider;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -79,9 +77,14 @@ public class QuanAo_Manager_Activity extends AppCompatActivity {
 //        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        ramSpinner.setAdapter(adapter1);
 
+        // Phương thức createFromResource được gọi để tạo ra ArrayAdapter
+        // từ một mảng chuỗi được định nghĩa trong tài nguyên của ứng dụng (R.array.loai_quan_ao_array)
+        // đoạn code trên được sử dụng để lấy dữ liệu từ mảng chuỗi trong tài nguyên và hiển thị chúng trong một Spinner
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.loai_quan_ao_array, android.R.layout.simple_spinner_item);
+        // để hiển thị
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // gán dữ liệu để hiển thị spinner
         hangQuanAoSpinner.setAdapter(adapter2);
 
         uploadImageQuanAo.setOnClickListener(new View.OnClickListener() {
@@ -92,27 +95,13 @@ public class QuanAo_Manager_Activity extends AppCompatActivity {
                 dialog.setContentView(dialogV);
                 dialog.show();
 
-                Button camera = dialogV.findViewById(R.id.openCamera);
                 Button gallery = dialogV.findViewById(R.id.openGallery);
-
-                camera.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (context.checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                            Log.d(TAG, "cameraOnClick: Đã cấp quyền chụp ảnh");
-                            openCamera();
-                            dialog.cancel();
-                        } else {
-                            Log.d(TAG, "cameraOnClick: Chưa cấp quyền chụp ảnh");
-                            ActivityCompat.requestPermissions(QuanAo_Manager_Activity.this, new String[]{Manifest.permission.CAMERA}, REQUEST_CODE);
-                            Toast.makeText(context, "Cần cấp quyền để thực hiện", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
 
                 gallery.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        // Dòng này kiểm tra xem ứng dụng có quyền
+                        // đọc bộ nhớ ngoài hay không bằng cách sử dụng checkSelfPermission và so sánh với PackageManager.PERMISSION_GRANTED.
                         if (context.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                             Log.d(TAG, "galleryOnClick: Chưa cấp quyền đọc bộ nhớ");
                             ActivityCompat.requestPermissions(QuanAo_Manager_Activity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE);
@@ -127,8 +116,26 @@ public class QuanAo_Manager_Activity extends AppCompatActivity {
             }
         });
 
+        //                Button camera = dialogV.findViewById(R.id.openCamera);
+
+//                camera.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        if (context.checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+//                            Log.d(TAG, "cameraOnClick: Đã cấp quyền chụp ảnh");
+//                            openCamera();
+//                            dialog.cancel();
+//                        } else {
+//                            Log.d(TAG, "cameraOnClick: Chưa cấp quyền chụp ảnh");
+//                            ActivityCompat.requestPermissions(QuanAo_Manager_Activity.this, new String[]{Manifest.permission.CAMERA}, REQUEST_CODE);
+//                            Toast.makeText(context, "Cần cấp quyền để thực hiện", Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//                });
+
+
         useToolbar();
-        addLaptopNew();
+        addQuanAoNew();
     }
 
     private void useToolbar() {
@@ -144,22 +151,22 @@ public class QuanAo_Manager_Activity extends AppCompatActivity {
         });
     }
 
-    public void addLaptopNew() {
+    public void addQuanAoNew() {
         quanAoDAO = new QuanAoDAO(this);
 
         buttonThemQuanAoNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (checkInputLaptop() == 1) {
-                    String tenLaptop = til_TenQuanAoMoi.getEditText().getText().toString();
-                    String hangLaptop = (String) hangQuanAoSpinner.getSelectedItem();
+                if (checkInputQuanAo() == 1) {
+                    String tenQuanAo = til_TenQuanAoMoi.getEditText().getText().toString();
+                    String loaiQuanAo = (String) hangQuanAoSpinner.getSelectedItem();
                     String tien = til_GiaTien.getEditText().getText().toString();
                     int soluong = Integer.parseInt(til_SoLuong.getEditText().getText().toString());
 
-                    Bitmap bm = getBitmap();
+                    Bitmap bm = getBitmap();// Dòng này lấy một đối tượng Bitmap từ phương thức getBitmap()(camera hoặc từ bộ nhớ.)
                     if (bm != null) {
                         Log.d(TAG, "onClick: here?");
-                        QuanAo quanAo = new QuanAo("LP", "L" + hangLaptop, tenLaptop, changeType.stringToStringMoney(tien), soluong,
+                        QuanAo quanAo = new QuanAo("LP", "L" + loaiQuanAo, tenQuanAo, changeType.stringToStringMoney(tien), soluong,
                                 0, changeType.checkByteInput(changeType.bitmapToByte(bm)));
                         quanAoDAO.insertQuanAo(quanAo);
                         finish();
@@ -176,13 +183,13 @@ public class QuanAo_Manager_Activity extends AppCompatActivity {
 
     }
 
-    private int checkInputLaptop() {
+    private int checkInputQuanAo() {
         int check = 1;
-        String tenLaptop = til_TenQuanAoMoi.getEditText().getText().toString();
+        String tenQuanAo = til_TenQuanAoMoi.getEditText().getText().toString();
         String tien = til_GiaTien.getEditText().getText().toString();
         String soluong = til_SoLuong.getEditText().getText().toString();
 
-        if (tenLaptop.isEmpty()) {
+        if (tenQuanAo.isEmpty()) {
             check = -1;
             til_TenQuanAoMoi.setError("Tên  không được bỏ trống!");
             til_TenQuanAoMoi.setErrorEnabled(true);
@@ -227,18 +234,27 @@ public class QuanAo_Manager_Activity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+        // Dòng này kiểm tra xem requestCode có phải là SELECT_PHOTO hay không.
+        // SELECT_PHOTO là một hằng số được định nghĩa trước đó để xác định hoạt động chọn ảnh.
         if (requestCode == SELECT_PHOTO) {
+            //người dùng đã chọn ảnh thành công.
             if (resultCode == RESULT_OK) {
+                //sẽ lấy đường dẫn của ảnh được chọn từ imageReturnedIntent.
                 Uri selectedImage = imageReturnedIntent.getData();
                 InputStream imageStream = null;
                 try {
+//                   //mở luồng đọc của ảnh được chọn.
                     imageStream = context.getContentResolver().openInputStream(selectedImage);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
+                // giải mã luồng đọc thành một đối tượng Bitmap.
                 Bitmap bm = BitmapFactory.decodeStream(imageStream);
+                // Nếu bm khác null, tức là quá trình giải mã ảnh thành công,
                 if (bm != null) {
+                    // lưu trữ đối tượng bitmap
                     setBitmap(bm);
+                    //đặt ảnh đã chọn lên imageView_anhQuanAo.
                     imageView_anhQuanAo.setImageBitmap(bm);
                     imageView_AddQuanAo.setVisibility(View.GONE);
                 }
@@ -254,51 +270,63 @@ public class QuanAo_Manager_Activity extends AppCompatActivity {
         }
     }
 
-    private void openCamera() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(QuanAo_Manager_Activity.this.getPackageManager()) != null) {
-            File photoFile = null;
-            try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
-            if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(QuanAo_Manager_Activity.this,
-                        "com.nhom5.quanlylaptop.fileprovider", photoFile);
-
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-            }
-        }
-    }
+//    private void openCamera() {
+//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        if (takePictureIntent.resolveActivity(QuanAo_Manager_Activity.this.getPackageManager()) != null) {
+//            File photoFile = null;
+//            try {
+//                photoFile = createImageFile();
+//            } catch (IOException ex) {
+//                ex.printStackTrace();
+//            }
+//
+//            if (photoFile != null) {
+//                Uri photoURI = FileProvider.getUriForFile(QuanAo_Manager_Activity.this,
+//                        "com.nhom5.quanlylaptop.fileprovider", photoFile);
+//
+//                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+//
+//                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+//            }
+//        }
+//    }
 
     private File createImageFile() throws IOException {
+        // đại diện cho thời gian hiện tại theo định dạng "yyyyMMdd_HHmmss".
+        // Chuỗi này thường được sử dụng để tạo tên duy nhất cho tệp tin ảnh.
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
+        // ấy đường dẫn đến thư mục lưu trữ bên ngoài của ứng dụng, trong thư mục "Pictures".
         File storageDir = QuanAo_Manager_Activity.this.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        // Dòng này tạo một tệp tin ảnh tạm thời bằng cách
+        // sử dụng imageFileName làm tên, ".jpg" làm phần mở rộng và storageDir là thư mục lưu trữ.
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
 
+        // lưu đường dẫn tuyệt đối của tệp tin ảnh tạm thời vào biến currentPhotoPath
         currentPhotoPath = image.getAbsolutePath();
         return image;
     }
 
     private void openGallery() {
+        // cho phép người dùng chọn một tệp tin từ một nguồn dữ liệu được chỉ định
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+        // các tệp tin hình ảnh sẽ được hiển thị trong giao diện chọn ảnh.
         photoPickerIntent.setType("image/*");
+        // bắt đầu hoạt động chọn ảnh với Intent đã được tạo,
+        // và kết quả sẽ được trả về thông qua phương thức onActivityResult() với mã yêu cầu SELECT_PHOTO.
         startActivityForResult(photoPickerIntent, SELECT_PHOTO);
     }
 
+    // lưu trữ biến trong bitmap
     public Bitmap getBitmap() {
         return bitmap;
     }
 
+    // thiết lập giá trị của bitmap
     public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
     }
