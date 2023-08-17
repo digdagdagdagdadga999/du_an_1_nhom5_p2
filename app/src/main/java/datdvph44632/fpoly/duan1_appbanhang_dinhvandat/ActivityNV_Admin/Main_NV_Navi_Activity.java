@@ -34,7 +34,6 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentNV_Admin.NV_Accoun
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentNV_Admin.NV_ThongBao_Fragment;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentQuanLy.QL_KhachHang_Fragment;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentQuanLy.QL_QuanAo_Fragment;
-import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentQuanLy.QL_ThongKe_Fragment;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
 
@@ -172,7 +171,7 @@ public class Main_NV_Navi_Activity extends AppCompatActivity {
                 }
                 if (id == R.id.item_navi_drawer_nv_noti) {
                     item.setCheckable(true);
-                    Log.d(TAG, "onNavigationItemSelected: 1 - fptshop");
+                    Log.d(TAG, "onNavigationItemSelected: 1 - quanao");
                     NV_ThongBao_Fragment nv_thongBao_fragment = new NV_ThongBao_Fragment();
                     manager.beginTransaction().replace(R.id.frLayout, nv_thongBao_fragment).commit();
                     itemNaviDr = 1;
@@ -183,7 +182,7 @@ public class Main_NV_Navi_Activity extends AppCompatActivity {
                 }
                 if (id == R.id.item_navi_drawer_nv_QuanAo) {
                     item.setCheckable(true);
-                    Log.d(TAG, "onNavigationItemSelected: 2 - laptop");
+                    Log.d(TAG, "onNavigationItemSelected: 2 - quanao");
                     QL_QuanAo_Fragment ql_quanAo_fragment = new QL_QuanAo_Fragment();
                     manager.beginTransaction().replace(R.id.frLayout, ql_quanAo_fragment).commit();
                     itemNaviDr = 3;
@@ -217,17 +216,17 @@ public class Main_NV_Navi_Activity extends AppCompatActivity {
                     useToolbar("QLý Voucher", 1);
                     bottomNavigationView.setVisibility(View.GONE);
                 }
-                if (id == R.id.item_navi_drawer_nv_ThongKe) {
-                    item.setCheckable(true);
-                    Log.d(TAG, "onNavigationItemSelected: 6 - thống kê");
-                    QL_ThongKe_Fragment ql_thongKe_fragment = new QL_ThongKe_Fragment();
-                    manager.beginTransaction().replace(R.id.frLayout, ql_thongKe_fragment).commit();
-                    itemNaviDr = 7;
-                    useToolbar("Doanh Thu\nThống Kê", 0);
-                    bottomNavigationView.setVisibility(View.VISIBLE);
-                    bottomNavigationView.getMenu().findItem(R.id.item_navi_bottom_nv_thongKe).setCheckable(true);
-                    bottomNavigationView.getMenu().findItem(R.id.item_navi_bottom_nv_thongKe).setChecked(true);
-                }
+//                if (id == R.id.item_navi_drawer_nv_ThongKe) {
+//                    item.setCheckable(true);
+//                    Log.d(TAG, "onNavigationItemSelected: 6 - thống kê");
+//                    QL_ThongKe_Fragment ql_thongKe_fragment = new QL_ThongKe_Fragment();
+//                    manager.beginTransaction().replace(R.id.frLayout, ql_thongKe_fragment).commit();
+//                    itemNaviDr = 7;
+//                    useToolbar("Doanh Thu\nThống Kê", 0);
+//                    bottomNavigationView.setVisibility(View.VISIBLE);
+//                    bottomNavigationView.getMenu().findItem(R.id.item_navi_bottom_nv_thongKe).setCheckable(true);
+//                    bottomNavigationView.getMenu().findItem(R.id.item_navi_bottom_nv_thongKe).setChecked(true);
+//                }
                 if (id == R.id.item_navi_drawer_kh_DH_Damua) {
                     item.setCheckable(true);
                     itemNaviDr = 8;
@@ -297,15 +296,15 @@ public class Main_NV_Navi_Activity extends AppCompatActivity {
                     useToolbar("Thông Báo", 0);
                     getSupportActionBar().show();
                 }
-                if (i == R.id.item_navi_bottom_nv_thongKe) {
-                    QL_ThongKe_Fragment ql_thongKe_fragment = new QL_ThongKe_Fragment();
-                    manager.beginTransaction().replace(R.id.frLayout, ql_thongKe_fragment).commit();
-                    naviView.getMenu().getItem(7).setChecked(true);
-                    naviView.getMenu().getItem(7).setCheckable(true);
-                    itemNaviDr = 7;
-                    useToolbar("Doanh Thu\nThống Kê", 0);
-                    getSupportActionBar().show();
-                }
+//                if (i == R.id.item_navi_bottom_nv_thongKe) {
+//                    QL_ThongKe_Fragment ql_thongKe_fragment = new QL_ThongKe_Fragment();
+//                    manager.beginTransaction().replace(R.id.frLayout, ql_thongKe_fragment).commit();
+//                    naviView.getMenu().getItem(7).setChecked(true);
+//                    naviView.getMenu().getItem(7).setCheckable(true);
+//                    itemNaviDr = 7;
+//                    useToolbar("Doanh Thu\nThống Kê", 0);
+//                    getSupportActionBar().show();
+//                }
                 if (i == R.id.item_navi_bottom_nv_acc) {
                     NV_Account_Fragment nv_account_fragment = new NV_Account_Fragment();
                     manager.beginTransaction().replace(R.id.frLayout, nv_account_fragment).commit();

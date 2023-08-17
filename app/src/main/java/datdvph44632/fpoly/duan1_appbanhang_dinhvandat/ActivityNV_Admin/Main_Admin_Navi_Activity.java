@@ -141,7 +141,7 @@ public class Main_Admin_Navi_Activity extends AppCompatActivity {
                 }
                 if (id == R.id.item_navi_drawer_admin_noti) {
                     item.setCheckable(true);
-                    Log.d(TAG, "onNavigationItemSelected: 1 - fptshop");
+                    Log.d(TAG, "onNavigationItemSelected: 1 - quanao");
                     Admin_ThongBao_Fragment admin_thongBao_fragment = new Admin_ThongBao_Fragment();
                     manager.beginTransaction().replace(R.id.frLayout, admin_thongBao_fragment).commit();
                     itemNaviDr = 1;
@@ -152,7 +152,7 @@ public class Main_Admin_Navi_Activity extends AppCompatActivity {
                 }
                 if (id == R.id.item_navi_drawer_admin_QuanAo) {
                     item.setCheckable(true);
-                    Log.d(TAG, "onNavigationItemSelected: 2 - laptop");
+                    Log.d(TAG, "onNavigationItemSelected: 2 - quanao");
                     QL_QuanAo_Fragment ql_quanAo_fragment = new QL_QuanAo_Fragment();
                     manager.beginTransaction().replace(R.id.frLayout, ql_quanAo_fragment).commit();
                     itemNaviDr = 3;

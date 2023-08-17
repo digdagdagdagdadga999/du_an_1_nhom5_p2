@@ -21,6 +21,11 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.PickRole_Activity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.KhachHangDAO;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.KhachHang;
@@ -36,10 +41,6 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentQuanAo.aoHoodieFra
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.FragmentQuanAo.aogioFragment;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
 
 public class Main_KH_Navi_Activity extends AppCompatActivity {
 
@@ -169,7 +170,7 @@ public class Main_KH_Navi_Activity extends AppCompatActivity {
                 }
                 if (id == R.id.item_navi_drawer_kh_AoKaki) {
                     item.setCheckable(true);
-                    Log.d(TAG, "onNavigationItemSelected: 2 - laptop dell");
+                    Log.d(TAG, "onNavigationItemSelected: 2 - ao kaki");
                     QuanBoFragment quanBoFragment = new QuanBoFragment();
                     manager.beginTransaction().replace(R.id.frLayout, quanBoFragment).commit();
                     itemNaviDr = 2;
@@ -178,7 +179,7 @@ public class Main_KH_Navi_Activity extends AppCompatActivity {
                 }
                 if (id == R.id.item_navi_drawer_kh_AoThun) {
                     item.setCheckable(true);
-                    Log.d(TAG, "onNavigationItemSelected: 3 - laptop hp");
+                    Log.d(TAG, "onNavigationItemSelected: 3 - ao thun");
                     aogioFragment aogioFragment = new aogioFragment();
                     manager.beginTransaction().replace(R.id.frLayout, aogioFragment).commit();
                     itemNaviDr = 4;
@@ -187,7 +188,7 @@ public class Main_KH_Navi_Activity extends AppCompatActivity {
                 }
                 if (id == R.id.item_navi_drawer_kh_AoHoodie) {
                     item.setCheckable(true);
-                    Log.d(TAG, "onNavigationItemSelected: 4 - laptop asus");
+                    Log.d(TAG, "onNavigationItemSelected: 4 - ao hoodie");
                     QuanVaiFragment quanVaiFragment = new QuanVaiFragment();
                     manager.beginTransaction().replace(R.id.frLayout, quanVaiFragment).commit();
                     itemNaviDr = 5;
@@ -196,7 +197,7 @@ public class Main_KH_Navi_Activity extends AppCompatActivity {
                 }
                 if (id == R.id.item_navi_drawer_kh_AoKhoacGio) {
                     item.setCheckable(true);
-                    Log.d(TAG, "onNavigationItemSelected: 5 - laptop acer");
+                    Log.d(TAG, "onNavigationItemSelected: 5 - ao khoac gio");
                     AoThunFragment aoThunFragment = new AoThunFragment();
                     manager.beginTransaction().replace(R.id.frLayout, aoThunFragment).commit();
                     itemNaviDr = 6;
@@ -205,7 +206,7 @@ public class Main_KH_Navi_Activity extends AppCompatActivity {
                 }
                 if (id == R.id.item_navi_drawer_kh_QuanBo) {
                     item.setCheckable(true);
-                    Log.d(TAG, "onNavigationItemSelected: 6 - laptop msi");
+                    Log.d(TAG, "onNavigationItemSelected: 6 - quan bo");
                     AoKakiFragment aoKakiFragment = new AoKakiFragment();
                     manager.beginTransaction().replace(R.id.frLayout, aoKakiFragment).commit();
                     itemNaviDr = 7;
@@ -214,7 +215,7 @@ public class Main_KH_Navi_Activity extends AppCompatActivity {
                 }
                 if (id == R.id.item_navi_drawer_kh_QuanVai) {
                     item.setCheckable(true);
-                    Log.d(TAG, "onNavigationItemSelected: 6 - laptop samsung");
+                    Log.d(TAG, "onNavigationItemSelected: 6 - quan vai");
                     aoHoodieFragment aoHoodieFragment = new aoHoodieFragment();
                     manager.beginTransaction().replace(R.id.frLayout, aoHoodieFragment).commit();
                     itemNaviDr = 8;
