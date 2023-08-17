@@ -14,7 +14,6 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +26,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -394,26 +392,26 @@ public class NV_Account_Fragment extends Fragment {
         }
     }
 
-    public void openCamera() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-            File photoFile = null;
-            try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
-            if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(getActivity(),
-                        "com.nhom5.quanlylaptop.fileprovider", photoFile);
-
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-            }
-        }
-    }
+//    public void openCamera() {
+//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+//            File photoFile = null;
+//            try {
+//                photoFile = createImageFile();
+//            } catch (IOException ex) {
+//                ex.printStackTrace();
+//            }
+//
+//            if (photoFile != null) {
+//                Uri photoURI = FileProvider.getUriForFile(getActivity(),
+//                        "com.nhom5.quanlylaptop.fileprovider", photoFile);
+//
+//                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+//
+//                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+//            }
+//        }
+//    }
 
     private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());

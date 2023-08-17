@@ -17,6 +17,8 @@ import android.widget.Toast;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Activity.Info_QuanAo_Activity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.ActivityNV_Admin.NVA_DonDat_Activity;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.DAO.DonHangDAO;
@@ -28,8 +30,6 @@ import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Entity.QuanAo;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.R;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.ChangeType;
 import datdvph44632.fpoly.duan1_appbanhang_dinhvandat.Support.GetData;
-
-import java.util.ArrayList;
 
 public class NVA_Home_Fragment extends Fragment {
 
@@ -187,7 +187,7 @@ public class NVA_Home_Fragment extends Fragment {
                     Intent intent = new Intent(getContext(), Info_QuanAo_Activity.class);
                     final Bundle bundle = new Bundle();
                     bundle.putBinder("laptop", quanAo);
-                    Log.d(TAG, "onBindViewHolder: Laptop: " + quanAo.toString());
+                    Log.d(TAG, "onBindViewHolder: quanao: " + quanAo.toString());
                     intent.putExtras(bundle);
                     intent.putExtra("openFrom", "other");
                     getContext().startActivity(intent);
@@ -210,7 +210,7 @@ public class NVA_Home_Fragment extends Fragment {
                             Intent intent = new Intent(getContext(), Info_QuanAo_Activity.class);
                             final Bundle bundle = new Bundle();
                             bundle.putBinder("laptop", quanAo);
-                            Log.d(TAG, "onBindViewHolder: Laptop: " + quanAo.toString());
+                            Log.d(TAG, "onBindViewHolder: quanao: " + quanAo.toString());
                             intent.putExtras(bundle);
                             intent.putExtra("openFrom", "other");
                             getContext().startActivity(intent);
@@ -235,7 +235,7 @@ public class NVA_Home_Fragment extends Fragment {
                             Intent intent = new Intent(getContext(), Info_QuanAo_Activity.class);
                             final Bundle bundle = new Bundle();
                             bundle.putBinder("laptop", quanAo);
-                            Log.d(TAG, "onBindViewHolder: Laptop: " + quanAo.toString());
+                            Log.d(TAG, "onBindViewHolder: quanao: " + quanAo.toString());
                             intent.putExtras(bundle);
                             intent.putExtra("openFrom", "other");
                             getContext().startActivity(intent);
@@ -260,7 +260,7 @@ public class NVA_Home_Fragment extends Fragment {
                             Intent intent = new Intent(getContext(), Info_QuanAo_Activity.class);
                             final Bundle bundle = new Bundle();
                             bundle.putBinder("laptop", quanAo);
-                            Log.d(TAG, "onBindViewHolder: Laptop: " + quanAo.toString());
+                            Log.d(TAG, "onBindViewHolder: quanao: " + quanAo.toString());
                             intent.putExtras(bundle);
                             intent.putExtra("openFrom", "other");
                             getContext().startActivity(intent);

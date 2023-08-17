@@ -30,10 +30,10 @@
         android:id="@+id/item_navi_drawer_nv_Voucher"
         android:title="Voucher" />
 
-    <item
-        android:id="@+id/item_navi_drawer_nv_ThongKe"
-        android:icon="@drawable/thong_ke_navi_icon"
-        android:title="Thống kê" />
+<!--    <item-->
+<!--        android:id="@+id/item_navi_drawer_nv_ThongKe"-->
+<!--        android:icon="@drawable/thong_ke_navi_icon"-->
+<!--        android:title="Thống kê" />-->
 
     <item
         android:id="@+id/item_navi_drawer_kh_DH_Damua"

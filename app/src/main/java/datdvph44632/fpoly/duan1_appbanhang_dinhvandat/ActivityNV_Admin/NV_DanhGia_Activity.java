@@ -50,7 +50,7 @@ public class NV_DanhGia_Activity extends AppCompatActivity {
         quanAoRateDAO = new QuanAoRateDAO(context);
         useToolbar();
         getInfoDonHang();
-        setLaptopView();
+        setQuanAoView();
 
         SharedPreferences pref = getSharedPreferences("Info_Click", MODE_PRIVATE);
         if (pref != null) {
@@ -90,7 +90,7 @@ public class NV_DanhGia_Activity extends AppCompatActivity {
         if (intent != null) {
             try {
                 donHang = (DonHang) intent.getExtras().getBinder("donhang");
-                Log.d(TAG, "getInfoLaptop: DonHang: " + donHang.toString());
+                Log.d(TAG, "getInfoQuanAo: DonHang: " + donHang.toString());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -114,7 +114,7 @@ public class NV_DanhGia_Activity extends AppCompatActivity {
             if (list.size() > 0) {
                 Log.d(TAG, "setLayout: yo");
                 quanAoRate = list.get(0);
-                Log.d(TAG, "setLayout: Laptop rate: " + quanAoRate.toString());
+                Log.d(TAG, "setLayout: quanao rate: " + quanAoRate.toString());
             }
             if (quanAoRate != null) {
                 ratingBar.setRating(changeType.getRatingFloat(quanAoRate.getRating()));
@@ -140,15 +140,15 @@ public class NV_DanhGia_Activity extends AppCompatActivity {
         });
     }
 
-    private void setLaptopView() {
-        ImageView imageLaptop = findViewById(R.id.imageView_QuanAo);
+    private void setQuanAoView() {
+        ImageView imageQuanAo = findViewById(R.id.imageView_QuanAo);
         ImageView imageUser = findViewById(R.id.imageView_Avatar);
         TextView nameLap = findViewById(R.id.textView_TenQuanAo);
         TextView soLuong = findViewById(R.id.textView_Soluong);
         TextView giaTien = findViewById(R.id.textView_GiaTien);
         TextView nameKH = findViewById(R.id.textView_TenUser);
         TextView email = findViewById(R.id.textView_Email);
-        LinearLayout onclickLaptop = findViewById(R.id.onclick_Laptop);
+        LinearLayout onclickQuanAo = findViewById(R.id.onclick_QuanAo);
 
         quanAo = new QuanAo("No Data", "No Data", "No Data", "0", 0, 0, new byte[]{});
         Log.d(TAG, "setRow: DonHang: " + donHang.toString());
@@ -179,7 +179,7 @@ public class NV_DanhGia_Activity extends AppCompatActivity {
         Bitmap anhLap = changeType.byteToBitmap(quanAo.getAnhquanAo());
         Bitmap anhKH = changeType.byteToBitmap(khachHang.getAvatar());
 
-        imageLaptop.setImageBitmap(anhLap);
+        imageQuanAo.setImageBitmap(anhLap);
         imageUser.setImageBitmap(anhKH);
         nameLap.setText(quanAo.getTenQuanAo());
         giaTien.setText(donHang.getThanhTien());
@@ -189,14 +189,14 @@ public class NV_DanhGia_Activity extends AppCompatActivity {
 
         setReview(donHang.getIsDanhGia());
 
-        onclickLaptop.setOnClickListener(new View.OnClickListener() {
+        onclickQuanAo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Info_QuanAo_Activity.class);
                 if (quanAo != null) {
                     final Bundle bundle = new Bundle();
                     bundle.putBinder("laptop", quanAo);
-                    Log.d(TAG, "onBindViewHolder: Laptop: " + quanAo.toString());
+                    Log.d(TAG, "onBindViewHolder: quanao: " + quanAo.toString());
                     intent.putExtras(bundle);
                     intent.putExtra("openFrom", "other");
                     context.startActivity(intent);

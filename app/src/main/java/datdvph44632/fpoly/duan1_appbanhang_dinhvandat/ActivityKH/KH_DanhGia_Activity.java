@@ -154,7 +154,7 @@ public class KH_DanhGia_Activity extends AppCompatActivity {
         TextView name = findViewById(R.id.textView_TenQuanAo);
         TextView soLuong = findViewById(R.id.textView_Soluong);
         TextView giaTien = findViewById(R.id.textView_GiaTien);
-        LinearLayout onclickLaptop = findViewById(R.id.onclick_Laptop);
+        LinearLayout onclickLaptop = findViewById(R.id.onclick_QuanAo);
         quanAo = new QuanAo("No Data", "No Data", "No Data", "0", 0, 0, new byte[]{});
         Log.d(TAG, "setRow: DonHang: " + donHang.toString());
         QuanAoDAO quanAoDAO = new QuanAoDAO(context);
